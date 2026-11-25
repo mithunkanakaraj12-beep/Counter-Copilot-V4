@@ -1,0 +1,90 @@
+{
+  "fixture_type": "synthetic_only",
+  "yard": {
+    "id": "yard_demo_001",
+    "name": "Pine Ridge Building Supply (Synthetic)",
+    "time_zone": "America/Chicago",
+    "pricing_enabled": false,
+    "inventory_freshness_limit_minutes": 120
+  },
+  "contacts": [
+    {
+      "id": "contact_demo_001",
+      "name": "Jordan Reed (Synthetic)",
+      "email": "jordan.reed@example.test",
+      "phone": "+12025550123",
+      "known_account": true
+    }
+  ],
+  "skus": [
+    {
+      "id": "sku_demo_001",
+      "code": "SYP-2X6-12-N2",
+      "description": "2x6x12 SYP No. 2, untreated",
+      "dimensions": "2x6x12",
+      "species": "SYP",
+      "grade": "No. 2",
+      "treatment": "untreated",
+      "sell_unit": "piece"
+    },
+    {
+      "id": "sku_demo_002",
+      "code": "OSB-716",
+      "description": "7/16 inch OSB sheathing",
+      "dimensions": "7/16 inch",
+      "species": null,
+      "grade": null,
+      "treatment": null,
+      "sell_unit": "sheet"
+    }
+  ],
+  "inventory_snapshot": {
+    "id": "inventory_demo_001",
+    "received_at": "2026-11-25T12:00:00Z",
+    "source": "synthetic fixture",
+    "lines": [
+      {
+        "sku_id": "sku_demo_001",
+        "on_hand": "80",
+        "allocated": "15",
+        "held": "0",
+        "safety_stock": "5",
+        "unavailable": "0",
+        "unit": "piece"
+      },
+      {
+        "sku_id": "sku_demo_002",
+        "on_hand": "25",
+        "allocated": "5",
+        "held": "0",
+        "safety_stock": "5",
+        "unavailable": "0",
+        "unit": "sheet"
+      }
+    ]
+  },
+  "sample_messages": [
+    {
+      "id": "message_demo_001",
+      "channel": "email",
+      "direction": "inbound",
+      "sender": "jordan.reed@example.test",
+      "subject": "Material quote request",
+      "body": "Please quote 40 pieces of 2x6x12 SYP No. 2 and 20 sheets of 7/16 OSB."
+    },
+    {
+      "id": "message_demo_002",
+      "channel": "sms",
+      "direction": "inbound",
+      "sender": "+12025550123",
+      "body": "Need 10 2x6x12s. Can you check availability?"
+    },
+    {
+      "id": "message_demo_003",
+      "channel": "voicemail",
+      "direction": "inbound",
+      "sender": "+12025550123",
+      "transcript": "This is a synthetic voicemail. I need twenty sheets of seven-sixteenths OSB."
+    }
+  ]
+}
