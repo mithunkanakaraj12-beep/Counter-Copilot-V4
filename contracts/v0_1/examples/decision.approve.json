@@ -1,0 +1,6 @@
+{
+  "action": "approve_internal",
+  "expected_version": 2,
+  "acknowledged_warning_ids": [],
+  "note": null
+}

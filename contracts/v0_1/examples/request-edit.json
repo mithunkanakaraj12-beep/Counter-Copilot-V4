@@ -1,0 +1,21 @@
+{
+  "expected_version": 1,
+  "operations": [
+    {
+      "op": "set_quantity",
+      "line_id": "00000000-0000-4000-8000-000000000032",
+      "value": "24"
+    },
+    {
+      "op": "select_sku",
+      "line_id": "00000000-0000-4000-8000-000000000031",
+      "sku_id": "00000000-0000-4000-8000-000000000011"
+    },
+    {
+      "op": "select_sku",
+      "line_id": "00000000-0000-4000-8000-000000000032",
+      "sku_id": "00000000-0000-4000-8000-000000000012"
+    }
+  ],
+  "note": "Synthetic: employee confirmed the corrected OSB count."
+}

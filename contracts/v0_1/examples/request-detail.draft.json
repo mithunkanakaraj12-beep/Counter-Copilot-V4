@@ -1,0 +1,615 @@
+{
+  "schema_version": "0.1",
+  "request_id": "00000000-0000-4000-8000-000000000004",
+  "yard_id": "00000000-0000-4000-8000-000000000001",
+  "version": 1,
+  "review_state": "draft_ready",
+  "origin_communication_id": "00000000-0000-4000-8000-000000000003",
+  "related_communication_ids": [],
+  "created_at": "2026-11-25T15:00:20Z",
+  "updated_at": "2026-11-25T15:00:20Z",
+  "content": {
+    "lines": [
+      {
+        "line_id": "00000000-0000-4000-8000-000000000031",
+        "position": 1,
+        "origin": "model",
+        "status": "active",
+        "raw_wording": "40 pieces of 2x6x12 SYP #2",
+        "source_evidence": [
+          {
+            "communication_id": "00000000-0000-4000-8000-000000000003",
+            "source": "body_text",
+            "start": 13,
+            "end": 39,
+            "quote": "40 pieces of 2x6x12 SYP #2",
+            "role": "supports"
+          }
+        ],
+        "product": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "quantity": {
+          "state": "extracted",
+          "value": "40",
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 13,
+              "end": 15,
+              "quote": "40",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "unit": {
+          "state": "extracted",
+          "value": "piece",
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 16,
+              "end": 22,
+              "quote": "pieces",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "dimension_text": {
+          "state": "extracted",
+          "value": "2x6x12",
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 26,
+              "end": 32,
+              "quote": "2x6x12",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "thickness": {
+          "state": "extracted",
+          "value": {
+            "raw": "2",
+            "magnitude": "2",
+            "unit": null,
+            "unit_basis": "unspecified",
+            "convention_rule_id": null
+          },
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 26,
+              "end": 27,
+              "quote": "2",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "width": {
+          "state": "extracted",
+          "value": {
+            "raw": "6",
+            "magnitude": "6",
+            "unit": null,
+            "unit_basis": "unspecified",
+            "convention_rule_id": null
+          },
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 28,
+              "end": 29,
+              "quote": "6",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "length": {
+          "state": "extracted",
+          "value": {
+            "raw": "12",
+            "magnitude": "12",
+            "unit": null,
+            "unit_basis": "unspecified",
+            "convention_rule_id": null
+          },
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 30,
+              "end": 32,
+              "quote": "12",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "species": {
+          "state": "extracted",
+          "value": "SYP",
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 33,
+              "end": 36,
+              "quote": "SYP",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "grade": {
+          "state": "extracted",
+          "value": "#2",
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 37,
+              "end": 39,
+              "quote": "#2",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "treatment": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "match": {
+          "status": "single_candidate",
+          "catalog_version": "synthetic-1",
+          "matcher_version": "synthetic-1",
+          "candidates": [
+            {
+              "rank": 1,
+              "sku": {
+                "sku_id": "00000000-0000-4000-8000-000000000011",
+                "code": "SYP-2X6-12-N2",
+                "description": "2x6x12 SYP No. 2, untreated",
+                "thickness": {
+                  "raw": "2",
+                  "magnitude": "2",
+                  "unit": "in",
+                  "unit_basis": "stated",
+                  "convention_rule_id": null
+                },
+                "width": {
+                  "raw": "6",
+                  "magnitude": "6",
+                  "unit": "in",
+                  "unit_basis": "stated",
+                  "convention_rule_id": null
+                },
+                "length": {
+                  "raw": "12",
+                  "magnitude": "12",
+                  "unit": "ft",
+                  "unit_basis": "stated",
+                  "convention_rule_id": null
+                },
+                "species": "SYP",
+                "grade": "No. 2",
+                "treatment": "untreated",
+                "sell_unit": "piece",
+                "active": true
+              },
+              "attribute_evidence": [
+                {
+                  "attribute": "thickness",
+                  "request_value": "2",
+                  "sku_value": "2 in",
+                  "outcome": "not_resolved_in_request",
+                  "synonym_rule_id": null
+                },
+                {
+                  "attribute": "width",
+                  "request_value": "6",
+                  "sku_value": "6 in",
+                  "outcome": "not_resolved_in_request",
+                  "synonym_rule_id": null
+                },
+                {
+                  "attribute": "length",
+                  "request_value": "12",
+                  "sku_value": "12 ft",
+                  "outcome": "not_resolved_in_request",
+                  "synonym_rule_id": null
+                },
+                {
+                  "attribute": "species",
+                  "request_value": "SYP",
+                  "sku_value": "SYP",
+                  "outcome": "exact_match",
+                  "synonym_rule_id": null
+                },
+                {
+                  "attribute": "grade",
+                  "request_value": "#2",
+                  "sku_value": "No. 2",
+                  "outcome": "synonym_match",
+                  "synonym_rule_id": "00000000-0000-4000-8000-000000000021"
+                },
+                {
+                  "attribute": "treatment",
+                  "request_value": null,
+                  "sku_value": "untreated",
+                  "outcome": "not_resolved_in_request",
+                  "synonym_rule_id": null
+                }
+              ],
+              "unit_check": {
+                "status": "same_unit",
+                "conversion_rule_id": null,
+                "conversion_factor": null,
+                "converted_quantity": null
+              }
+            }
+          ],
+          "selection": null
+        }
+      },
+      {
+        "line_id": "00000000-0000-4000-8000-000000000032",
+        "position": 2,
+        "origin": "model",
+        "status": "active",
+        "raw_wording": "20 sheets of 7/16 OSB",
+        "source_evidence": [
+          {
+            "communication_id": "00000000-0000-4000-8000-000000000003",
+            "source": "body_text",
+            "start": 44,
+            "end": 65,
+            "quote": "20 sheets of 7/16 OSB",
+            "role": "supports"
+          },
+          {
+            "communication_id": "00000000-0000-4000-8000-000000000003",
+            "source": "body_text",
+            "start": 67,
+            "end": 98,
+            "quote": "Actually make the OSB 24 sheets",
+            "role": "supports"
+          }
+        ],
+        "product": {
+          "state": "extracted",
+          "value": "OSB",
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 62,
+              "end": 65,
+              "quote": "OSB",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "quantity": {
+          "state": "ambiguous",
+          "value": null,
+          "candidates": [
+            "20",
+            "24"
+          ],
+          "ambiguity_reason": "conflicting_statements",
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 44,
+              "end": 53,
+              "quote": "20 sheets",
+              "role": "conflicts"
+            },
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 89,
+              "end": 98,
+              "quote": "24 sheets",
+              "role": "conflicts"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "unit": {
+          "state": "extracted",
+          "value": "sheet",
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 47,
+              "end": 53,
+              "quote": "sheets",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "dimension_text": {
+          "state": "extracted",
+          "value": "7/16",
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 57,
+              "end": 61,
+              "quote": "7/16",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "thickness": {
+          "state": "extracted",
+          "value": {
+            "raw": "7/16",
+            "magnitude": "0.4375",
+            "unit": null,
+            "unit_basis": "unspecified",
+            "convention_rule_id": null
+          },
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [
+            {
+              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "source": "body_text",
+              "start": 57,
+              "end": 61,
+              "quote": "7/16",
+              "role": "supports"
+            }
+          ],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "width": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "length": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "species": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "grade": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "treatment": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "entered_by": null,
+          "entered_at": null
+        },
+        "match": {
+          "status": "single_candidate",
+          "catalog_version": "synthetic-1",
+          "matcher_version": "synthetic-1",
+          "candidates": [
+            {
+              "rank": 1,
+              "sku": {
+                "sku_id": "00000000-0000-4000-8000-000000000012",
+                "code": "OSB-716",
+                "description": "7/16 inch OSB sheathing",
+                "thickness": {
+                  "raw": "7/16",
+                  "magnitude": "0.4375",
+                  "unit": "in",
+                  "unit_basis": "stated",
+                  "convention_rule_id": null
+                },
+                "width": null,
+                "length": null,
+                "species": null,
+                "grade": null,
+                "treatment": null,
+                "sell_unit": "sheet",
+                "active": true
+              },
+              "attribute_evidence": [
+                {
+                  "attribute": "thickness",
+                  "request_value": "0.4375",
+                  "sku_value": "0.4375 in",
+                  "outcome": "not_resolved_in_request",
+                  "synonym_rule_id": null
+                }
+              ],
+              "unit_check": {
+                "status": "same_unit",
+                "conversion_rule_id": null,
+                "conversion_factor": null,
+                "converted_quantity": null
+              }
+            }
+          ],
+          "selection": null
+        }
+      }
+    ],
+    "job_details": {
+      "fulfillment_method": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "entered_by": null,
+        "entered_at": null
+      },
+      "requested_date_text": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "entered_by": null,
+        "entered_at": null
+      },
+      "delivery_address": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "entered_by": null,
+        "entered_at": null
+      },
+      "job_reference": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "entered_by": null,
+        "entered_at": null
+      },
+      "notes": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "entered_by": null,
+        "entered_at": null
+      }
+    }
+  },
+  "warnings": [],
+  "approval_blockers": [
+    {
+      "code": "sku_not_selected",
+      "message": "Line 1 has no selected SKU.",
+      "line_id": "00000000-0000-4000-8000-000000000031",
+      "field": null,
+      "warning_id": null
+    },
+    {
+      "code": "ambiguous_field",
+      "message": "Line 2 quantity has conflicting statements.",
+      "line_id": "00000000-0000-4000-8000-000000000032",
+      "field": "quantity",
+      "warning_id": null
+    },
+    {
+      "code": "quantity_unresolved",
+      "message": "Line 2 quantity is not resolved.",
+      "line_id": "00000000-0000-4000-8000-000000000032",
+      "field": "quantity",
+      "warning_id": null
+    },
+    {
+      "code": "sku_not_selected",
+      "message": "Line 2 has no selected SKU.",
+      "line_id": "00000000-0000-4000-8000-000000000032",
+      "field": null,
+      "warning_id": null
+    }
+  ],
+  "approval": null,
+  "extraction": {
+    "run_id": "00000000-0000-4000-8000-000000000005",
+    "provider": "synthetic",
+    "model_version": "none-hand-written",
+    "prompt_version": "none",
+    "schema_version": "0.1",
+    "completed_at": "2026-11-25T15:00:20Z"
+  },
+  "inventory_status": "not_assessed",
+  "pricing_status": "not_calculated"
+}

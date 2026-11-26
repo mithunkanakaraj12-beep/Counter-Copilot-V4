@@ -32,6 +32,15 @@ Do not assume chat assistants share memory, files, credentials, or execution env
 - Provider integrations: not connected.
 - Customer data: none authorized/configured.
 
+## Contract proposal v0.1 (awaiting review)
+- Branch: work/backend-foundation
+- Files changed: docs/DATA_CONTRACT.md, docs/DECISIONS.md, docs/HANDOFF.md, contracts/v0_1/
+- Decisions: D-013 proposed, not approved.
+- Tests run: `python -m pytest contracts/v0_1` on Python 3.13, 134 passed. These check the contract files only.
+- Tests not run: official OpenAPI 3.1 meta-schema validation; application tests (no application code).
+- Open issues/blockers: U-01 to U-20 in DATA_CONTRACT.md section 16.
+- Next action and owner: project owner reviews and decides; no dependent implementation before approval.
+
 ## Session close-out template
 - Branch/commit:
 - Files changed:

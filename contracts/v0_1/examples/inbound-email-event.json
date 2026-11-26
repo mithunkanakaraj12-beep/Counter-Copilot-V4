@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "channel": "email",
+  "external_message_id": "synthetic-mailbox-0001",
+  "external_event_id": null,
+  "received_at": "2026-11-25T15:00:00Z",
+  "sender": {
+    "name": "Synthetic Contractor",
+    "address": "contractor@example.test"
+  },
+  "recipients": [
+    {
+      "name": null,
+      "address": "orders@example-yard.test"
+    }
+  ],
+  "subject": "Material request",
+  "body_text": "Please quote 40 pieces of 2x6x12 SYP #2 and 20 sheets of 7/16 OSB.\nActually make the OSB 24 sheets.\n",
+  "thread": {
+    "rfc_message_id": "<synthetic-0001@example.test>",
+    "in_reply_to": null,
+    "references": []
+  },
+  "attachments": [],
+  "provider_metadata": {}
+}
