@@ -1,24 +1,29 @@
 {
   "schema_version": "0.1",
-  "request_id": "00000000-0000-4000-8000-000000000004",
-  "yard_id": "00000000-0000-4000-8000-000000000001",
+  "request_id": "7aeaa989-4c2b-52c4-9284-db020677bdcb",
+  "yard_id": "3c6a60ea-7f9f-5bd0-a3e6-2fd795dfacd5",
   "version": 1,
   "review_state": "draft_ready",
-  "origin_communication_id": "00000000-0000-4000-8000-000000000003",
-  "related_communication_ids": [],
+  "origin_communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+  "related_messages": [],
   "created_at": "2026-11-25T15:00:20Z",
   "updated_at": "2026-11-25T15:00:20Z",
+  "updated_by": {
+    "type": "system",
+    "person": null
+  },
   "content": {
     "lines": [
       {
-        "line_id": "00000000-0000-4000-8000-000000000031",
+        "line_id": "cec8bda7-beae-556f-b161-5b323be36d3e",
         "position": 1,
         "origin": "model",
         "status": "active",
+        "removal": null,
         "raw_wording": "40 pieces of 2x6x12 SYP #2",
         "source_evidence": [
           {
-            "communication_id": "00000000-0000-4000-8000-000000000003",
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
             "source": "body_text",
             "start": 13,
             "end": 39,
@@ -26,14 +31,25 @@
             "role": "supports"
           }
         ],
+        "employee_source_spans": [],
         "product": {
           "state": "missing",
           "value": null,
           "candidates": [],
           "ambiguity_reason": null,
           "evidence": [],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "missing",
+            "value": null,
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "quantity": {
           "state": "extracted",
@@ -42,16 +58,35 @@
           "ambiguity_reason": null,
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 13,
-              "end": 15,
-              "quote": "40",
+              "end": 22,
+              "quote": "40 pieces",
               "role": "supports"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "extracted",
+            "value": "40",
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 13,
+                "end": 22,
+                "quote": "40 pieces",
+                "role": "supports"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "unit": {
           "state": "extracted",
@@ -60,7 +95,7 @@
           "ambiguity_reason": null,
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 16,
               "end": 22,
@@ -68,17 +103,55 @@
               "role": "supports"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "extracted",
+            "value": "piece",
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 16,
+                "end": 22,
+                "quote": "pieces",
+                "role": "supports"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
-        "dimension_text": {
+        "dimensions": {
           "state": "extracted",
-          "value": "2x6x12",
+          "value": {
+            "text": "2x6x12",
+            "components": [
+              {
+                "raw": "2",
+                "magnitude": "2",
+                "unit": null
+              },
+              {
+                "raw": "6",
+                "magnitude": "6",
+                "unit": null
+              },
+              {
+                "raw": "12",
+                "magnitude": "12",
+                "unit": null
+              }
+            ]
+          },
           "candidates": [],
           "ambiguity_reason": null,
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 26,
               "end": 32,
@@ -86,80 +159,46 @@
               "role": "supports"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
-        },
-        "thickness": {
-          "state": "extracted",
-          "value": {
-            "raw": "2",
-            "magnitude": "2",
-            "unit": null,
-            "unit_basis": "unspecified",
-            "convention_rule_id": null
-          },
-          "candidates": [],
-          "ambiguity_reason": null,
-          "evidence": [
-            {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
-              "source": "body_text",
-              "start": 26,
-              "end": 27,
-              "quote": "2",
-              "role": "supports"
+          "proposal": {
+            "state": "extracted",
+            "value": {
+              "text": "2x6x12",
+              "components": [
+                {
+                  "raw": "2",
+                  "magnitude": "2",
+                  "unit": null
+                },
+                {
+                  "raw": "6",
+                  "magnitude": "6",
+                  "unit": null
+                },
+                {
+                  "raw": "12",
+                  "magnitude": "12",
+                  "unit": null
+                }
+              ]
+            },
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 26,
+                "end": 32,
+                "quote": "2x6x12",
+                "role": "supports"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
             }
-          ],
-          "entered_by": null,
-          "entered_at": null
-        },
-        "width": {
-          "state": "extracted",
-          "value": {
-            "raw": "6",
-            "magnitude": "6",
-            "unit": null,
-            "unit_basis": "unspecified",
-            "convention_rule_id": null
-          },
-          "candidates": [],
-          "ambiguity_reason": null,
-          "evidence": [
-            {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
-              "source": "body_text",
-              "start": 28,
-              "end": 29,
-              "quote": "6",
-              "role": "supports"
-            }
-          ],
-          "entered_by": null,
-          "entered_at": null
-        },
-        "length": {
-          "state": "extracted",
-          "value": {
-            "raw": "12",
-            "magnitude": "12",
-            "unit": null,
-            "unit_basis": "unspecified",
-            "convention_rule_id": null
-          },
-          "candidates": [],
-          "ambiguity_reason": null,
-          "evidence": [
-            {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
-              "source": "body_text",
-              "start": 30,
-              "end": 32,
-              "quote": "12",
-              "role": "supports"
-            }
-          ],
-          "entered_by": null,
-          "entered_at": null
+          }
         },
         "species": {
           "state": "extracted",
@@ -168,7 +207,7 @@
           "ambiguity_reason": null,
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 33,
               "end": 36,
@@ -176,8 +215,27 @@
               "role": "supports"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "extracted",
+            "value": "SYP",
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 33,
+                "end": 36,
+                "quote": "SYP",
+                "role": "supports"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "grade": {
           "state": "extracted",
@@ -186,7 +244,7 @@
           "ambiguity_reason": null,
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 37,
               "end": 39,
@@ -194,8 +252,27 @@
               "role": "supports"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "extracted",
+            "value": "#2",
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 37,
+                "end": 39,
+                "quote": "#2",
+                "role": "supports"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "treatment": {
           "state": "missing",
@@ -203,67 +280,63 @@
           "candidates": [],
           "ambiguity_reason": null,
           "evidence": [],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "missing",
+            "value": null,
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "match": {
           "status": "single_candidate",
           "catalog_version": "synthetic-1",
-          "matcher_version": "synthetic-1",
+          "matcher_version": "synthetic-fixture",
           "candidates": [
             {
               "rank": 1,
               "sku": {
-                "sku_id": "00000000-0000-4000-8000-000000000011",
+                "sku_id": "77f612a1-8d7d-524f-8060-c72c09c83dd2",
                 "code": "SYP-2X6-12-N2",
-                "description": "2x6x12 SYP No. 2, untreated",
-                "thickness": {
-                  "raw": "2",
-                  "magnitude": "2",
-                  "unit": "in",
-                  "unit_basis": "stated",
-                  "convention_rule_id": null
-                },
-                "width": {
-                  "raw": "6",
-                  "magnitude": "6",
-                  "unit": "in",
-                  "unit_basis": "stated",
-                  "convention_rule_id": null
-                },
-                "length": {
-                  "raw": "12",
-                  "magnitude": "12",
-                  "unit": "ft",
-                  "unit_basis": "stated",
-                  "convention_rule_id": null
+                "description": "2x6x12 SYP #2, untreated",
+                "product": null,
+                "dimension_designation": {
+                  "text": "2x6x12",
+                  "components": [
+                    {
+                      "raw": "2",
+                      "magnitude": "2",
+                      "unit": null
+                    },
+                    {
+                      "raw": "6",
+                      "magnitude": "6",
+                      "unit": null
+                    },
+                    {
+                      "raw": "12",
+                      "magnitude": "12",
+                      "unit": null
+                    }
+                  ]
                 },
                 "species": "SYP",
-                "grade": "No. 2",
+                "grade": "#2",
                 "treatment": "untreated",
                 "sell_unit": "piece",
                 "active": true
               },
               "attribute_evidence": [
                 {
-                  "attribute": "thickness",
-                  "request_value": "2",
-                  "sku_value": "2 in",
-                  "outcome": "not_resolved_in_request",
-                  "synonym_rule_id": null
-                },
-                {
-                  "attribute": "width",
-                  "request_value": "6",
-                  "sku_value": "6 in",
-                  "outcome": "not_resolved_in_request",
-                  "synonym_rule_id": null
-                },
-                {
-                  "attribute": "length",
-                  "request_value": "12",
-                  "sku_value": "12 ft",
-                  "outcome": "not_resolved_in_request",
+                  "attribute": "dimensions",
+                  "request_value": "2x6x12",
+                  "sku_value": "2x6x12",
+                  "outcome": "unit_unconfirmed_equal",
                   "synonym_rule_id": null
                 },
                 {
@@ -276,38 +349,37 @@
                 {
                   "attribute": "grade",
                   "request_value": "#2",
-                  "sku_value": "No. 2",
-                  "outcome": "synonym_match",
-                  "synonym_rule_id": "00000000-0000-4000-8000-000000000021"
+                  "sku_value": "#2",
+                  "outcome": "exact_match",
+                  "synonym_rule_id": null
                 },
                 {
                   "attribute": "treatment",
                   "request_value": null,
                   "sku_value": "untreated",
-                  "outcome": "not_resolved_in_request",
+                  "outcome": "not_stated_in_request",
                   "synonym_rule_id": null
                 }
               ],
               "unit_check": {
-                "status": "same_unit",
-                "conversion_rule_id": null,
-                "conversion_factor": null,
-                "converted_quantity": null
+                "status": "same_unit"
               }
             }
           ],
-          "selection": null
+          "selection": null,
+          "last_cleared_selection": null
         }
       },
       {
-        "line_id": "00000000-0000-4000-8000-000000000032",
+        "line_id": "4bb2b50c-1daf-5e85-a019-e6c077af0c2a",
         "position": 2,
         "origin": "model",
         "status": "active",
+        "removal": null,
         "raw_wording": "20 sheets of 7/16 OSB",
         "source_evidence": [
           {
-            "communication_id": "00000000-0000-4000-8000-000000000003",
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
             "source": "body_text",
             "start": 44,
             "end": 65,
@@ -315,14 +387,15 @@
             "role": "supports"
           },
           {
-            "communication_id": "00000000-0000-4000-8000-000000000003",
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
             "source": "body_text",
             "start": 67,
             "end": 98,
             "quote": "Actually make the OSB 24 sheets",
-            "role": "supports"
+            "role": "conflicts"
           }
         ],
+        "employee_source_spans": [],
         "product": {
           "state": "extracted",
           "value": "OSB",
@@ -330,7 +403,7 @@
           "ambiguity_reason": null,
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 62,
               "end": 65,
@@ -338,8 +411,27 @@
               "role": "supports"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "extracted",
+            "value": "OSB",
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 62,
+                "end": 65,
+                "quote": "OSB",
+                "role": "supports"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "quantity": {
           "state": "ambiguous",
@@ -351,24 +443,54 @@
           "ambiguity_reason": "conflicting_statements",
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 44,
               "end": 53,
               "quote": "20 sheets",
-              "role": "conflicts"
+              "role": "supports"
             },
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
-              "start": 89,
+              "start": 67,
               "end": 98,
-              "quote": "24 sheets",
+              "quote": "Actually make the OSB 24 sheets",
               "role": "conflicts"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "ambiguous",
+            "value": null,
+            "candidates": [
+              "20",
+              "24"
+            ],
+            "ambiguity_reason": "conflicting_statements",
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 44,
+                "end": 53,
+                "quote": "20 sheets",
+                "role": "supports"
+              },
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 67,
+                "end": 98,
+                "quote": "Actually make the OSB 24 sheets",
+                "role": "conflicts"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "unit": {
           "state": "extracted",
@@ -377,7 +499,7 @@
           "ambiguity_reason": null,
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 47,
               "end": 53,
@@ -385,41 +507,45 @@
               "role": "supports"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
-        },
-        "dimension_text": {
-          "state": "extracted",
-          "value": "7/16",
-          "candidates": [],
-          "ambiguity_reason": null,
-          "evidence": [
-            {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
-              "source": "body_text",
-              "start": 57,
-              "end": 61,
-              "quote": "7/16",
-              "role": "supports"
+          "proposal": {
+            "state": "extracted",
+            "value": "sheet",
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 47,
+                "end": 53,
+                "quote": "sheets",
+                "role": "supports"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
             }
-          ],
-          "entered_by": null,
-          "entered_at": null
+          }
         },
-        "thickness": {
+        "dimensions": {
           "state": "extracted",
           "value": {
-            "raw": "7/16",
-            "magnitude": "0.4375",
-            "unit": null,
-            "unit_basis": "unspecified",
-            "convention_rule_id": null
+            "text": "7/16",
+            "components": [
+              {
+                "raw": "7/16",
+                "magnitude": "0.4375",
+                "unit": null
+              }
+            ]
           },
           "candidates": [],
           "ambiguity_reason": null,
           "evidence": [
             {
-              "communication_id": "00000000-0000-4000-8000-000000000003",
+              "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
               "source": "body_text",
               "start": 57,
               "end": 61,
@@ -427,26 +553,36 @@
               "role": "supports"
             }
           ],
-          "entered_by": null,
-          "entered_at": null
-        },
-        "width": {
-          "state": "missing",
-          "value": null,
-          "candidates": [],
-          "ambiguity_reason": null,
-          "evidence": [],
-          "entered_by": null,
-          "entered_at": null
-        },
-        "length": {
-          "state": "missing",
-          "value": null,
-          "candidates": [],
-          "ambiguity_reason": null,
-          "evidence": [],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "extracted",
+            "value": {
+              "text": "7/16",
+              "components": [
+                {
+                  "raw": "7/16",
+                  "magnitude": "0.4375",
+                  "unit": null
+                }
+              ]
+            },
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [
+              {
+                "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+                "source": "body_text",
+                "start": 57,
+                "end": 61,
+                "quote": "7/16",
+                "role": "supports"
+              }
+            ],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "species": {
           "state": "missing",
@@ -454,8 +590,18 @@
           "candidates": [],
           "ambiguity_reason": null,
           "evidence": [],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "missing",
+            "value": null,
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "grade": {
           "state": "missing",
@@ -463,8 +609,18 @@
           "candidates": [],
           "ambiguity_reason": null,
           "evidence": [],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "missing",
+            "value": null,
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "treatment": {
           "state": "missing",
@@ -472,29 +628,41 @@
           "candidates": [],
           "ambiguity_reason": null,
           "evidence": [],
-          "entered_by": null,
-          "entered_at": null
+          "proposal": {
+            "state": "missing",
+            "value": null,
+            "candidates": [],
+            "ambiguity_reason": null,
+            "evidence": [],
+            "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+            "grounding": {
+              "outcome": "accepted",
+              "rule_codes": []
+            }
+          }
         },
         "match": {
           "status": "single_candidate",
           "catalog_version": "synthetic-1",
-          "matcher_version": "synthetic-1",
+          "matcher_version": "synthetic-fixture",
           "candidates": [
             {
               "rank": 1,
               "sku": {
-                "sku_id": "00000000-0000-4000-8000-000000000012",
+                "sku_id": "b52cb3a9-82ad-5604-86ec-f1168dcfcd4e",
                 "code": "OSB-716",
                 "description": "7/16 inch OSB sheathing",
-                "thickness": {
-                  "raw": "7/16",
-                  "magnitude": "0.4375",
-                  "unit": "in",
-                  "unit_basis": "stated",
-                  "convention_rule_id": null
+                "product": "OSB",
+                "dimension_designation": {
+                  "text": "7/16 inch",
+                  "components": [
+                    {
+                      "raw": "7/16 inch",
+                      "magnitude": "0.4375",
+                      "unit": "in"
+                    }
+                  ]
                 },
-                "width": null,
-                "length": null,
                 "species": null,
                 "grade": null,
                 "treatment": null,
@@ -503,22 +671,27 @@
               },
               "attribute_evidence": [
                 {
-                  "attribute": "thickness",
-                  "request_value": "0.4375",
-                  "sku_value": "0.4375 in",
-                  "outcome": "not_resolved_in_request",
+                  "attribute": "product",
+                  "request_value": "OSB",
+                  "sku_value": "OSB",
+                  "outcome": "exact_match",
+                  "synonym_rule_id": null
+                },
+                {
+                  "attribute": "dimensions",
+                  "request_value": "7/16",
+                  "sku_value": "7/16 inch",
+                  "outcome": "unit_unconfirmed_equal",
                   "synonym_rule_id": null
                 }
               ],
               "unit_check": {
-                "status": "same_unit",
-                "conversion_rule_id": null,
-                "conversion_factor": null,
-                "converted_quantity": null
+                "status": "same_unit"
               }
             }
           ],
-          "selection": null
+          "selection": null,
+          "last_cleared_selection": null
         }
       }
     ],
@@ -529,8 +702,18 @@
         "candidates": [],
         "ambiguity_reason": null,
         "evidence": [],
-        "entered_by": null,
-        "entered_at": null
+        "proposal": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+          "grounding": {
+            "outcome": "accepted",
+            "rule_codes": []
+          }
+        }
       },
       "requested_date_text": {
         "state": "missing",
@@ -538,8 +721,18 @@
         "candidates": [],
         "ambiguity_reason": null,
         "evidence": [],
-        "entered_by": null,
-        "entered_at": null
+        "proposal": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+          "grounding": {
+            "outcome": "accepted",
+            "rule_codes": []
+          }
+        }
       },
       "delivery_address": {
         "state": "missing",
@@ -547,8 +740,18 @@
         "candidates": [],
         "ambiguity_reason": null,
         "evidence": [],
-        "entered_by": null,
-        "entered_at": null
+        "proposal": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+          "grounding": {
+            "outcome": "accepted",
+            "rule_codes": []
+          }
+        }
       },
       "job_reference": {
         "state": "missing",
@@ -556,8 +759,18 @@
         "candidates": [],
         "ambiguity_reason": null,
         "evidence": [],
-        "entered_by": null,
-        "entered_at": null
+        "proposal": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+          "grounding": {
+            "outcome": "accepted",
+            "rule_codes": []
+          }
+        }
       },
       "notes": {
         "state": "missing",
@@ -565,49 +778,92 @@
         "candidates": [],
         "ambiguity_reason": null,
         "evidence": [],
-        "entered_by": null,
-        "entered_at": null
+        "proposal": {
+          "state": "missing",
+          "value": null,
+          "candidates": [],
+          "ambiguity_reason": null,
+          "evidence": [],
+          "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+          "grounding": {
+            "outcome": "accepted",
+            "rule_codes": []
+          }
+        }
       }
     }
   },
-  "warnings": [],
+  "warnings": [
+    {
+      "warning_id": "w-37edc1c959118ec1",
+      "code": "possible_correction_language",
+      "message": "Wording may correct an earlier statement.",
+      "target": {
+        "scope": "line",
+        "line_id": "4bb2b50c-1daf-5e85-a019-e6c077af0c2a",
+        "field": null
+      },
+      "requires_acknowledgement": true,
+      "heuristic": true,
+      "evidence": [
+        {
+          "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+          "source": "body_text",
+          "start": 67,
+          "end": 75,
+          "quote": "Actually",
+          "role": "supports"
+        }
+      ],
+      "related_communication_ids": []
+    }
+  ],
   "approval_blockers": [
     {
+      "blocker_id": "sku_not_selected:cec8bda7-beae-556f-b161-5b323be36d3e:sku",
       "code": "sku_not_selected",
-      "message": "Line 1 has no selected SKU.",
-      "line_id": "00000000-0000-4000-8000-000000000031",
-      "field": null,
+      "message": "Select a catalog item.",
+      "target": {
+        "scope": "line",
+        "line_id": "cec8bda7-beae-556f-b161-5b323be36d3e",
+        "field": "sku"
+      },
       "warning_id": null
     },
     {
-      "code": "ambiguous_field",
-      "message": "Line 2 quantity has conflicting statements.",
-      "line_id": "00000000-0000-4000-8000-000000000032",
-      "field": "quantity",
-      "warning_id": null
-    },
-    {
+      "blocker_id": "quantity_unresolved:4bb2b50c-1daf-5e85-a019-e6c077af0c2a:quantity",
       "code": "quantity_unresolved",
-      "message": "Line 2 quantity is not resolved.",
-      "line_id": "00000000-0000-4000-8000-000000000032",
-      "field": "quantity",
+      "message": "Decide the quantity.",
+      "target": {
+        "scope": "line",
+        "line_id": "4bb2b50c-1daf-5e85-a019-e6c077af0c2a",
+        "field": "quantity"
+      },
       "warning_id": null
     },
     {
+      "blocker_id": "sku_not_selected:4bb2b50c-1daf-5e85-a019-e6c077af0c2a:sku",
       "code": "sku_not_selected",
-      "message": "Line 2 has no selected SKU.",
-      "line_id": "00000000-0000-4000-8000-000000000032",
-      "field": null,
+      "message": "Select a catalog item.",
+      "target": {
+        "scope": "line",
+        "line_id": "4bb2b50c-1daf-5e85-a019-e6c077af0c2a",
+        "field": "sku"
+      },
       "warning_id": null
     }
   ],
   "approval": null,
+  "last_decision": null,
   "extraction": {
-    "run_id": "00000000-0000-4000-8000-000000000005",
+    "run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
     "provider": "synthetic",
-    "model_version": "none-hand-written",
-    "prompt_version": "none",
+    "model_version": "synthetic-fixture",
+    "prompt_version": "synthetic-fixture",
     "schema_version": "0.1",
+    "parser_version": "email-derive-1",
+    "grounding_version": "ground-1",
+    "lexicon_version": "en-1",
     "completed_at": "2026-11-25T15:00:20Z"
   },
   "inventory_status": "not_assessed",

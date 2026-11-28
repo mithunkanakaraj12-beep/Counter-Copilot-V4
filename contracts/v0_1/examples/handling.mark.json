@@ -1,0 +1,6 @@
+{
+  "action": "mark_handled",
+  "expected_handling_version": 0,
+  "reason": "other",
+  "note": "Billing question forwarded by phone (synthetic)."
+}

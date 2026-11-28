@@ -1,0 +1,217 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "cd9280a5-f7cd-52c5-901f-4d30e8509680",
+          "source": "body_text",
+          "start": 0,
+          "end": 31,
+          "quote": "Gimme a lift of plywod 3/4 CDX.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "unsupported_by_source",
+        "evidence": [
+          {
+            "communication_id": "cd9280a5-f7cd-52c5-901f-4d30e8509680",
+            "source": "body_text",
+            "start": 16,
+            "end": 22,
+            "quote": "plywod",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "not_in_evidence"
+          ]
+        }
+      },
+      "quantity": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "number_word",
+        "evidence": [
+          {
+            "communication_id": "cd9280a5-f7cd-52c5-901f-4d30e8509680",
+            "source": "body_text",
+            "start": 6,
+            "end": 12,
+            "quote": "a lift",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "vague_number"
+          ]
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "3/4",
+          "components": [
+            {
+              "raw": "3/4",
+              "magnitude": "0.75",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "cd9280a5-f7cd-52c5-901f-4d30e8509680",
+            "source": "body_text",
+            "start": 23,
+            "end": 26,
+            "quote": "3/4",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "extracted",
+        "value": "CDX",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "cd9280a5-f7cd-52c5-901f-4d30e8509680",
+            "source": "body_text",
+            "start": 27,
+            "end": 30,
+            "quote": "CDX",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5fd25956-e49b-5016-8160-c76be322742b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

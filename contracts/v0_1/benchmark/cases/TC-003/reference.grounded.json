@@ -1,0 +1,214 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "e9d35eaa-2e58-5cec-bc0f-b7f731b61dd9",
+          "source": "body_text",
+          "start": 0,
+          "end": 46,
+          "quote": "Can I get a price on 20 2x6x12 treated boards?",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "20",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "e9d35eaa-2e58-5cec-bc0f-b7f731b61dd9",
+            "source": "body_text",
+            "start": 21,
+            "end": 23,
+            "quote": "20",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x6x12",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "6",
+              "magnitude": "6",
+              "unit": null
+            },
+            {
+              "raw": "12",
+              "magnitude": "12",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "e9d35eaa-2e58-5cec-bc0f-b7f731b61dd9",
+            "source": "body_text",
+            "start": 24,
+            "end": 30,
+            "quote": "2x6x12",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "extracted",
+        "value": "treated",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "e9d35eaa-2e58-5cec-bc0f-b7f731b61dd9",
+            "source": "body_text",
+            "start": 31,
+            "end": 38,
+            "quote": "treated",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "8d6c0dde-492d-56c0-af0d-52f1297534c3",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

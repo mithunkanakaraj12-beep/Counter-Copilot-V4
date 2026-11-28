@@ -1,0 +1,28 @@
+From: Synthetic Contractor <contractor@example.test>
+To: orders@example-yard.test
+Subject: See attached list
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="outer"
+
+--outer
+Content-Type: multipart/related; boundary="rel"
+
+--rel
+Content-Type: text/plain; charset=utf-8
+
+See attached lumber list for the Smith job.
+--rel
+Content-Type: image/png
+Content-Disposition: inline; filename="logo.png"
+Content-ID: <logo@example.test>
+Content-Transfer-Encoding: base64
+
+c3ludGhldGljLWltYWdl
+--rel--
+--outer
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="invoice.pdf.exe"
+Content-Transfer-Encoding: base64
+
+c3ludGhldGljLWJ5dGVz
+--outer--

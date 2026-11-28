@@ -1,0 +1,206 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "92691c0a-7ce3-5d4e-8d2c-5ccd64a6a97f",
+          "source": "body_text",
+          "start": 0,
+          "end": 32,
+          "quote": "Need 20 sheets of half inch zip.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "zip",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "92691c0a-7ce3-5d4e-8d2c-5ccd64a6a97f",
+            "source": "body_text",
+            "start": 28,
+            "end": 31,
+            "quote": "zip",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "20",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "92691c0a-7ce3-5d4e-8d2c-5ccd64a6a97f",
+            "source": "body_text",
+            "start": 5,
+            "end": 7,
+            "quote": "20",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "sheet",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "92691c0a-7ce3-5d4e-8d2c-5ccd64a6a97f",
+            "source": "body_text",
+            "start": 8,
+            "end": 14,
+            "quote": "sheets",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "unsupported_by_source",
+        "evidence": [
+          {
+            "communication_id": "92691c0a-7ce3-5d4e-8d2c-5ccd64a6a97f",
+            "source": "body_text",
+            "start": 18,
+            "end": 27,
+            "quote": "half inch",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "not_in_evidence"
+          ]
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "3f6189d1-b885-5685-8dda-41b9bbf57810",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

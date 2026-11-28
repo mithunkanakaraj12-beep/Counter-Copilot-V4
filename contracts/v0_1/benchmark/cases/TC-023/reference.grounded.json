@@ -1,0 +1,325 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "d5ece5fb-613c-5e2a-81aa-e753015a84f5",
+          "source": "body_text",
+          "start": 5,
+          "end": 21,
+          "quote": "40 bags portland",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "unsupported_by_source",
+        "evidence": [
+          {
+            "communication_id": "d5ece5fb-613c-5e2a-81aa-e753015a84f5",
+            "source": "body_text",
+            "start": 13,
+            "end": 21,
+            "quote": "portland",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "not_in_evidence"
+          ]
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "40",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "d5ece5fb-613c-5e2a-81aa-e753015a84f5",
+            "source": "body_text",
+            "start": 5,
+            "end": 7,
+            "quote": "40",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "communication_id": "d5ece5fb-613c-5e2a-81aa-e753015a84f5",
+          "source": "body_text",
+          "start": 26,
+          "end": 49,
+          "quote": "100 1/2x10 anchor bolts",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "anchor bolts",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "d5ece5fb-613c-5e2a-81aa-e753015a84f5",
+            "source": "body_text",
+            "start": 37,
+            "end": 49,
+            "quote": "anchor bolts",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "100",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "d5ece5fb-613c-5e2a-81aa-e753015a84f5",
+            "source": "body_text",
+            "start": 26,
+            "end": 29,
+            "quote": "100",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "1/2x10",
+          "components": [
+            {
+              "raw": "1/2",
+              "magnitude": "0.5",
+              "unit": null
+            },
+            {
+              "raw": "10",
+              "magnitude": "10",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "d5ece5fb-613c-5e2a-81aa-e753015a84f5",
+            "source": "body_text",
+            "start": 30,
+            "end": 36,
+            "quote": "1/2x10",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "bb64f3ed-532a-54a5-bde7-6d76685b10fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

@@ -1,0 +1,207 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "follow_up",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "695c39e2-0143-5eb5-a7b1-90ed6c6abf36",
+          "source": "body_text",
+          "start": 0,
+          "end": 41,
+          "quote": "Add 20 more 2x4x10s to yesterday's order.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "relative_quantity",
+        "evidence": [
+          {
+            "communication_id": "695c39e2-0143-5eb5-a7b1-90ed6c6abf36",
+            "source": "body_text",
+            "start": 4,
+            "end": 6,
+            "quote": "20",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "relative"
+          ]
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x4x10",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "4",
+              "magnitude": "4",
+              "unit": null
+            },
+            {
+              "raw": "10",
+              "magnitude": "10",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "695c39e2-0143-5eb5-a7b1-90ed6c6abf36",
+            "source": "body_text",
+            "start": 12,
+            "end": 19,
+            "quote": "2x4x10s",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "43547e2e-6913-51fd-8009-550bb8363cd7",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

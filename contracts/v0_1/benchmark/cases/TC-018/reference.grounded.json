@@ -1,0 +1,208 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "5e030fdc-da53-5545-b171-c158449ddeba",
+          "source": "body_text",
+          "start": 0,
+          "end": 32,
+          "quote": "Send 50 sticks of #4 rebar 20ft.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "rebar",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "5e030fdc-da53-5545-b171-c158449ddeba",
+            "source": "body_text",
+            "start": 21,
+            "end": 26,
+            "quote": "rebar",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "50",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "5e030fdc-da53-5545-b171-c158449ddeba",
+            "source": "body_text",
+            "start": 5,
+            "end": 7,
+            "quote": "50",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "unsupported_by_source",
+        "evidence": [
+          {
+            "communication_id": "5e030fdc-da53-5545-b171-c158449ddeba",
+            "source": "body_text",
+            "start": 8,
+            "end": 14,
+            "quote": "sticks",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "not_in_evidence"
+          ]
+        }
+      },
+      "dimensions": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "unsupported_by_source",
+        "evidence": [
+          {
+            "communication_id": "5e030fdc-da53-5545-b171-c158449ddeba",
+            "source": "body_text",
+            "start": 18,
+            "end": 31,
+            "quote": "#4 rebar 20ft",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "unreadable_dimension"
+          ]
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7a41675b-80c0-5831-9919-5ca52158c4fd",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

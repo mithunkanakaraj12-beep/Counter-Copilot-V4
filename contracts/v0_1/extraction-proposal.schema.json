@@ -1,0 +1,1160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:counter-copilot:v0.1:extraction-proposal",
+  "$defs": {
+    "Classification": {
+      "enum": [
+        "material_request",
+        "follow_up",
+        "non_request",
+        "uncertain"
+      ],
+      "title": "Classification",
+      "type": "string"
+    },
+    "EvidenceRole": {
+      "enum": [
+        "supports",
+        "conflicts"
+      ],
+      "title": "EvidenceRole",
+      "type": "string"
+    },
+    "ProposedDimensions": {
+      "discriminator": {
+        "mapping": {
+          "ambiguous": "#/$defs/ProposedDimensionsAmbiguous",
+          "extracted": "#/$defs/ProposedDimensionsExtracted",
+          "missing": "#/$defs/ProposedDimensionsMissing"
+        },
+        "propertyName": "state"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ProposedDimensionsExtracted"
+        },
+        {
+          "$ref": "#/$defs/ProposedDimensionsMissing"
+        },
+        {
+          "$ref": "#/$defs/ProposedDimensionsAmbiguous"
+        }
+      ]
+    },
+    "ProposedDimensionsAmbiguous": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "ambiguous",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "enum": [
+            "conflicting_statements",
+            "multiple_interpretations",
+            "range_given",
+            "unrecognized_term",
+            "unclear_reference",
+            "unreadable",
+            "negated",
+            "approximate",
+            "relative_quantity",
+            "number_word",
+            "separate_measurements",
+            "quoted_history_only"
+          ],
+          "title": "Ambiguity Reason",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedDimensionsAmbiguous",
+      "type": "object"
+    },
+    "ProposedDimensionsExtracted": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "extracted",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "supports"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedDimensionsExtracted",
+      "type": "object"
+    },
+    "ProposedDimensionsMissing": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "missing",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 0,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedDimensionsMissing",
+      "type": "object"
+    },
+    "ProposedEvidence": {
+      "additionalProperties": false,
+      "description": "The model quotes; the server locates the quote and computes offsets.",
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/SourceKind"
+        },
+        "quote": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "occurrence": {
+          "minimum": 0,
+          "title": "Occurrence",
+          "type": "integer"
+        },
+        "role": {
+          "$ref": "#/$defs/EvidenceRole"
+        }
+      },
+      "required": [
+        "source",
+        "quote",
+        "occurrence",
+        "role"
+      ],
+      "title": "ProposedEvidence",
+      "type": "object"
+    },
+    "ProposedFulfillment": {
+      "discriminator": {
+        "mapping": {
+          "ambiguous": "#/$defs/ProposedFulfillmentAmbiguous",
+          "extracted": "#/$defs/ProposedFulfillmentExtracted",
+          "missing": "#/$defs/ProposedFulfillmentMissing"
+        },
+        "propertyName": "state"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ProposedFulfillmentExtracted"
+        },
+        {
+          "$ref": "#/$defs/ProposedFulfillmentMissing"
+        },
+        {
+          "$ref": "#/$defs/ProposedFulfillmentAmbiguous"
+        }
+      ]
+    },
+    "ProposedFulfillmentAmbiguous": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "ambiguous",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "enum": [
+              "delivery",
+              "pickup"
+            ],
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "enum": [
+            "conflicting_statements",
+            "multiple_interpretations",
+            "range_given",
+            "unrecognized_term",
+            "unclear_reference",
+            "unreadable",
+            "negated",
+            "approximate",
+            "relative_quantity",
+            "number_word",
+            "separate_measurements",
+            "quoted_history_only"
+          ],
+          "title": "Ambiguity Reason",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedFulfillmentAmbiguous",
+      "type": "object"
+    },
+    "ProposedFulfillmentExtracted": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "extracted",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "enum": [
+            "delivery",
+            "pickup"
+          ],
+          "title": "Value",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "enum": [
+              "delivery",
+              "pickup"
+            ],
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "supports"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedFulfillmentExtracted",
+      "type": "object"
+    },
+    "ProposedFulfillmentMissing": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "missing",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "enum": [
+              "delivery",
+              "pickup"
+            ],
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 0,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedFulfillmentMissing",
+      "type": "object"
+    },
+    "ProposedJobDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "fulfillment_method": {
+          "$ref": "#/$defs/ProposedFulfillment"
+        },
+        "requested_date_text": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "delivery_address": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "job_reference": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "notes": {
+          "$ref": "#/$defs/ProposedText"
+        }
+      },
+      "required": [
+        "fulfillment_method",
+        "requested_date_text",
+        "delivery_address",
+        "job_reference",
+        "notes"
+      ],
+      "title": "ProposedJobDetails",
+      "type": "object"
+    },
+    "ProposedLine": {
+      "additionalProperties": false,
+      "properties": {
+        "source_evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Source Evidence",
+          "type": "array"
+        },
+        "product": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "quantity": {
+          "$ref": "#/$defs/ProposedQuantity"
+        },
+        "unit": {
+          "$ref": "#/$defs/ProposedUnit"
+        },
+        "dimensions": {
+          "$ref": "#/$defs/ProposedDimensions"
+        },
+        "species": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "grade": {
+          "$ref": "#/$defs/ProposedText"
+        },
+        "treatment": {
+          "$ref": "#/$defs/ProposedText"
+        }
+      },
+      "required": [
+        "source_evidence",
+        "product",
+        "quantity",
+        "unit",
+        "dimensions",
+        "species",
+        "grade",
+        "treatment"
+      ],
+      "title": "ProposedLine",
+      "type": "object"
+    },
+    "ProposedQuantity": {
+      "discriminator": {
+        "mapping": {
+          "ambiguous": "#/$defs/ProposedQuantityAmbiguous",
+          "extracted": "#/$defs/ProposedQuantityExtracted",
+          "missing": "#/$defs/ProposedQuantityMissing"
+        },
+        "propertyName": "state"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ProposedQuantityExtracted"
+        },
+        {
+          "$ref": "#/$defs/ProposedQuantityMissing"
+        },
+        {
+          "$ref": "#/$defs/ProposedQuantityAmbiguous"
+        }
+      ]
+    },
+    "ProposedQuantityAmbiguous": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "ambiguous",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "examples": [
+              "40",
+              "0.4375"
+            ],
+            "not": {
+              "pattern": "^0(\\.0+)?$"
+            },
+            "pattern": "^(0|[1-9][0-9]{0,8})(\\.[0-9]{1,6})?$",
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "enum": [
+            "conflicting_statements",
+            "multiple_interpretations",
+            "range_given",
+            "unrecognized_term",
+            "unclear_reference",
+            "unreadable",
+            "negated",
+            "approximate",
+            "relative_quantity",
+            "number_word",
+            "separate_measurements",
+            "quoted_history_only"
+          ],
+          "title": "Ambiguity Reason",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedQuantityAmbiguous",
+      "type": "object"
+    },
+    "ProposedQuantityExtracted": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "extracted",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "examples": [
+            "40",
+            "0.4375"
+          ],
+          "not": {
+            "pattern": "^0(\\.0+)?$"
+          },
+          "pattern": "^(0|[1-9][0-9]{0,8})(\\.[0-9]{1,6})?$",
+          "title": "Value",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "examples": [
+              "40",
+              "0.4375"
+            ],
+            "not": {
+              "pattern": "^0(\\.0+)?$"
+            },
+            "pattern": "^(0|[1-9][0-9]{0,8})(\\.[0-9]{1,6})?$",
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "supports"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedQuantityExtracted",
+      "type": "object"
+    },
+    "ProposedQuantityMissing": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "missing",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "examples": [
+              "40",
+              "0.4375"
+            ],
+            "not": {
+              "pattern": "^0(\\.0+)?$"
+            },
+            "pattern": "^(0|[1-9][0-9]{0,8})(\\.[0-9]{1,6})?$",
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 0,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedQuantityMissing",
+      "type": "object"
+    },
+    "ProposedText": {
+      "discriminator": {
+        "mapping": {
+          "ambiguous": "#/$defs/ProposedTextAmbiguous",
+          "extracted": "#/$defs/ProposedTextExtracted",
+          "missing": "#/$defs/ProposedTextMissing"
+        },
+        "propertyName": "state"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ProposedTextExtracted"
+        },
+        {
+          "$ref": "#/$defs/ProposedTextMissing"
+        },
+        {
+          "$ref": "#/$defs/ProposedTextAmbiguous"
+        }
+      ]
+    },
+    "ProposedTextAmbiguous": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "ambiguous",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "enum": [
+            "conflicting_statements",
+            "multiple_interpretations",
+            "range_given",
+            "unrecognized_term",
+            "unclear_reference",
+            "unreadable",
+            "negated",
+            "approximate",
+            "relative_quantity",
+            "number_word",
+            "separate_measurements",
+            "quoted_history_only"
+          ],
+          "title": "Ambiguity Reason",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedTextAmbiguous",
+      "type": "object"
+    },
+    "ProposedTextExtracted": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "extracted",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "supports"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedTextExtracted",
+      "type": "object"
+    },
+    "ProposedTextMissing": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "missing",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 0,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedTextMissing",
+      "type": "object"
+    },
+    "ProposedUnit": {
+      "discriminator": {
+        "mapping": {
+          "ambiguous": "#/$defs/ProposedUnitAmbiguous",
+          "extracted": "#/$defs/ProposedUnitExtracted",
+          "missing": "#/$defs/ProposedUnitMissing"
+        },
+        "propertyName": "state"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ProposedUnitExtracted"
+        },
+        {
+          "$ref": "#/$defs/ProposedUnitMissing"
+        },
+        {
+          "$ref": "#/$defs/ProposedUnitAmbiguous"
+        }
+      ]
+    },
+    "ProposedUnitAmbiguous": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "ambiguous",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/UnitCode"
+          },
+          "maxItems": 10,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "enum": [
+            "conflicting_statements",
+            "multiple_interpretations",
+            "range_given",
+            "unrecognized_term",
+            "unclear_reference",
+            "unreadable",
+            "negated",
+            "approximate",
+            "relative_quantity",
+            "number_word",
+            "separate_measurements",
+            "quoted_history_only"
+          ],
+          "title": "Ambiguity Reason",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedUnitAmbiguous",
+      "type": "object"
+    },
+    "ProposedUnitExtracted": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "extracted",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/UnitCode"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/UnitCode"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "supports"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedUnitExtracted",
+      "type": "object"
+    },
+    "ProposedUnitMissing": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "const": "missing",
+          "title": "State",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "null"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/UnitCode"
+          },
+          "maxItems": 0,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity_reason": {
+          "title": "Ambiguity Reason",
+          "type": "null"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ProposedEvidence"
+          },
+          "maxItems": 0,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "state",
+        "value",
+        "candidates",
+        "ambiguity_reason",
+        "evidence"
+      ],
+      "title": "ProposedUnitMissing",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "subject",
+        "body_text"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    },
+    "UnitCode": {
+      "description": "Approved contract units (U-08). There are no cross-unit conversions.",
+      "enum": [
+        "piece",
+        "sheet",
+        "linear_foot",
+        "board_foot",
+        "bundle",
+        "box",
+        "bag",
+        "roll",
+        "pallet"
+      ],
+      "title": "UnitCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "classification": {
+            "const": "non_request"
+          }
+        },
+        "required": [
+          "classification"
+        ]
+      },
+      "then": {
+        "properties": {
+          "lines": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ],
+  "description": "Model output. No SKU, price, inventory or approval keys exist; extras are rejected.",
+  "properties": {
+    "schema_version": {
+      "const": "0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "classification": {
+      "$ref": "#/$defs/Classification"
+    },
+    "lines": {
+      "items": {
+        "$ref": "#/$defs/ProposedLine"
+      },
+      "maxItems": 500,
+      "title": "Lines",
+      "type": "array"
+    },
+    "job_details": {
+      "$ref": "#/$defs/ProposedJobDetails"
+    },
+    "multiple_jobs_evidence": {
+      "description": "Quotes showing that the message covers more than one job. Empty if not.",
+      "items": {
+        "$ref": "#/$defs/ProposedEvidence"
+      },
+      "maxItems": 20,
+      "title": "Multiple Jobs Evidence",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "classification",
+    "lines",
+    "job_details",
+    "multiple_jobs_evidence"
+  ],
+  "title": "ExtractionProposal",
+  "type": "object"
+}

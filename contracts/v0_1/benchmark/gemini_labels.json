@@ -1,0 +1,300 @@
+{
+  "owner": "Gemini (benchmark labels). Transcribed by Claude 1 without changes; do not edit here.",
+  "source_document": "Counter Copilot v0.1 Evaluation Framework (Synthetic Benchmark Dataset, 30 cases)",
+  "source_pdf_sha256": "528be841c0c439117bfafa7f62d6bc814a18d6118e4c5c8374ec69a5219fe22b",
+  "failure_patterns": [
+    {
+      "failure_mode": "Hallucinated Specifications (Critical Failure)",
+      "description": "The AI inferring a length of \"8 feet\" just because \"2x4\" was requested without a length, or assuming \"SPF\" when \"wood\" is stated."
+    },
+    {
+      "failure_mode": "Destructive Overwrites",
+      "description": "Failing to capture mid-sentence corrections (e.g., \"Need 50, actually make it 60\") and outputting the first encountered number."
+    },
+    {
+      "failure_mode": "Unit Misinterpretation",
+      "description": "Confusing linear feet (LF), square feet (SQFT), and piece counts (EA), especially when terms like \"bunk\", \"lift\", or \"unit\" are used by contractors."
+    },
+    {
+      "failure_mode": "Lost Context in Mixed Requests",
+      "description": "Dropping hardware or concrete items when a request is predominantly lumber-focused."
+    },
+    {
+      "failure_mode": "False ConfidenceAssigning a 100% confidence score to a parsed item when the grade or treatment is ambiguous."
+    }
+  ],
+  "scoring_rubric": [
+    {
+      "metric": "Classification Accuracy",
+      "scoring_rule": "+1 for correct intent (Quote Request, General Inquiry, Non-Material).",
+      "target_threshold": "98%"
+    },
+    {
+      "metric": "Line-Item Recall",
+      "scoring_rule": "+1 for every distinct physical material identified. -1 for missed items.",
+      "target_threshold": "95%"
+    },
+    {
+      "metric": "Field-Level Precision",
+      "scoring_rule": "+1 per correctly extracted field matching exact source evidence.",
+      "target_threshold": "95%"
+    },
+    {
+      "metric": "Missing-Field Detection",
+      "scoring_rule": "+2 for explicitly outputting null or MISSING when a spec is omitted.",
+      "target_threshold": "100%"
+    },
+    {
+      "metric": "Unsupported Inference",
+      "scoring_rule": "-10 (Auto-Fail) for outputting a dimension, species, or grade not explicitly stated in the text.",
+      "target_threshold": "0%"
+    },
+    {
+      "metric": "Ambiguity Detection",
+      "scoring_rule": "+2 for generating an employee warning on conflicting data (e.g., \"10\" vs \"twenty\").",
+      "target_threshold": "90%"
+    }
+  ],
+  "cases": [
+    {
+      "id": "1",
+      "category": "Category A: Straightforward & Standard Requests",
+      "email_text": "Need 50 pieces of 2x4x8 SPF standard grade.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 50, Dim: 2x4x8, Species: SPF, Grade: Standard. (Evidence: literal string matches)",
+      "expected_ambiguities_warnings": "None"
+    },
+    {
+      "id": "2",
+      "category": "Category A: Straightforward & Standard Requests",
+      "email_text": "Quote me on 100 sheets of 7/16 OSB.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 100, Mat: OSB, Dim: 7/16.",
+      "expected_ambiguities_warnings": "Unit explicitly marked as \"sheets\"."
+    },
+    {
+      "id": "3",
+      "category": "Category A: Straightforward & Standard Requests",
+      "email_text": "Can I get a price on 20 2x6x12 treated boards?",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 20, Dim: 2x6x12, Treatment: treated (PT).",
+      "expected_ambiguities_warnings": "None"
+    },
+    {
+      "id": "4",
+      "category": "Category A: Straightforward & Standard Requests",
+      "email_text": "Send over 40 bags of 80lb Quikrete.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 40, Mat: Quikrete, Weight: 80lb, Unit: bags.",
+      "expected_ambiguities_warnings": "None"
+    },
+    {
+      "id": "5",
+      "category": "Category A: Straightforward & Standard Requests",
+      "email_text": "I need 200 linear feet of 1x4 primed pine trim.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 200, Unit: linear feet (LF), Dim: 1x4, Species: pine, Treatment: primed.",
+      "expected_ambiguities_warnings": "Warning: Ensure pricing is calculated per LF, not per piece."
+    },
+    {
+      "id": "6",
+      "category": "Category B: Missing Information & Ambiguity",
+      "email_text": "Send me some 2x4x10s for tomorrow.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Dim: 2x4x10.",
+      "expected_ambiguities_warnings": "MISSING: Qty. Warning: \"some\" cannot be resolved to a number."
+    },
+    {
+      "id": "7",
+      "category": "Category B: Missing Information & Ambiguity",
+      "email_text": "Need 30 2x6s.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 30, Dim: 2x6.",
+      "expected_ambiguities_warnings": "MISSING: Length. Do not assume 8ft."
+    },
+    {
+      "id": "8",
+      "category": "Category B: Missing Information & Ambiguity",
+      "email_text": "Quote for 50 pieces of pine.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 50, Species: pine.",
+      "expected_ambiguities_warnings": "MISSING: Dimensions."
+    },
+    {
+      "id": "9",
+      "category": "Category B: Missing Information & Ambiguity",
+      "email_text": "We need a bunk of 1/2 inch plywood.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 1 bunk, Dim: 1/2 inch, Mat: plywood.",
+      "expected_ambiguities_warnings": "Warning: \"Bunk\" piece count varies by mill/distributor. Requires employee mapping."
+    },
+    {
+      "id": "10",
+      "category": "Category B: Missing Information & Ambiguity",
+      "email_text": "Give me your best price on 2x8 floor joists.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Dim: 2x8, Mat: floor joists.",
+      "expected_ambiguities_warnings": "MISSING: Qty, Length, Species."
+    },
+    {
+      "id": "11",
+      "category": "Category C: Corrections & Conflicting Data",
+      "email_text": "I need 50 of the 2x4x8s, wait actually make it 60.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 60, Dim: 2x4x8.",
+      "expected_ambiguities_warnings": "Warning: Explicit correction detected. Evidence must map to \"60\"."
+    },
+    {
+      "id": "12",
+      "category": "Category C: Corrections & Conflicting Data",
+      "email_text": "Can you send twenty (10) 4x4x10 treated posts?",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Dim: 4x4x10, Treatment: treated.",
+      "expected_ambiguities_warnings": "CONFLICT: Qty. Text says \"twenty\", numeral says \"10\". Flag for employee review."
+    },
+    {
+      "id": "13",
+      "category": "Category C: Corrections & Conflicting Data",
+      "email_text": "Need 2x6x12s. No, scratch that, I need 16 footers.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Dim: 2x6x16.",
+      "expected_ambiguities_warnings": "Warning: Length corrected from 12 to 16."
+    },
+    {
+      "id": "14",
+      "category": "Category C: Corrections & Conflicting Data",
+      "email_text": "Order 500 feet of 2x4.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 500, Unit: feet (LF), Dim: 2x4.",
+      "expected_ambiguities_warnings": "Warning: Check if contractor meant 500 LF or 500 pieces."
+    },
+    {
+      "id": "15",
+      "category": "Category C: Corrections & Conflicting Data",
+      "email_text": "Need 100 2x4x92-5/8 precut studs.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 100, Dim: 2x4x92-5/8, Mat: precut studs.",
+      "expected_ambiguities_warnings": "None. Must precisely extract fractional dimensions without math errors."
+    },
+    {
+      "id": "16",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "email_text": "Gimme a lift of plywod 3/4 CDX.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 1 lift, Mat: plywood, Dim: 3/4, Grade: CDX.",
+      "expected_ambiguities_warnings": "Spelling \"plywod\" mapped to plywood. \"Lift\" requires piece-count mapping."
+    },
+    {
+      "id": "17",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "email_text": "Need 40 pt 2x4x8s.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 40, Treatment: pt (pressure treated), Dim: 2x4x8.",
+      "expected_ambiguities_warnings": "Evidence for treatment is the abbreviation \"pt\"."
+    },
+    {
+      "id": "18",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "email_text": "Send 50 sticks of #4 rebar 20ft.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 50, Unit: sticks, Mat: rebar, Dim: #4 x 20ft.",
+      "expected_ambiguities_warnings": "Must recognize \"sticks\" as pieces."
+    },
+    {
+      "id": "19",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "email_text": "Need 20 sheets of half inch zip.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 20, Unit: sheets, Dim: 1/2 inch, Mat: zip (Zip System).",
+      "expected_ambiguities_warnings": "None. Maps \"zip\" to Zip System sheathing."
+    },
+    {
+      "id": "20",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "email_text": "Drop off 50 five-quarter by six sixteen foot cedar decking.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: 50, Dim: 5/4x6x16, Species: cedar, Mat: decking.",
+      "expected_ambiguities_warnings": "Translates spoken fractions (\"five-quarter\") to \"5/4\"."
+    },
+    {
+      "id": "21",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "email_text": "Need 50 2x4x8 SPF, 20 sheets 7/16 OSB, and 2 boxes of 3-inch sinkers.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Line 1: Qty 50, 2x4x8 SPF. Line 2: Qty 20, 7/16 OSB. Line 3: Qty 2 boxes, 3-inch sinkers.",
+      "expected_ambiguities_warnings": "None. Must output array of 3 distinct material objects."
+    },
+    {
+      "id": "22",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "email_text": "100 2x6x10 SYP #1. Also 50 LU24 joist hangers.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Line 1: Qty 100, 2x6x10, SYP, #1. Line 2: Qty 50, LU24 joist hangers.",
+      "expected_ambiguities_warnings": "Recognizes hardware sku \"LU24\"."
+    },
+    {
+      "id": "23",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "email_text": "Send 40 bags portland and 100 1/2x10 anchor bolts.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Line 1: Qty 40, Portland cement. Line 2: Qty 100, 1/2x10 anchor bolts.",
+      "expected_ambiguities_warnings": "None."
+    },
+    {
+      "id": "24",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "email_text": "Need framing pkg for attached plan. Send 100 2x4x8s to start.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Line 1: Qty 100, 2x4x8.",
+      "expected_ambiguities_warnings": "Warning: Refers to an attached plan. Extracted only the explicitly requested starting material."
+    },
+    {
+      "id": "25",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "email_text": "40 2x8x16 PT and 10 rolls of tyvek housewrap.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Line 1: Qty 40, 2x8x16, PT. Line 2: Qty 10, Tyvek housewrap, Unit: rolls.",
+      "expected_ambiguities_warnings": "None."
+    },
+    {
+      "id": "26",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "email_text": "When is my invoice for job 123 due?",
+      "classification": "Non-Material (Account/Billing)",
+      "expected_extractions_and_evidence": "None.",
+      "expected_ambiguities_warnings": "Action: Route to AR/Billing. Do not extract materials."
+    },
+    {
+      "id": "27",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "email_text": "Add 20 more 2x4x10s to yesterday's order.",
+      "classification": "Follow-up / Order Modification",
+      "expected_extractions_and_evidence": "Qty: 20, Dim: 2x4x10.",
+      "expected_ambiguities_warnings": "Warning: References previous context (\"yesterday's order\"). Requires employee to link to existing ticket."
+    },
+    {
+      "id": "28",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "email_text": "Do you guys stock Trex Transcend in Island Mist?",
+      "classification": "General Inquiry",
+      "expected_extractions_and_evidence": "Mat: Trex Transcend, Color: Island Mist.",
+      "expected_ambiguities_warnings": "Warning: This is an inventory check, not a direct quote for specific quantities."
+    },
+    {
+      "id": "29",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "email_text": "See attached lumber list for the Smith job.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "None (from body text).",
+      "expected_ambiguities_warnings": "Warning: Explicit mention of attachment. Flags system to parse attached PDF/Excel."
+    },
+    {
+      "id": "30",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "email_text": "Give me your cheapest 2x4s, need about 100 of them.",
+      "classification": "Quote Request",
+      "expected_extractions_and_evidence": "Qty: ~100, Dim: 2x4.",
+      "expected_ambiguities_warnings": "Warning: \"Cheapest\" requires employee to manually select utility grade or economy SKU. \"About 100\" flagged as approximate."
+    }
+  ]
+}

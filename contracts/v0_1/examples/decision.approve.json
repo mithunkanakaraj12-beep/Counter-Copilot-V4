@@ -1,6 +1,10 @@
 {
   "action": "approve_internal",
   "expected_version": 2,
-  "acknowledged_warning_ids": [],
+  "acknowledged_warning_ids": [
+    "w-37edc1c959118ec1",
+    "w-35c0d5adb05be078"
+  ],
+  "false_positive_warning_ids": [],
   "note": null
 }

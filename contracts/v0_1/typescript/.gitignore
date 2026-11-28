@@ -1,0 +1,4 @@
+# Generated or installed; never committed.
+api.d.ts
+node_modules/
+package-lock.json

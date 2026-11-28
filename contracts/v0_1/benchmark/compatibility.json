@@ -1,0 +1,631 @@
+{
+  "summary": {
+    "grounding_version": "ground-1",
+    "cases": 30,
+    "schema_valid_proposals": 29,
+    "status": {
+      "compatible": 4,
+      "incompatible": 18,
+      "needs_gemini_confirmation": 8
+    },
+    "labeled_fields": 97,
+    "labeled_fields_changed": 14
+  },
+  "cases": [
+    {
+      "id": "1",
+      "directory": "TC-001",
+      "category": "Category A: Straightforward & Standard Requests",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 4,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "grade",
+          "label": "extracted 'Standard'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "None",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "2",
+      "directory": "TC-002",
+      "category": "Category A: Straightforward & Standard Requests",
+      "status": "needs_gemini_confirmation",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 4,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The unit is taken from the warnings column, which says it is marked as 'sheets'."
+      ],
+      "label_warning_text": "Unit explicitly marked as \"sheets\".",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "3",
+      "directory": "TC-003",
+      "category": "Category A: Straightforward & Standard Requests",
+      "status": "needs_gemini_confirmation",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 3,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label writes 'treated (PT)'. Only 'treated' is used as the value."
+      ],
+      "label_warning_text": "None",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "4",
+      "directory": "TC-004",
+      "category": "Category A: Straightforward & Standard Requests",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 3,
+      "changed_by_grounding": [],
+      "inexpressible": [
+        "Weight: 80lb (no weight field)"
+      ],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "None",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "5",
+      "directory": "TC-005",
+      "category": "Category A: Straightforward & Standard Requests",
+      "status": "compatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 5,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Warning: Ensure pricing is calculated per LF, not per piece.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "6",
+      "directory": "TC-006",
+      "category": "Category B: Missing Information & Ambiguity",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 2,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [
+        "Quantity is labeled MISSING, but 'some' is a vague number word that the approved rule keeps ambiguous (N-14)."
+      ],
+      "open_points": [],
+      "label_warning_text": "MISSING: Qty. Warning: \"some\" cannot be resolved to a number.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "7",
+      "directory": "TC-007",
+      "category": "Category B: Missing Information & Ambiguity",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 2,
+      "changed_by_grounding": [],
+      "inexpressible": [
+        "MISSING: Length (no length field; no axis is assigned, U-07)"
+      ],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "MISSING: Length. Do not assume 8ft.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "8",
+      "directory": "TC-008",
+      "category": "Category B: Missing Information & Ambiguity",
+      "status": "compatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 3,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "MISSING: Dimensions.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "9",
+      "directory": "TC-009",
+      "category": "Category B: Missing Information & Ambiguity",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 3,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "quantity",
+          "label": "extracted '1'",
+          "grounded": "ambiguous (number_word; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [
+        "Unit 'bunk' (not a contract unit; ambiguous until a yard mapping exists, U-08)"
+      ],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Warning: \"Bunk\" piece count varies by mill/distributor. Requires employee mapping.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "10",
+      "directory": "TC-010",
+      "category": "Category B: Missing Information & Ambiguity",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 4,
+      "changed_by_grounding": [],
+      "inexpressible": [
+        "MISSING: Length (no length field; no axis is assigned, U-07)"
+      ],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "MISSING: Qty, Length, Species.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "11",
+      "directory": "TC-011",
+      "category": "Category C: Corrections & Conflicting Data",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 2,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "quantity",
+          "label": "extracted '60'",
+          "grounded": "ambiguous (conflicting_statements; candidates: 50, 60)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Warning: Explicit correction detected. Evidence must map to \"60\".",
+      "grounding_warning_codes": [
+        "possible_correction_language"
+      ]
+    },
+    {
+      "id": "12",
+      "directory": "TC-012",
+      "category": "Category C: Corrections & Conflicting Data",
+      "status": "needs_gemini_confirmation",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 3,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label says CONFLICT without a reason code or candidate list; conflicting_statements with 20 and 10 was used."
+      ],
+      "label_warning_text": "CONFLICT: Qty. Text says \"twenty\", numeral says \"10\". Flag for employee review.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "13",
+      "directory": "TC-013",
+      "category": "Category C: Corrections & Conflicting Data",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 1,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "dimensions",
+          "label": "extracted '2x6x16'",
+          "grounded": "ambiguous (conflicting_statements; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Warning: Length corrected from 12 to 16.",
+      "grounding_warning_codes": [
+        "possible_correction_language"
+      ]
+    },
+    {
+      "id": "14",
+      "directory": "TC-014",
+      "category": "Category C: Corrections & Conflicting Data",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 3,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "unit",
+          "label": "extracted 'linear_foot'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Warning: Check if contractor meant 500 LF or 500 pieces.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "15",
+      "directory": "TC-015",
+      "category": "Category C: Corrections & Conflicting Data",
+      "status": "compatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 3,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "None. Must precisely extract fractional dimensions without math errors.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "16",
+      "directory": "TC-016",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 4,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "product",
+          "label": "extracted 'plywood'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        },
+        {
+          "line": 1,
+          "field": "quantity",
+          "label": "extracted '1'",
+          "grounded": "ambiguous (number_word; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [
+        "Unit 'lift' (not a contract unit; ambiguous until a yard mapping exists, U-08)"
+      ],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Spelling \"plywod\" mapped to plywood. \"Lift\" requires piece-count mapping.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "17",
+      "directory": "TC-017",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "status": "needs_gemini_confirmation",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 3,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label writes 'pt (pressure treated)'. Only 'pt' is used as the value."
+      ],
+      "label_warning_text": "Evidence for treatment is the abbreviation \"pt\".",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "18",
+      "directory": "TC-018",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 4,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "unit",
+          "label": "extracted 'piece'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        },
+        {
+          "line": 1,
+          "field": "dimensions",
+          "label": "extracted '#4 x 20ft'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Must recognize \"sticks\" as pieces.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "19",
+      "directory": "TC-019",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 4,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "dimensions",
+          "label": "extracted '1/2 inch'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [
+        "Mapping 'zip' to Zip System sheathing (needs an approved yard synonym)"
+      ],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label writes 'zip (Zip System)'. Only 'zip' is used as the value."
+      ],
+      "label_warning_text": "None. Maps \"zip\" to Zip System sheathing.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "20",
+      "directory": "TC-020",
+      "category": "Category D: Slang, Shorthand & Typos",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 4,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "dimensions",
+          "label": "extracted '5/4x6x16'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Translates spoken fractions (\"five-quarter\") to \"5/4\".",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "21",
+      "directory": "TC-021",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "status": "needs_gemini_confirmation",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 10,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label does not say which field each word of a line belongs to. Claude 1 assigned sizes to dimensions, species and grade to their fields and the remaining noun to product."
+      ],
+      "label_warning_text": "None. Must output array of 3 distinct material objects.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "22",
+      "directory": "TC-022",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "status": "needs_gemini_confirmation",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 6,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label does not say which field each word of a line belongs to. Claude 1 assigned sizes to dimensions, species and grade to their fields and the remaining noun to product."
+      ],
+      "label_warning_text": "Recognizes hardware sku \"LU24\".",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "23",
+      "directory": "TC-023",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 5,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "product",
+          "label": "extracted 'Portland cement'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label does not say which field each word of a line belongs to. Claude 1 assigned sizes to dimensions, species and grade to their fields and the remaining noun to product."
+      ],
+      "label_warning_text": "None.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "24",
+      "directory": "TC-024",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "status": "compatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 2,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [],
+      "label_warning_text": "Warning: Refers to an attached plan. Extracted only the explicitly requested starting material.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "25",
+      "directory": "TC-025",
+      "category": "Category E: Multi-Item & Mixed Materials",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 6,
+      "changed_by_grounding": [
+        {
+          "line": 2,
+          "field": "product",
+          "label": "extracted 'Tyvek housewrap'",
+          "grounded": "ambiguous (unsupported_by_source; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label does not say which field each word of a line belongs to. Claude 1 assigned sizes to dimensions, species and grade to their fields and the remaining noun to product."
+      ],
+      "label_warning_text": "None.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "26",
+      "directory": "TC-026",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "status": "needs_gemini_confirmation",
+      "label_classification": "Non-Material (Account/Billing)",
+      "contract_classification": "non_request",
+      "labeled_fields": 0,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "'Account/Billing' has no contract field; the class used is non_request."
+      ],
+      "label_warning_text": "Action: Route to AR/Billing. Do not extract materials.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "27",
+      "directory": "TC-027",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "status": "incompatible",
+      "label_classification": "Follow-up / Order Modification",
+      "contract_classification": "follow_up",
+      "labeled_fields": 2,
+      "changed_by_grounding": [
+        {
+          "line": 1,
+          "field": "quantity",
+          "label": "extracted '20'",
+          "grounded": "ambiguous (relative_quantity; candidates: none)",
+          "same": false
+        }
+      ],
+      "inexpressible": [],
+      "rule_conflicts": [
+        "The label asks an employee to link the message to an existing ticket. v0.1 links only by reply headers or provider thread ID and has no manual linking (N-1, U-12)."
+      ],
+      "open_points": [],
+      "label_warning_text": "Warning: References previous context (\"yesterday's order\"). Requires employee to link to existing ticket.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "28",
+      "directory": "TC-028",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "status": "incompatible",
+      "label_classification": "General Inquiry",
+      "contract_classification": null,
+      "labeled_fields": 0,
+      "changed_by_grounding": [],
+      "inexpressible": [
+        "Classification 'General Inquiry' (the contract has material_request, follow_up, non_request, uncertain)",
+        "Color: Island Mist (no color field)"
+      ],
+      "rule_conflicts": [
+        "If the class were non_request, a material line would reject the whole run (N-5)."
+      ],
+      "open_points": [
+        "Gemini to choose the contract class and whether a material line is expected.",
+        "No proposal is generated, so the labeled material 'Trex Transcend' is not compared."
+      ],
+      "label_warning_text": "Warning: This is an inventory check, not a direct quote for specific quantities.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "29",
+      "directory": "TC-029",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "status": "incompatible",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 0,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [
+        "The label asks the system to parse the attached file. v0.1 does not process attachments (N-9)."
+      ],
+      "open_points": [
+        "The benchmark email has no attachment, so no attachment warning can be produced."
+      ],
+      "label_warning_text": "Warning: Explicit mention of attachment. Flags system to parse attached PDF/Excel.",
+      "grounding_warning_codes": []
+    },
+    {
+      "id": "30",
+      "directory": "TC-030",
+      "category": "Category F: Non-Material, Follow-ups & Edge Cases",
+      "status": "needs_gemini_confirmation",
+      "label_classification": "Quote Request",
+      "contract_classification": "material_request",
+      "labeled_fields": 2,
+      "changed_by_grounding": [],
+      "inexpressible": [],
+      "rule_conflicts": [],
+      "open_points": [
+        "The label writes '~100'; expressed as ambiguous (approximate) with candidate 100.",
+        "'Cheapest' has no contract field."
+      ],
+      "label_warning_text": "Warning: \"Cheapest\" requires employee to manually select utility grade or economy SKU. \"About 100\" flagged as approximate.",
+      "grounding_warning_codes": []
+    }
+  ]
+}

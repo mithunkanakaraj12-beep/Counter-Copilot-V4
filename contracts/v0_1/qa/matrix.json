@@ -1,0 +1,920 @@
+{
+  "source": "Counter Copilot V4 Adversarial QA and Security Acceptance Matrix, sheet 'Test Matrix'",
+  "note": "No test here has run against an application; none exists. contract_coverage states only what the contract and reference functions prove.",
+  "tests": [
+    {
+      "id": "EVC-001",
+      "group": "C1",
+      "scenario": "Quantity value must be supported by the cited words",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "Reject the extraction run or mark the quantity ambiguous; do not create a usable extracted value.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_evc001_value_not_in_quote"
+      ],
+      "not_covered": "",
+      "pass_condition_change": "Run stays schema-valid; the field is downgraded to ambiguous with no value (workbook also allowed rejecting the run). N-5.",
+      "pass_condition_agreed_by_reviewer": false
+    },
+    {
+      "id": "EVC-002",
+      "group": "C1",
+      "scenario": "A value must be tied to the correct evidence occurrence",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "Reject a value/evidence mismatch even when the correct value appears elsewhere in the same email.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_evc002_value_borrowed_from_another_line"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "EVC-003",
+      "group": "C1",
+      "scenario": "Measure raw wording and normalized magnitude must agree",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "Reject inconsistent normalization; never preserve a numeric magnitude unrelated to raw wording.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_evc003_magnitude_is_derived_and_cannot_be_supplied"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "EVC-004",
+      "group": "C1",
+      "scenario": "An extracted text value must match a token, not merely a substring",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "Reject 'treated' as supported by 'untreated'; enforce token boundaries and negation-aware semantics.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_evc004_whole_tokens_only"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "QTY-001",
+      "group": "C1",
+      "scenario": "Do not fabricate a quantity absent from source",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "Quantity state must be missing unless the source contains a quantity; no default count.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_qty001_invented_quantity_has_no_value"
+      ],
+      "not_covered": "",
+      "pass_condition_change": "Outcome is ambiguous unsupported_by_source, not missing. N-13.",
+      "pass_condition_agreed_by_reviewer": false
+    },
+    {
+      "id": "QTY-002",
+      "group": "C1",
+      "scenario": "Do not infer a length that is not stated",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001 / U-07",
+      "workbook_expected": "Keep length missing; do not infer 12 feet or another conventional length.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_qty002_no_length_is_added"
+      ],
+      "not_covered": "",
+      "pass_condition_change": "No length or axis field exists; the written dimension sequence is kept and an added component is rejected. U-07.",
+      "pass_condition_agreed_by_reviewer": false
+    },
+    {
+      "id": "QTY-003",
+      "group": "C1",
+      "scenario": "Do not infer nominal/actual dimensions or units",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-003 / U-07",
+      "workbook_expected": "Preserve original dimension_text; axis and unit basis remain unresolved unless an approved deterministic yard convention applies.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_qty003_no_units_or_axes_are_assigned"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "UNT-001",
+      "group": "C1",
+      "scenario": "Do not substitute a unit that is not in the source",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "Reject incorrect unit mapping; preserve source wording and map only through an approved synonym rule.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_unt001_unit_must_match_its_wording"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "UNT-002",
+      "group": "C1",
+      "scenario": "Preserve a fractional measurement exactly",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "Only the exact approved normalization (0.4375) may be extracted; mismatches must be rejected or ambiguous.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_unt002_exact_fraction_only"
+      ],
+      "not_covered": "",
+      "pass_condition_change": "Exactness is proven by the reference check, not by schema validation.",
+      "pass_condition_agreed_by_reviewer": false
+    },
+    {
+      "id": "UNT-003",
+      "group": "C1",
+      "scenario": "Handle non-terminating fractions without silent rounding",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-08",
+      "workbook_expected": "Do not silently truncate/round; preserve raw fraction and set ambiguous or unresolved pending an explicit precision policy.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_unt003_inexact_fraction_stays_unresolved"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "NEG-001",
+      "group": "C1",
+      "scenario": "Distinguish treated from untreated",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "Preserve 'untreated' as a distinct value; never accept substring overlap as evidence for 'treated'.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_neg001_untreated_is_its_own_value"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "NEG-002",
+      "group": "C2",
+      "scenario": "Respect negation in natural phrasing",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Prompt-injection/semantic test",
+      "workbook_expected": "Do not extract the negated attribute as a positive requirement; resolve meaning or mark ambiguous.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_neg002_negated_attribute"
+      ],
+      "not_covered": "Negation detection is a fixed word window and not exhaustive.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "NEG-003",
+      "group": "C2",
+      "scenario": "Conflicting treatment claims on one line are not silently resolved",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-09",
+      "workbook_expected": "Represent the conflict as ambiguous with evidence for both statements; do not select either value automatically.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_neg003_corrected_treatment_is_not_chosen"
+      ],
+      "not_covered": "Relies on the approved correction wording and a fixed treatment term list.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "COR-001",
+      "group": "C1",
+      "scenario": "A clear mid-message correction remains reviewable",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-09",
+      "workbook_expected": "Preserve both statements; under current proposed U-09 default, mark quantity ambiguous until employee resolves.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_cor001_cited_conflict_keeps_both_values",
+        "test_grounding.py::test_cor001_correction_inside_the_line_is_not_resolved",
+        "test_grounding.py::test_cor001_omitted_correction_is_warned"
+      ],
+      "not_covered": "Whether the model cites both statements is a model-quality measure for the benchmark.",
+      "pass_condition_change": "Cited conflicts are downgraded and omitted corrections warned; model behaviour is scored by benchmark.",
+      "pass_condition_agreed_by_reviewer": false
+    },
+    {
+      "id": "COR-002",
+      "group": "C2",
+      "scenario": "Multiple corrections must not be collapsed silently",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-09",
+      "workbook_expected": "Retain all competing values and correction order; follow approved correction policy, otherwise mark ambiguous.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_cor002_no_hidden_precedence"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "COR-003",
+      "group": "C2",
+      "scenario": "Do not mistake quoted reply history for a new correction",
+      "severity": "Medium",
+      "pilot_blocker": "Conditional",
+      "finding": "U-12",
+      "workbook_expected": "Use threading/quote boundaries and preserve both contexts; do not automatically choose the last number.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_cor003_quoted_history_is_never_the_value",
+        "test_email_derivation.py::test_quoted_and_forwarded_history"
+      ],
+      "not_covered": "Quoted history warns only when evidence cites it. Quote detection is heuristic.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "LIN-001",
+      "group": "C2",
+      "scenario": "Do not omit a requested line",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Extraction quality gate",
+      "workbook_expected": "Every requested line is represented or explicitly flagged for employee review; no silent omission.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_lin001_uncited_quantity_warns"
+      ],
+      "not_covered": "Completeness is not guaranteed. Line recall needs model runs against labeled data.",
+      "pass_condition_change": "Uncited quantity text warns; completeness is not guaranteed.",
+      "pass_condition_agreed_by_reviewer": false
+    },
+    {
+      "id": "LIN-002",
+      "group": "C2",
+      "scenario": "Keep attributes attached to the correct line",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-001",
+      "workbook_expected": "No cross-line attribute bleed; evidence for every field must point to that line's source phrase.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_lin002_attributes_do_not_cross_lines"
+      ],
+      "not_covered": "Depends on the model's line spans being correct.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "LIN-003",
+      "group": "C4",
+      "scenario": "Handle repeated or near-identical lines without losing provenance",
+      "severity": "Medium",
+      "pilot_blocker": "Conditional",
+      "finding": "U-18",
+      "workbook_expected": "Retain separate line identity and source location, or perform an explicitly approved consolidation that preserves both source references.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_lin003_repeated_lines_stay_separate_and_overlaps_warn"
+      ],
+      "not_covered": "Frontend must show lines separately.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "MIS-001",
+      "group": "C1",
+      "scenario": "Silence must remain missing",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-06 / U-10",
+      "workbook_expected": "Treatment and grade remain missing; never default to untreated or No. 2.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_missing_stays_missing"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "MIS-002",
+      "group": "C1",
+      "scenario": "Contradictory or unclear values must be ambiguous",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-06",
+      "workbook_expected": "Keep value null, list supported candidates, record reason and cite relevant text.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_mis002_choosing_one_end_of_a_range"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "MIS-003",
+      "group": "C3",
+      "scenario": "Approval is blocked when quantity or unit is unresolved",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-10",
+      "workbook_expected": "Compute blockers server-side and reject approval; do not rely on client display or model-supplied blocker list.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_invalid_approved_requests_rejected"
+      ],
+      "not_covered": "422 approval_blocked and no-write behaviour need the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "SKU-001",
+      "group": "C3",
+      "scenario": "Employee cannot select a SKU outside the current yard catalog",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Tenant isolation",
+      "workbook_expected": "Reject selection without revealing another yard's SKU existence or details.",
+      "contract_coverage": "needs_application",
+      "contract_tests": [],
+      "not_covered": "Yard-scoped catalog lookup needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "SKU-002",
+      "group": "C3",
+      "scenario": "Inactive SKU cannot be selected or approved",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-10",
+      "workbook_expected": "Reject new selection; re-check SKU active state at approval time.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_later_inactive_sku_stays_visible_on_an_approved_request"
+      ],
+      "not_covered": "Rejecting selection and approval of an inactive SKU needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "SKU-003",
+      "group": "C4",
+      "scenario": "A SKU mismatch requires visible warning and acknowledgement",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-10",
+      "workbook_expected": "Display exact mismatched attributes; do not suppress disagreement; acknowledgement is tied to the warning version.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_comparison.py::test_acknowledgment_groups",
+        "test_comparison.py::test_dimension_outcomes",
+        "test_contract.py::test_acknowledgment_table"
+      ],
+      "not_covered": "Tying acknowledgment to approval and the screen need application code.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "SKU-004",
+      "group": "C4",
+      "scenario": "Single catalog candidate is not automatically selected",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-11",
+      "workbook_expected": "Candidate remains a suggestion; selection is null until an authorized employee chooses it.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_comparison.py::test_comparison_offers_no_selection_or_ranking",
+        "test_contract.py::test_invalid_approved_requests_rejected"
+      ],
+      "not_covered": "UI and service behaviour untested.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "SRC-001",
+      "group": "C2",
+      "scenario": "Parsed body must match preserved original",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "QA-002",
+      "workbook_expected": "Server derives canonical body or detects mismatch; quarantine/reject before extraction.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_both_validators_reject"
+      ],
+      "not_covered": "422, quarantine and no-job behaviour need the intake service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "SRC-002",
+      "group": "C2",
+      "scenario": "Sender, recipients and subject cannot be forged by metadata",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "QA-002",
+      "workbook_expected": "Server compares authoritative headers or records a rigorously defined trusted adapter attestation; never silently trusts conflicting fields.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_both_validators_reject",
+        "test_email_derivation.py::test_reply_headers_and_recipients"
+      ],
+      "not_covered": "Credential-to-yard mapping, mailbox check, quarantine and audit need the intake service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "SRC-003",
+      "group": "C2",
+      "scenario": "Attachment hashes and metadata must agree with raw MIME parts",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-002",
+      "workbook_expected": "Recompute digest and size server-side; mark mismatch and do not pass unverified attachment metadata downstream.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_email_derivation.py::test_src003_att003_attachments_are_derived_and_never_processed",
+        "test_contract.py::test_both_validators_reject"
+      ],
+      "not_covered": "Intake service must use only the derived facts.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "DUP-001",
+      "group": "C3",
+      "scenario": "Identical redelivery is idempotent",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-03 / U-16",
+      "workbook_expected": "Return duplicate response on second delivery; retain one communication and one processing job.",
+      "contract_coverage": "needs_application",
+      "contract_tests": [],
+      "not_covered": "Needs intake service and database uniqueness. Content fingerprint is covered separately.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "DUP-002",
+      "group": "C3",
+      "scenario": "Same external identity with different content is quarantined",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Idempotency",
+      "workbook_expected": "Keep first original immutable; quarantine second bytes; set conflict flag; do not merge or replace original.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_email_derivation.py::test_fingerprint_ignores_transport_headers_only"
+      ],
+      "not_covered": "409, quarantine and audit need the service.",
+      "pass_condition_change": "Error code is conflicting_redelivery (workbook says conflicting_delivery).",
+      "pass_condition_agreed_by_reviewer": false
+    },
+    {
+      "id": "DUP-003",
+      "group": "C3",
+      "scenario": "Concurrent duplicate deliveries cannot race into duplicate records",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Database uniqueness",
+      "workbook_expected": "Exactly one communication and one logical processing job; all callers receive consistent duplicate/new results.",
+      "contract_coverage": "needs_application",
+      "contract_tests": [],
+      "not_covered": "Needs concurrent intake against a database.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "TEN-001",
+      "group": "C3",
+      "scenario": "Tenant-A employee cannot GET Tenant-B request",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Tenant isolation",
+      "workbook_expected": "Deny access without disclosing whether the resource exists.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_tenant_resources_are_yard_scoped"
+      ],
+      "not_covered": "Membership checks and 404 behaviour need the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "TEN-002",
+      "group": "C3",
+      "scenario": "Tenant-A employee cannot mutate Tenant-B request or select its SKU",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Tenant isolation",
+      "workbook_expected": "Reject before mutation; do not reveal foreign record fields.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_tenant_resources_are_yard_scoped"
+      ],
+      "not_covered": "Mutation checks and audit need the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "TEN-003",
+      "group": "C5",
+      "scenario": "Private originals cannot be fetched by guessing or reusing object keys",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Tenant isolation / file security",
+      "workbook_expected": "All access must flow through yard-scoped authorization; storage objects are not public.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_download_headers_are_declared",
+        "test_contract.py::test_no_attachment_download_route_and_the_limitation_is_stated"
+      ],
+      "not_covered": "Private storage and per-request authorization need deployment.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "AUTH-001",
+      "group": "C2",
+      "scenario": "Editor without approve permission cannot approve",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "U-05",
+      "workbook_expected": "Deny action server-side regardless of UI control visibility.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_decision_and_download_permissions_are_separate"
+      ],
+      "not_covered": "Enforcement, unchanged version and denial audit need the service. Roles depend on U-05.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "AUTH-002",
+      "group": "C2",
+      "scenario": "Decline/reopen permissions are checked independently",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-05 / U-15",
+      "workbook_expected": "Permission must be action-specific; one permission cannot authorize another decision.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_decision_and_download_permissions_are_separate"
+      ],
+      "not_covered": "Enforcement needs the service. Roles depend on U-05.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "AUTH-003",
+      "group": "C2",
+      "scenario": "Original download permission is separate from parsed communication read",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "File security",
+      "workbook_expected": "Deny original download while leaving permitted parsed text access intact.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_decision_and_download_permissions_are_separate"
+      ],
+      "not_covered": "Enforcement and audit need the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "AUTH-004",
+      "group": "C4",
+      "scenario": "CSRF, session expiry and revocation protect mutations",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-01",
+      "workbook_expected": "Reject all unsafe requests; GET remains non-mutating.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_employee_mutations_require_csrf_and_idempotency_headers"
+      ],
+      "not_covered": "Sessions and CSRF enforcement depend on U-01 and the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "CON-001",
+      "group": "C3",
+      "scenario": "Optimistic locking permits only one stale-version edit",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Concurrency",
+      "workbook_expected": "One commit succeeds; second receives version_conflict and must reload/resolve; never silently merge.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_both_validators_reject"
+      ],
+      "not_covered": "Only the required expected_version is checked. Conflict handling needs a database.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "CON-002",
+      "group": "C3",
+      "scenario": "Multi-operation edit is atomic",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Data integrity",
+      "workbook_expected": "Apply all operations or none; no partial field update.",
+      "contract_coverage": "needs_application",
+      "contract_tests": [],
+      "not_covered": "Transactional atomicity needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "CON-003",
+      "group": "C3",
+      "scenario": "Edit racing with approval has a single serializable outcome",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Approval integrity",
+      "workbook_expected": "Exactly one operation wins according to transaction ordering; approval must hash the exact reviewed version.",
+      "contract_coverage": "needs_application",
+      "contract_tests": [],
+      "not_covered": "Locking and approval hash need the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "IDEM-001",
+      "group": "C3",
+      "scenario": "Same employee idempotency key and same body replays stored response",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Idempotency",
+      "workbook_expected": "Return original stored response; do not create a second revision or approval.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_employee_mutations_require_csrf_and_idempotency_headers"
+      ],
+      "not_covered": "Stored replay needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "IDEM-002",
+      "group": "C3",
+      "scenario": "Same key with different body is rejected",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Idempotency",
+      "workbook_expected": "Reject request and never reinterpret the prior key.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_employee_mutations_require_csrf_and_idempotency_headers"
+      ],
+      "not_covered": "409 idempotency_conflict needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "IDEM-003",
+      "group": "C3",
+      "scenario": "Lost success response followed by retry cannot duplicate intake or mutation",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Retry safety",
+      "workbook_expected": "Retry returns durable prior outcome and does not duplicate work.",
+      "contract_coverage": "needs_application",
+      "contract_tests": [],
+      "not_covered": "Needs the service and a database.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "ATT-001",
+      "group": "C4",
+      "scenario": "HTML/script content is treated as untrusted data",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "XSS / source preservation",
+      "workbook_expected": "Preserve original bytes but never execute or render active HTML; extraction receives sanitized/plain-text representation under explicit policy.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_email_derivation.py::test_att001_html_is_converted_to_inert_text_and_flagged"
+      ],
+      "not_covered": "Frontend must render text only.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "ATT-002",
+      "group": "C5",
+      "scenario": "Oversized body/original is rejected before resource exhaustion",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "U-16 / DoS",
+      "workbook_expected": "Enforce limits at edge and application; reject before partial record/job persistence.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_email_derivation.py::test_raw_size_limit_is_exact",
+        "test_email_derivation.py::test_body_limit_is_exact"
+      ],
+      "not_covered": "413 at the edge and store-nothing behaviour need the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "ATT-003",
+      "group": "C5",
+      "scenario": "Suspicious or malformed attachments remain inert and unprocessed in pilot",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Attachment safety",
+      "workbook_expected": "Do not parse/execute attachments in v0.1; preserve safely within resource limits, mark unprocessed, quarantine where policy requires.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_email_derivation.py::test_src003_att003_attachments_are_derived_and_never_processed",
+        "test_email_derivation.py::test_mime_depth_limit",
+        "test_email_derivation.py::test_very_deep_nesting_is_a_limit_not_a_crash",
+        "test_email_derivation.py::test_unreadable_mail_fails_closed"
+      ],
+      "not_covered": "Hard parse timeout and process isolation need the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "PROM-001",
+      "group": "C2",
+      "scenario": "Email instructions cannot override system policy",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Prompt-injection",
+      "workbook_expected": "Treat all email text as untrusted data; extract only material facts; no secret access, SKU selection or approval.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_prom001_injected_text_changes_nothing"
+      ],
+      "not_covered": "Model adapter must have no tools, secrets or actions.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "PROM-002",
+      "group": "C2",
+      "scenario": "Prompt injection in subject, quoted history or HTML has the same untrusted status",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Prompt-injection / XSS",
+      "workbook_expected": "No untrusted subfield gains instruction authority; preserve source evidence and only extract request content.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_prom002_subject_and_quoted_text_have_no_authority"
+      ],
+      "not_covered": "HTML comments are stripped by derivation; filename handling needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "PROM-003",
+      "group": "C1",
+      "scenario": "Model cannot create unsupported business-action fields",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Model boundary",
+      "workbook_expected": "Strict schema rejects unknown or prohibited fields; no downstream action is inferred from free text.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_prom003_unknown_keys_reject_the_run",
+        "test_contract.py::test_extraction_schema_and_model_reject"
+      ],
+      "not_covered": "Application must not create a draft from a rejected run.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "MSG-001",
+      "group": "C3",
+      "scenario": "Later email never silently overwrites an existing employee-edited request",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "QA edit-preservation",
+      "workbook_expected": "Create a new linked/flagged communication or draft according to approved follow-up policy; preserve old request and employee edit.",
+      "contract_coverage": "needs_application",
+      "contract_tests": [],
+      "not_covered": "Linking and separate drafts need the service. Contract fields exist.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "MSG-002",
+      "group": "C3",
+      "scenario": "Reprocessing a communication cannot replace employee-entered values",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Re-extraction protection",
+      "workbook_expected": "Do not re-extract or replace an existing request; require an explicit future reprocess design with conflict protection.",
+      "contract_coverage": "contract_shape_only",
+      "contract_tests": [
+        "test_contract.py::test_nothing_can_re_extract_or_overwrite_a_request"
+      ],
+      "not_covered": "Worker idempotency needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "MSG-003",
+      "group": "C3",
+      "scenario": "An approved request remains historically immutable after a new email",
+      "severity": "Critical",
+      "pilot_blocker": "Yes",
+      "finding": "Approval integrity",
+      "workbook_expected": "Keep prior approved version and approval record; create a separate linked request or follow-up event; never mutate approved content.",
+      "contract_coverage": "needs_application",
+      "contract_tests": [],
+      "not_covered": "Immutability of approved versions needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "UNI-001",
+      "group": "C4",
+      "scenario": "Evidence offsets use Unicode code points, not UTF-16 code units",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Evidence integrity",
+      "workbook_expected": "Server computes and verifies offsets in Unicode code points; frontend converts offsets correctly before highlighting.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_uni001_offsets_count_code_points",
+        "test_contract.py::test_evidence_span_length_must_match_quote"
+      ],
+      "not_covered": "Frontend conversion from code points to UTF-16 is untested.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "UNI-002",
+      "group": "C2",
+      "scenario": "Repeated identical quotes use the correct occurrence",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "Evidence integrity",
+      "workbook_expected": "Resolve occurrence deterministically and store the exact source start/end for the intended line.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_grounding.py::test_uni002_occurrence_selects_the_exact_span",
+        "test_grounding.py::test_uni002_overlapping_occurrences_count",
+        "test_grounding.py::test_uni002_missing_occurrence_rejects_the_run"
+      ],
+      "not_covered": "",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    },
+    {
+      "id": "UNI-003",
+      "group": "C2",
+      "scenario": "Raw email bytes remain unchanged while normalized text is separately traceable",
+      "severity": "High",
+      "pilot_blocker": "Yes",
+      "finding": "QA-002 / evidence integrity",
+      "workbook_expected": "Preserve original byte-for-byte; record explicit decoding/canonicalization rules for derived body_text; evidence offsets index that exact canonical text.",
+      "contract_coverage": "reference_function",
+      "contract_tests": [
+        "test_email_derivation.py::test_uni003_encoded_words_quoted_printable_and_combining_marks",
+        "test_email_derivation.py::test_only_crlf_changes"
+      ],
+      "not_covered": "Byte-for-byte storage of the original needs the service.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "846bd86c-b6d2-5886-adc7-3c16cab37e4f",
+          "source": "body_text",
+          "start": 0,
+          "end": 13,
+          "quote": "Need 30 2x6s.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "30",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "846bd86c-b6d2-5886-adc7-3c16cab37e4f",
+            "source": "body_text",
+            "start": 5,
+            "end": 7,
+            "quote": "30",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x6",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "6",
+              "magnitude": "6",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "846bd86c-b6d2-5886-adc7-3c16cab37e4f",
+            "source": "body_text",
+            "start": 8,
+            "end": 11,
+            "quote": "2x6",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "6f6230d8-111f-5c84-bbbb-a9b69f62c4bb",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

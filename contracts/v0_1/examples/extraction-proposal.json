@@ -46,63 +46,9 @@
           }
         ]
       },
-      "dimension_text": {
+      "dimensions": {
         "state": "extracted",
         "value": "2x6x12",
-        "candidates": [],
-        "ambiguity_reason": null,
-        "evidence": [
-          {
-            "source": "body_text",
-            "quote": "2x6x12",
-            "occurrence": 0,
-            "role": "supports"
-          }
-        ]
-      },
-      "thickness": {
-        "state": "extracted",
-        "value": {
-          "raw": "2",
-          "magnitude": "2",
-          "unit": null
-        },
-        "candidates": [],
-        "ambiguity_reason": null,
-        "evidence": [
-          {
-            "source": "body_text",
-            "quote": "2x6x12",
-            "occurrence": 0,
-            "role": "supports"
-          }
-        ]
-      },
-      "width": {
-        "state": "extracted",
-        "value": {
-          "raw": "6",
-          "magnitude": "6",
-          "unit": null
-        },
-        "candidates": [],
-        "ambiguity_reason": null,
-        "evidence": [
-          {
-            "source": "body_text",
-            "quote": "2x6x12",
-            "occurrence": 0,
-            "role": "supports"
-          }
-        ]
-      },
-      "length": {
-        "state": "extracted",
-        "value": {
-          "raw": "12",
-          "magnitude": "12",
-          "unit": null
-        },
         "candidates": [],
         "ambiguity_reason": null,
         "evidence": [
@@ -162,7 +108,7 @@
           "source": "body_text",
           "quote": "Actually make the OSB 24 sheets",
           "occurrence": 0,
-          "role": "supports"
+          "role": "conflicts"
         }
       ],
       "product": {
@@ -192,11 +138,11 @@
             "source": "body_text",
             "quote": "20 sheets",
             "occurrence": 0,
-            "role": "conflicts"
+            "role": "supports"
           },
           {
             "source": "body_text",
-            "quote": "24 sheets",
+            "quote": "Actually make the OSB 24 sheets",
             "occurrence": 0,
             "role": "conflicts"
           }
@@ -216,7 +162,7 @@
           }
         ]
       },
-      "dimension_text": {
+      "dimensions": {
         "state": "extracted",
         "value": "7/16",
         "candidates": [],
@@ -229,38 +175,6 @@
             "role": "supports"
           }
         ]
-      },
-      "thickness": {
-        "state": "extracted",
-        "value": {
-          "raw": "7/16",
-          "magnitude": "0.4375",
-          "unit": null
-        },
-        "candidates": [],
-        "ambiguity_reason": null,
-        "evidence": [
-          {
-            "source": "body_text",
-            "quote": "7/16",
-            "occurrence": 0,
-            "role": "supports"
-          }
-        ]
-      },
-      "width": {
-        "state": "missing",
-        "value": null,
-        "candidates": [],
-        "ambiguity_reason": null,
-        "evidence": []
-      },
-      "length": {
-        "state": "missing",
-        "value": null,
-        "candidates": [],
-        "ambiguity_reason": null,
-        "evidence": []
       },
       "species": {
         "state": "missing",
@@ -321,5 +235,6 @@
       "ambiguity_reason": null,
       "evidence": []
     }
-  }
+  },
+  "multiple_jobs_evidence": []
 }

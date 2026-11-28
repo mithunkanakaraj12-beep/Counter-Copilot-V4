@@ -1,0 +1,487 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+          "source": "body_text",
+          "start": 5,
+          "end": 17,
+          "quote": "50 2x4x8 SPF",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "50",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 5,
+            "end": 7,
+            "quote": "50",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x4x8",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "4",
+              "magnitude": "4",
+              "unit": null
+            },
+            {
+              "raw": "8",
+              "magnitude": "8",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 8,
+            "end": 13,
+            "quote": "2x4x8",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "extracted",
+        "value": "SPF",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 14,
+            "end": 17,
+            "quote": "SPF",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+          "source": "body_text",
+          "start": 19,
+          "end": 37,
+          "quote": "20 sheets 7/16 OSB",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "OSB",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 34,
+            "end": 37,
+            "quote": "OSB",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "20",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 19,
+            "end": 21,
+            "quote": "20",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "7/16",
+          "components": [
+            {
+              "raw": "7/16",
+              "magnitude": "0.4375",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 29,
+            "end": 33,
+            "quote": "7/16",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+          "source": "body_text",
+          "start": 43,
+          "end": 68,
+          "quote": "2 boxes of 3-inch sinkers",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "sinkers",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 61,
+            "end": 68,
+            "quote": "sinkers",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "2",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 43,
+            "end": 50,
+            "quote": "2 boxes",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "box",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 45,
+            "end": 50,
+            "quote": "boxes",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "3-inch",
+          "components": [
+            {
+              "raw": "3-inch",
+              "magnitude": "3",
+              "unit": "in"
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "0e566175-88b8-5cfb-a6c0-bc5b8f1efcb9",
+            "source": "body_text",
+            "start": 54,
+            "end": 60,
+            "quote": "3-inch",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c34670f7-c101-50b8-a760-fdecc0488582",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

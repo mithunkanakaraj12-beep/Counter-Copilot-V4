@@ -1,7 +1,7 @@
-"""Write openapi.yaml from models.py and api.py.
+"""Write openapi.yaml and extraction-proposal.schema.json from models.py and api.py.
 
 Usage:  python generate_openapi.py          (rewrite)
-        python generate_openapi.py --check  (fail if the committed file is stale)
+        python generate_openapi.py --check  (fail if a committed file is stale)
 """
 
 from __future__ import annotations
@@ -18,19 +18,32 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import models as m  # noqa: E402
-from api import EMPLOYEE, INTEGRATION, OPERATIONS  # noqa: E402
+from api import ATTACHMENT_LIMITATION, EMPLOYEE, INTEGRATION, OPERATIONS  # noqa: E402
 
 OUTPUT = HERE / "openapi.yaml"
+EXTRACTION_SCHEMA = HERE / "extraction-proposal.schema.json"
 REF = "#/components/schemas/{model}"
 
 ERROR_TEXT = {
     401: "Missing or invalid credentials",
     403: "Authenticated but lacking permission, or failed CSRF check",
     404: "Not found, including resources belonging to another yard",
-    409: "Conflicts with current state, version or idempotency key",
-    413: "Payload too large",
-    422: "Validation failed or approval blocked",
-    503: "Temporarily unavailable; safe to retry",
+    409: "Conflicts with current state, version, idempotency key or an earlier delivery",
+    413: "Over an approved size or parser limit",
+    415: "Unsupported media type",
+    422: "Validation failed, approval blocked or original hash mismatch",
+    429: "Rate limited; retry after the stated delay",
+    503: "Temporarily unavailable; safe to retry with the same Idempotency-Key",
+}
+
+DOWNLOAD_HEADERS = {
+    "Content-Disposition": {
+        "description": "attachment with a server-chosen filename, never the sender's",
+        "required": True,
+        "schema": {"type": "string", "pattern": "^attachment; filename="},
+    },
+    "X-Content-Type-Options": {"required": True, "schema": {"type": "string", "const": "nosniff"}},
+    "Cache-Control": {"required": True, "schema": {"type": "string", "const": "no-store"}},
 }
 
 
@@ -56,10 +69,6 @@ def _path_parameter(name: str) -> dict:
     return {"name": name, "in": "path", "required": True, "schema": schema}
 
 
-def _query(name: str, schema: dict) -> dict:
-    return {"name": name, "in": "query", "required": False, "schema": schema}
-
-
 def _header(name: str, description: str, schema: dict) -> dict:
     return {
         "name": name,
@@ -75,25 +84,13 @@ def build() -> dict:
     paths: dict = {}
     for op in OPERATIONS:
         parameters = [_path_parameter(n) for n in re.findall(r"{(\w+)}", op.path)]
-        if op.paged:
-            parameters.append(_query("cursor", {"type": "string"}))
-            parameters.append(
-                _query("limit", {"type": "integer", "minimum": 1, "maximum": 100, "default": 25})
-            )
-        if op.search:
-            parameters.append(_query("q", {"type": "string", "maxLength": 200}))
-        if op.inbox_filters:
-            for name, enum in (
-                ("review_state", m.ReviewState),
-                ("processing_state", m.ProcessingState),
-                ("classification", m.Classification),
-            ):
-                parameters.append(_query(name, {"type": "string", "enum": [e.value for e in enum]}))
+        parameters.extend(dict(p) for p in op.query)
         if op.idempotency_header:
             parameters.append(
                 _header(
                     "Idempotency-Key",
-                    "Client-generated, scoped to yard, user, method and path.",
+                    "Client-generated, scoped to yard, user, method and path. "
+                    f"Kept {m.Limits.IDEMPOTENCY_HOURS} hours.",
                     {"type": "string", "minLength": 16, "maxLength": 128},
                 )
             )
@@ -112,6 +109,14 @@ def build() -> dict:
         }.get(op.auth, [])
         if op.permission:
             item["x-required-permission"] = op.permission.value
+        if op.conditional_permissions:
+            item["x-conditional-permissions"] = op.conditional_permissions
+        if op.request:
+            item["x-max-body-bytes"] = (
+                m.Limits.RAW_EMAIL_BYTES + m.Limits.JSON_BYTES
+                if op.operation_id == "ingestEmailEvent"
+                else m.Limits.JSON_BYTES
+            )
         if parameters:
             item["parameters"] = parameters
 
@@ -129,6 +134,8 @@ def build() -> dict:
                                 "original": {
                                     "type": "string",
                                     "contentMediaType": "message/rfc822",
+                                    "description": "Raw bytes, authoritative.",
+                                    "x-max-bytes": m.Limits.RAW_EMAIL_BYTES,
                                 },
                             },
                         },
@@ -150,7 +157,12 @@ def build() -> dict:
             if model is None:
                 responses[str(status)] = {
                     "description": "Original bytes",
-                    "content": {"message/rfc822": {"schema": {"type": "string"}}},
+                    "headers": DOWNLOAD_HEADERS,
+                    "content": {
+                        "message/rfc822": {
+                            "schema": {"type": "string", "contentMediaType": "message/rfc822"}
+                        }
+                    },
                 }
             else:
                 responses[str(status)] = {
@@ -160,6 +172,7 @@ def build() -> dict:
         for status in op.errors:
             responses[str(status)] = {
                 "description": ERROR_TEXT[status],
+                "x-error-codes": [code.value for code in m.ERROR_STATUS[status]],
                 "content": {
                     "application/json": {"schema": {"$ref": refs[m.ErrorResponse]}}
                 },
@@ -171,12 +184,18 @@ def build() -> dict:
         "openapi": "3.1.0",
         "info": {
             "title": "Counter Copilot V4 API (PROPOSAL)",
-            "version": "0.1.0-proposal",
+            "version": "0.1.0-proposal.2",
             "description": (
-                "Proposed contract for the email-to-reviewed-draft slice. Not approved and "
-                "not implemented. Behavioural rules are in docs/DATA_CONTRACT.md. Generated "
-                "by generate_openapi.py: do not edit by hand."
+                "Contract for the email-to-reviewed-draft slice, revised for independent "
+                "review. Not frozen and not implemented. Behavioural rules are in "
+                "docs/DATA_CONTRACT.md. " + ATTACHMENT_LIMITATION + " Generated by "
+                "generate_openapi.py: do not edit by hand."
             ),
+            "x-limits": {
+                name.lower(): value
+                for name, value in vars(m.Limits).items()
+                if name.isupper()
+            },
         },
         "paths": paths,
         "components": {
@@ -198,6 +217,15 @@ def build() -> dict:
     }
 
 
+def render_extraction_schema() -> str:
+    schema = {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:counter-copilot:v0.1:extraction-proposal",
+        **m.ExtractionProposal.model_json_schema(),
+    }
+    return json.dumps(schema, indent=2, ensure_ascii=False) + "\n"
+
+
 class _NoAlias(yaml.SafeDumper):
     def ignore_aliases(self, data):
         return True
@@ -210,11 +238,16 @@ def render() -> str:
 
 
 if __name__ == "__main__":
-    text = render()
-    if "--check" in sys.argv:
-        if not OUTPUT.exists() or OUTPUT.read_text(encoding="utf-8") != text:
-            sys.exit("openapi.yaml is out of date")
-        print("openapi.yaml is up to date")
-    else:
-        OUTPUT.write_text(text, encoding="utf-8")
-        print(f"wrote {OUTPUT.name}")
+    outputs = {OUTPUT: render(), EXTRACTION_SCHEMA: render_extraction_schema()}
+    stale = []
+    for path, text in outputs.items():
+        if "--check" in sys.argv:
+            if not path.exists() or path.read_text(encoding="utf-8") != text:
+                stale.append(path.name)
+            else:
+                print(f"{path.name} is up to date")
+        else:
+            path.write_text(text, encoding="utf-8")
+            print(f"wrote {path.name}")
+    if stale:
+        sys.exit(f"out of date: {', '.join(stale)}")
