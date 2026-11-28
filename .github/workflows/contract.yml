@@ -55,10 +55,8 @@ jobs:
         with:
           node-version: "22"
           package-manager-cache: false
-      - name: Install pinned generator and compiler
-        run: npm install --ignore-scripts --no-audit --no-fund
-      - name: Print resolved lockfile (temporary, removed once committed)
-        run: sha256sum package-lock.json && base64 -w 76 package-lock.json
+      - name: Install exactly the locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Generate types from openapi.yaml
         run: npm run generate
       - name: Compile frontend-facing assertions
