@@ -179,6 +179,17 @@ def test_approved_limits_are_published_exactly():
             assert "413" in op["responses"] and "415" in op["responses"]
 
 
+@pytest.mark.parametrize("count,valid", [(500, True), (501, False)])
+def test_d015_request_material_line_limit_is_exact(count, valid):
+    content = example("request-detail.draft.json")["content"]
+    first = content["lines"][0]
+    content["lines"] = [
+        {**first, "line_id": str(uuid.UUID(int=n)), "position": n} for n in range(1, count + 1)
+    ]
+    assert model_valid("RequestContent", content) is valid
+    assert schema_valid("RequestContent", content) is valid
+
+
 def test_error_codes_are_documented_per_status():
     documented = set()
     for _, _, op in OPERATIONS:

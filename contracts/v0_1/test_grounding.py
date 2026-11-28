@@ -93,6 +93,12 @@ def test_malformed_json_rejects_the_run():
     assert failures("40 studs", "{not json") == {"invalid_schema"}
 
 
+def test_d015_proposal_accepts_exactly_the_material_line_limit():
+    body = "40 studs"
+    data = proposal([line(body)] * m.Limits.MATERIAL_LINES)
+    assert len(grounding.parse_proposal(data).lines) == 500
+
+
 def test_line_limit():
     body = "40 studs"
     data = proposal([line(body)] * (m.Limits.MATERIAL_LINES + 1))

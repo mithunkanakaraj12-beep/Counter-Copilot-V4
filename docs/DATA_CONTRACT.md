@@ -350,7 +350,7 @@ Exact parameters, bodies and status codes are in `openapi.yaml`. `Y` is `/api/v1
 | Raw email | 25,000,000 bytes |
 | Body text | 200,000 characters |
 | **Email body lines** | 500; more is `413` |
-| **Material lines** per proposal or request | 500 |
+| **Material lines** per proposal or request (contract schema limit, D-015; not a U-16 parser limit) | 500 |
 | Attachments | 100 |
 | MIME parts | 200 |
 | MIME nesting depth (root is 1) | 20 |
@@ -362,10 +362,10 @@ Exact parameters, bodies and status codes are in `openapi.yaml`. `Y` is `/api/v1
 | Edit operations per call | 200 |
 | Employee idempotency keys | 24 hours |
 
-**The two line limits are different things, and which one the owner approved is open (D-015).** U-16 approved "Lines: 500" among the parser limits without naming the unit. Until the owner answers, both are enforced at 500.
+**The two line limits are separate (D-015).**
 
-- *Email body lines* are counted in the decoded `body_text` (plain or HTML-derived), separated by LF; a final LF does not start another line. Blank and quoted lines count. A lone CR is not a line break. Over the limit the message is treated like any over-limit mail: `413`, nothing stored, source kept by the adapter, operator alerted.
-- *Material lines* are the entries of a proposal, grounded result or request. A model proposal with more is rejected as `invalid_schema`.
+- *Email body lines* are the approved U-16 limit of 500 lines. They are decoded body lines, including blank and quoted lines, counted after CRLF → LF normalization. Over the limit: `413`, and the application stores nothing; as for any over-limit mail, the adapter keeps the source and alerts an operator. Counting details: the count is of `body_text` (plain or HTML-derived); LF separates lines; a final LF does not start another line; a lone CR is not a line break.
+- *Material lines* are a separate contract-level maximum of 500, a schema and resource limit that does not interpret the email parser limit. It applies to the lines of a model proposal, a grounded result and a request, including removed lines that a request retains. A model proposal with more is rejected as `invalid_schema`.
 
 A body-line limit of 500 can refuse ordinary mail with a long reply chain, or HTML mail whose derived text has many blank lines. This has not been measured on real mail.
 
@@ -410,7 +410,6 @@ The values are published in `openapi.yaml` (`info.x-limits`). The JSON limit app
 | U-02 | Adapter authentication | Bearer token over TLS | Intake build |
 | U-03 | Stable message ID from the pilot mail path | Mailbox-provider ID | Live intake |
 | U-04 | Retention (including message identity), deletion, encryption, write lock, quarantine access | Synthetic data only until decided; quarantine operator-only | Live data |
-| U-16 / D-015 | Does the approved "Lines: 500" limit email body lines, material lines or both, and what is the other value? | Both at 500 | Freeze |
 | U-05 | Roles and self-approval | Explicit permissions; self-approval for synthetic data only | Authorization setup |
 | U-13 | Drafts for `uncertain` mail | Yes, flagged (the schema supports it) | Processing |
 | U-15 | Keep `reopen`, and who holds it | Keep, separate permission | Approval build |

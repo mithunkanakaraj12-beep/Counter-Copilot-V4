@@ -40,10 +40,9 @@ class Limits:
 
     RAW_EMAIL_BYTES = 25_000_000
     BODY_CHARS = 200_000
-    # Two different things. U-16 approved "Lines: 500"; which of these it governs is
-    # waiting for the owner (D-015), so both are enforced at 500.
-    EMAIL_BODY_LINES = 500  # lines of decoded body text
-    MATERIAL_LINES = 500  # material lines in a proposal or request
+    # Two separate limits (D-015).
+    EMAIL_BODY_LINES = 500  # U-16 parser limit: lines of decoded body text
+    MATERIAL_LINES = 500  # contract schema limit: proposal and request material lines
     ATTACHMENTS = 100
     MIME_PARTS = 200
     MIME_DEPTH = 20
