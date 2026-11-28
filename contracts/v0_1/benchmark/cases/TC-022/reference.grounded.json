@@ -1,0 +1,337 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "514cc1c4-4ebc-5d7e-8162-4648ef4168af",
+          "source": "body_text",
+          "start": 0,
+          "end": 17,
+          "quote": "100 2x6x10 SYP #1",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "100",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "514cc1c4-4ebc-5d7e-8162-4648ef4168af",
+            "source": "body_text",
+            "start": 0,
+            "end": 3,
+            "quote": "100",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x6x10",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "6",
+              "magnitude": "6",
+              "unit": null
+            },
+            {
+              "raw": "10",
+              "magnitude": "10",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "514cc1c4-4ebc-5d7e-8162-4648ef4168af",
+            "source": "body_text",
+            "start": 4,
+            "end": 10,
+            "quote": "2x6x10",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "extracted",
+        "value": "SYP",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "514cc1c4-4ebc-5d7e-8162-4648ef4168af",
+            "source": "body_text",
+            "start": 11,
+            "end": 14,
+            "quote": "SYP",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "extracted",
+        "value": "#1",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "514cc1c4-4ebc-5d7e-8162-4648ef4168af",
+            "source": "body_text",
+            "start": 15,
+            "end": 17,
+            "quote": "#1",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "communication_id": "514cc1c4-4ebc-5d7e-8162-4648ef4168af",
+          "source": "body_text",
+          "start": 24,
+          "end": 45,
+          "quote": "50 LU24 joist hangers",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "LU24 joist hangers",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "514cc1c4-4ebc-5d7e-8162-4648ef4168af",
+            "source": "body_text",
+            "start": 27,
+            "end": 45,
+            "quote": "LU24 joist hangers",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "50",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "514cc1c4-4ebc-5d7e-8162-4648ef4168af",
+            "source": "body_text",
+            "start": 24,
+            "end": 26,
+            "quote": "50",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b6d64b30-47de-561d-b9de-f8b004725d0b",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

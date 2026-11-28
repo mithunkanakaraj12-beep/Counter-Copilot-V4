@@ -1,0 +1,204 @@
+{
+  "schema_version": "0.1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "100 2x6x10 SYP #1",
+          "occurrence": 0,
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "100",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "100",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": "2x6x10",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "2x6x10",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "species": {
+        "state": "extracted",
+        "value": "SYP",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "SYP",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "grade": {
+        "state": "extracted",
+        "value": "#1",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "#1",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "50 LU24 joist hangers",
+          "occurrence": 0,
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "LU24 joist hangers",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "LU24 joist hangers",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "50",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "50",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "dimensions": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    }
+  },
+  "multiple_jobs_evidence": []
+}

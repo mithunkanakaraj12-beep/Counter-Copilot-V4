@@ -1,0 +1,9 @@
+From: Synthetic Contractor <contractor@example.test>
+To: orders@example-yard.test
+Subject: Material request
+Message-ID: <synthetic-0001@example.test>
+Date: Wed, 25 Nov 2026 15:00:00 +0000
+Content-Type: text/plain; charset=utf-8
+
+Please quote 40 pieces of 2x6x12 SYP #2 and 20 sheets of 7/16 OSB.
+Actually make the OSB 24 sheets.

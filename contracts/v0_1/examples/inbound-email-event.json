@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "channel": "email",
+  "external_message_id": "synthetic-mailbox-0001",
+  "external_event_id": "synthetic-delivery-0001",
+  "provider_thread_id": "synthetic-thread-0001",
+  "received_at": "2026-11-25T15:00:00Z",
+  "envelope_recipients": [
+    "orders@example-yard.test"
+  ],
+  "provider_metadata": {
+    "source": "synthetic"
+  },
+  "original_sha256": "d2c3c660c319eb2787399012ad6f03a9af5e6a09f6654e8b3b1b3f89aae68c75"
+}

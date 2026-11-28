@@ -1,0 +1,206 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "e15b7ade-1cec-55b4-bf8c-1077c6b250c8",
+          "source": "body_text",
+          "start": 0,
+          "end": 35,
+          "quote": "We need a bunk of 1/2 inch plywood.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "plywood",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "e15b7ade-1cec-55b4-bf8c-1077c6b250c8",
+            "source": "body_text",
+            "start": 27,
+            "end": 34,
+            "quote": "plywood",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "number_word",
+        "evidence": [
+          {
+            "communication_id": "e15b7ade-1cec-55b4-bf8c-1077c6b250c8",
+            "source": "body_text",
+            "start": 8,
+            "end": 14,
+            "quote": "a bunk",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "vague_number"
+          ]
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "1/2 inch",
+          "components": [
+            {
+              "raw": "1/2 inch",
+              "magnitude": "0.5",
+              "unit": "in"
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "e15b7ade-1cec-55b4-bf8c-1077c6b250c8",
+            "source": "body_text",
+            "start": 18,
+            "end": 26,
+            "quote": "1/2 inch",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "c3848e99-d0b6-5e0e-8159-5e4f3bb28320",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

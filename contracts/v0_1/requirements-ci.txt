@@ -1,0 +1,2 @@
+# Used only by CI as a second, independent OpenAPI validator.
+openapi-spec-validator==0.9.0

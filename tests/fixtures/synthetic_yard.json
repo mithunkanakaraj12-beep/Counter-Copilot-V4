@@ -1,50 +1,190 @@
 {
   "fixture_type": "synthetic_only",
-  "yard": {
-    "id": "yard_demo_001",
-    "name": "Pine Ridge Building Supply (Synthetic)",
-    "time_zone": "America/Chicago",
-    "pricing_enabled": false,
-    "inventory_freshness_limit_minutes": 120
-  },
+  "note": "All names, addresses, identifiers and stock figures are invented. No unit conversions, dimension conventions or synonym rules are approved, so none are listed.",
+  "yards": [
+    {
+      "yard_id": "3c6a60ea-7f9f-5bd0-a3e6-2fd795dfacd5",
+      "name": "Pine Ridge Building Supply (Synthetic)",
+      "timezone": "America/Chicago",
+      "mailboxes": [
+        "orders@example-yard.test"
+      ],
+      "pricing_enabled": false,
+      "inventory_freshness_limit_minutes": 120,
+      "catalog_version": "synthetic-1",
+      "synonym_rules": [],
+      "skus": [
+        {
+          "sku_id": "77f612a1-8d7d-524f-8060-c72c09c83dd2",
+          "code": "SYP-2X6-12-N2",
+          "description": "2x6x12 SYP #2, untreated",
+          "product": null,
+          "dimension_designation": {
+            "text": "2x6x12",
+            "components": [
+              {
+                "raw": "2",
+                "magnitude": "2",
+                "unit": null
+              },
+              {
+                "raw": "6",
+                "magnitude": "6",
+                "unit": null
+              },
+              {
+                "raw": "12",
+                "magnitude": "12",
+                "unit": null
+              }
+            ]
+          },
+          "species": "SYP",
+          "grade": "#2",
+          "treatment": "untreated",
+          "sell_unit": "piece",
+          "active": true
+        },
+        {
+          "sku_id": "b52cb3a9-82ad-5604-86ec-f1168dcfcd4e",
+          "code": "OSB-716",
+          "description": "7/16 inch OSB sheathing",
+          "product": "OSB",
+          "dimension_designation": {
+            "text": "7/16 inch",
+            "components": [
+              {
+                "raw": "7/16 inch",
+                "magnitude": "0.4375",
+                "unit": "in"
+              }
+            ]
+          },
+          "species": null,
+          "grade": null,
+          "treatment": null,
+          "sell_unit": "sheet",
+          "active": true
+        },
+        {
+          "sku_id": "8ee9bdc3-2d80-594e-8fc0-83739f65cf92",
+          "code": "OSB-716-OLD",
+          "description": "7/16 inch OSB sheathing (discontinued)",
+          "product": "OSB",
+          "dimension_designation": {
+            "text": "7/16 inch",
+            "components": [
+              {
+                "raw": "7/16 inch",
+                "magnitude": "0.4375",
+                "unit": "in"
+              }
+            ]
+          },
+          "species": null,
+          "grade": null,
+          "treatment": null,
+          "sell_unit": "sheet",
+          "active": false
+        },
+        {
+          "sku_id": "486c1ddc-5f2a-5427-8a3f-d3332486ba15",
+          "code": "PT-2X4-8",
+          "description": "2x4x8 treated",
+          "product": null,
+          "dimension_designation": {
+            "text": "2x4x8",
+            "components": [
+              {
+                "raw": "2",
+                "magnitude": "2",
+                "unit": null
+              },
+              {
+                "raw": "4",
+                "magnitude": "4",
+                "unit": null
+              },
+              {
+                "raw": "8",
+                "magnitude": "8",
+                "unit": null
+              }
+            ]
+          },
+          "species": null,
+          "grade": null,
+          "treatment": "treated",
+          "sell_unit": "piece",
+          "active": true
+        }
+      ]
+    },
+    {
+      "yard_id": "046194c7-0e67-5293-8540-d56a5b93660f",
+      "name": "Cedar Fork Lumber (Synthetic)",
+      "timezone": "America/Chicago",
+      "mailboxes": [
+        "desk@second-yard.test"
+      ],
+      "pricing_enabled": false,
+      "inventory_freshness_limit_minutes": 120,
+      "catalog_version": "synthetic-1",
+      "synonym_rules": [],
+      "skus": [
+        {
+          "sku_id": "fae7adb1-de71-55c5-85b9-2a185d26e68c",
+          "code": "L2612",
+          "description": "2x6x12 SYP #2",
+          "product": null,
+          "dimension_designation": {
+            "text": "2x6x12",
+            "components": [
+              {
+                "raw": "2",
+                "magnitude": "2",
+                "unit": null
+              },
+              {
+                "raw": "6",
+                "magnitude": "6",
+                "unit": null
+              },
+              {
+                "raw": "12",
+                "magnitude": "12",
+                "unit": null
+              }
+            ]
+          },
+          "species": "SYP",
+          "grade": "#2",
+          "treatment": null,
+          "sell_unit": "piece",
+          "active": true
+        }
+      ]
+    }
+  ],
   "contacts": [
     {
-      "id": "contact_demo_001",
+      "contact_id": "64d2d1e9-b286-5cf1-8268-a73887825a46",
+      "yard_id": "3c6a60ea-7f9f-5bd0-a3e6-2fd795dfacd5",
       "name": "Jordan Reed (Synthetic)",
       "email": "jordan.reed@example.test",
       "phone": "+12025550123",
       "known_account": true
     }
   ],
-  "skus": [
-    {
-      "id": "sku_demo_001",
-      "code": "SYP-2X6-12-N2",
-      "description": "2x6x12 SYP No. 2, untreated",
-      "dimensions": "2x6x12",
-      "species": "SYP",
-      "grade": "No. 2",
-      "treatment": "untreated",
-      "sell_unit": "piece"
-    },
-    {
-      "id": "sku_demo_002",
-      "code": "OSB-716",
-      "description": "7/16 inch OSB sheathing",
-      "dimensions": "7/16 inch",
-      "species": null,
-      "grade": null,
-      "treatment": null,
-      "sell_unit": "sheet"
-    }
-  ],
   "inventory_snapshot": {
-    "id": "inventory_demo_001",
+    "snapshot_id": "613a6434-0d36-5acb-8eca-c12169275e1e",
+    "yard_id": "3c6a60ea-7f9f-5bd0-a3e6-2fd795dfacd5",
     "received_at": "2026-11-25T12:00:00Z",
     "source": "synthetic fixture",
+    "note": "Carried forward for later versions; unused by v0.1.",
     "lines": [
       {
-        "sku_id": "sku_demo_001",
+        "sku_id": "77f612a1-8d7d-524f-8060-c72c09c83dd2",
         "on_hand": "80",
         "allocated": "15",
         "held": "0",
@@ -53,7 +193,7 @@
         "unit": "piece"
       },
       {
-        "sku_id": "sku_demo_002",
+        "sku_id": "b52cb3a9-82ad-5604-86ec-f1168dcfcd4e",
         "on_hand": "25",
         "allocated": "5",
         "held": "0",
@@ -65,7 +205,7 @@
   },
   "sample_messages": [
     {
-      "id": "message_demo_001",
+      "message_id": "26c132c3-50d6-54bd-b711-c64a2f91598e",
       "channel": "email",
       "direction": "inbound",
       "sender": "jordan.reed@example.test",
@@ -73,18 +213,20 @@
       "body": "Please quote 40 pieces of 2x6x12 SYP No. 2 and 20 sheets of 7/16 OSB."
     },
     {
-      "id": "message_demo_002",
+      "message_id": "696ad7b3-5b45-5e84-9bdd-f7bc5cb0ae83",
       "channel": "sms",
       "direction": "inbound",
       "sender": "+12025550123",
-      "body": "Need 10 2x6x12s. Can you check availability?"
+      "body": "Need 10 2x6x12s. Can you check availability?",
+      "note": "Later channel; not in v0.1."
     },
     {
-      "id": "message_demo_003",
+      "message_id": "aa5b2bbb-b5bd-5d42-a5eb-9553ad76d4a1",
       "channel": "voicemail",
       "direction": "inbound",
       "sender": "+12025550123",
-      "transcript": "This is a synthetic voicemail. I need twenty sheets of seven-sixteenths OSB."
+      "transcript": "This is a synthetic voicemail. I need twenty sheets of seven-sixteenths OSB.",
+      "note": "Later channel; not in v0.1."
     }
   ]
 }

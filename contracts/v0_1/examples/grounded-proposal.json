@@ -1,0 +1,407 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+          "source": "body_text",
+          "start": 13,
+          "end": 39,
+          "quote": "40 pieces of 2x6x12 SYP #2",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "40",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 13,
+            "end": 22,
+            "quote": "40 pieces",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "piece",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 16,
+            "end": 22,
+            "quote": "pieces",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x6x12",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "6",
+              "magnitude": "6",
+              "unit": null
+            },
+            {
+              "raw": "12",
+              "magnitude": "12",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 26,
+            "end": 32,
+            "quote": "2x6x12",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "extracted",
+        "value": "SYP",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 33,
+            "end": 36,
+            "quote": "SYP",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "extracted",
+        "value": "#2",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 37,
+            "end": 39,
+            "quote": "#2",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+          "source": "body_text",
+          "start": 44,
+          "end": 65,
+          "quote": "20 sheets of 7/16 OSB",
+          "role": "supports"
+        },
+        {
+          "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+          "source": "body_text",
+          "start": 67,
+          "end": 98,
+          "quote": "Actually make the OSB 24 sheets",
+          "role": "conflicts"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "OSB",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 62,
+            "end": 65,
+            "quote": "OSB",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [
+          "20",
+          "24"
+        ],
+        "ambiguity_reason": "conflicting_statements",
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 44,
+            "end": 53,
+            "quote": "20 sheets",
+            "role": "supports"
+          },
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 67,
+            "end": 98,
+            "quote": "Actually make the OSB 24 sheets",
+            "role": "conflicts"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "sheet",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 47,
+            "end": 53,
+            "quote": "sheets",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "7/16",
+          "components": [
+            {
+              "raw": "7/16",
+              "magnitude": "0.4375",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+            "source": "body_text",
+            "start": 57,
+            "end": 61,
+            "quote": "7/16",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "74a005d2-3cc8-5a7b-98f8-9f2778b2136e",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": [
+    {
+      "code": "possible_correction_language",
+      "line_index": 1,
+      "evidence": [
+        {
+          "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+          "source": "body_text",
+          "start": 67,
+          "end": 75,
+          "quote": "Actually",
+          "role": "supports"
+        }
+      ]
+    }
+  ]
+}

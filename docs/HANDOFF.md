@@ -6,7 +6,7 @@ Repository organization and specification branch only. No application code has b
 ## Repository
 - Repository: mithunkanakaraj12-beep/Counter-Copilot-V4
 - Default branch: main
-- Working branch: setup/v4-repository-foundation
+- Working branches: work/backend-foundation (contract), work/frontend-review-shell
 
 ## Workstream ownership proposal
 - Claude 1: backend, data contract implementation, extraction, catalog/inventory/pricing rules, approval state machine, backend tests.
@@ -31,6 +31,24 @@ Do not assume chat assistants share memory, files, credentials, or execution env
 - Application tests: none; no application code exists.
 - Provider integrations: not connected.
 - Customer data: none authorized/configured.
+
+## Contract proposal v0.1, revision for independent review
+- Branch: work/backend-foundation (PR #2, not approved, not to be merged without the owner)
+- Files changed: docs/ (DATA_CONTRACT, DECISIONS, HANDOFF, ARCHITECTURE, BENCHMARK_COMPATIBILITY), contracts/v0_1/, tests/fixtures/synthetic_yard.json, .github/workflows/contract.yml
+- Decisions: D-014 approved (owner decisions of 2026-11-26) and applied. D-013, the contract itself, is still proposed. D-015 (two separate 500-line limits) approved 2026-11-28 and applied.
+- Review: ChatGPT verified commit `924f469` and its CI runs and raised five items; the follow-up changes after it have not been reviewed.
+- Tests: see the latest `contract` workflow run on the branch. All checks concern the contract and reference functions; no application exists.
+- QA matrix (`contracts/v0_1/qa/matrix.json`): 57 tests defined. 31 have reference-function coverage, 17 contract-shape coverage only, 8 need an application, and 1 (LIN-001, line recall) is an open model-quality gate. **None has been run against an application.**
+- Benchmark (`docs/BENCHMARK_COMPATIBILITY.md`): 4 cases compatible, 8 need Gemini's confirmation, 18 incompatible. No model was run. `expected.grounded.json` and `expected.warnings.json` are not authored; they need Gemini.
+- M0 is **not** complete. Remaining gates:
+  1. Gemini resolves the benchmark cases and scoring questions (30 of 30 needed).
+  2. ChatGPT independent review, including the 6 QA pass-condition changes marked in the matrix and the interpretations in contract section 16.
+  3. Claude 2 confirms the interfaces against frontend requirements and code.
+  4. Owner makes the two CI jobs required checks with branch protection (N-6) before any merge.
+  5. Owner approves the contract (D-013).
+- Separate open gate, before any pilot: line recall measured with a real model (LIN-001).
+- Open decisions: contract section 17.
+- Next action and owner: ChatGPT reviews the branch; Gemini resolves labels; owner sets branch protection.
 
 ## Session close-out template
 - Branch/commit:

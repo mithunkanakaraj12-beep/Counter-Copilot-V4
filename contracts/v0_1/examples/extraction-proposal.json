@@ -1,0 +1,240 @@
+{
+  "schema_version": "0.1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "40 pieces of 2x6x12 SYP #2",
+          "occurrence": 0,
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "40",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "40 pieces",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "piece",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "pieces",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": "2x6x12",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "2x6x12",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "species": {
+        "state": "extracted",
+        "value": "SYP",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "SYP",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "grade": {
+        "state": "extracted",
+        "value": "#2",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "#2",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "20 sheets of 7/16 OSB",
+          "occurrence": 0,
+          "role": "supports"
+        },
+        {
+          "source": "body_text",
+          "quote": "Actually make the OSB 24 sheets",
+          "occurrence": 0,
+          "role": "conflicts"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "OSB",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "OSB",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "quantity": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [
+          "20",
+          "24"
+        ],
+        "ambiguity_reason": "conflicting_statements",
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "20 sheets",
+            "occurrence": 0,
+            "role": "supports"
+          },
+          {
+            "source": "body_text",
+            "quote": "Actually make the OSB 24 sheets",
+            "occurrence": 0,
+            "role": "conflicts"
+          }
+        ]
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "sheet",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "sheets",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": "7/16",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "7/16",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    }
+  },
+  "multiple_jobs_evidence": []
+}

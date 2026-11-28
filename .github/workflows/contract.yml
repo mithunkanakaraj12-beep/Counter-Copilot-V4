@@ -1,0 +1,63 @@
+name: contract
+
+on:
+  pull_request:
+  push:
+    branches: [main, work/backend-foundation]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: contract-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: contract-python
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - name: Install pinned dependencies
+        run: python -m pip install -r contracts/v0_1/requirements.txt
+      - name: Generated files are current
+        run: |
+          python contracts/v0_1/generate_openapi.py --check
+          python contracts/v0_1/build_examples.py --check
+          python contracts/v0_1/build_benchmark.py --check
+      - name: Contract tests
+        run: python -m pytest contracts/v0_1 -q
+      - name: Official OpenAPI 3.1 schemas
+        run: python contracts/v0_1/validate_openapi.py
+      - name: Second OpenAPI validator
+        run: |
+          python -m pip install -r contracts/v0_1/requirements-ci.txt
+          openapi-spec-validator contracts/v0_1/openapi.yaml
+
+  typescript:
+    name: contract-typescript
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: contracts/v0_1/typescript
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Install exactly the locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate types from openapi.yaml
+        run: npm run generate
+      - name: Compile frontend-facing assertions
+        run: npm run check

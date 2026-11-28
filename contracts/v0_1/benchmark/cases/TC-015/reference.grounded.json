@@ -1,0 +1,214 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "823bc0d5-94eb-5b41-97a8-1e09ed83eab6",
+          "source": "body_text",
+          "start": 0,
+          "end": 33,
+          "quote": "Need 100 2x4x92-5/8 precut studs.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "precut studs",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "823bc0d5-94eb-5b41-97a8-1e09ed83eab6",
+            "source": "body_text",
+            "start": 20,
+            "end": 32,
+            "quote": "precut studs",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "100",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "823bc0d5-94eb-5b41-97a8-1e09ed83eab6",
+            "source": "body_text",
+            "start": 5,
+            "end": 8,
+            "quote": "100",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x4x92-5/8",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "4",
+              "magnitude": "4",
+              "unit": null
+            },
+            {
+              "raw": "92-5/8",
+              "magnitude": "92.625",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "823bc0d5-94eb-5b41-97a8-1e09ed83eab6",
+            "source": "body_text",
+            "start": 9,
+            "end": 19,
+            "quote": "2x4x92-5/8",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7227bba7-81f4-5a70-840f-34498e5602dc",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

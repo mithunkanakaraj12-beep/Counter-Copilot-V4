@@ -1,0 +1,200 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "fffdcbb9-81ac-5c5a-a12a-5ea79389fdd2",
+          "source": "body_text",
+          "start": 0,
+          "end": 44,
+          "quote": "Give me your best price on 2x8 floor joists.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "floor joists",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "fffdcbb9-81ac-5c5a-a12a-5ea79389fdd2",
+            "source": "body_text",
+            "start": 31,
+            "end": 43,
+            "quote": "floor joists",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x8",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "8",
+              "magnitude": "8",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "fffdcbb9-81ac-5c5a-a12a-5ea79389fdd2",
+            "source": "body_text",
+            "start": 27,
+            "end": 30,
+            "quote": "2x8",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "305c3179-3b05-522a-b186-5118dc3e250a",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

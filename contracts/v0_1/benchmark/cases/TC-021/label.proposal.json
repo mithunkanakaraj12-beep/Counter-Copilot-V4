@@ -1,0 +1,291 @@
+{
+  "schema_version": "0.1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "50 2x4x8 SPF",
+          "occurrence": 0,
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "50",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "50",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": "2x4x8",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "2x4x8",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "species": {
+        "state": "extracted",
+        "value": "SPF",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "SPF",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "20 sheets 7/16 OSB",
+          "occurrence": 0,
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "OSB",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "OSB",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "20",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "20",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": "7/16",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "7/16",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      }
+    },
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "2 boxes of 3-inch sinkers",
+          "occurrence": 0,
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "sinkers",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "sinkers",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "2",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "2 boxes",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "box",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "boxes",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": "3-inch",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "3-inch",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    }
+  },
+  "multiple_jobs_evidence": []
+}

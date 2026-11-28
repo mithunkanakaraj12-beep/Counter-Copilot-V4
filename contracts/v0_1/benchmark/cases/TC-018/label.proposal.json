@@ -1,0 +1,131 @@
+{
+  "schema_version": "0.1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "Send 50 sticks of #4 rebar 20ft.",
+          "occurrence": 0,
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "rebar",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "rebar",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "50",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "50",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "piece",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "sticks",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": "#4 x 20ft",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "#4 rebar 20ft",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    }
+  },
+  "multiple_jobs_evidence": []
+}

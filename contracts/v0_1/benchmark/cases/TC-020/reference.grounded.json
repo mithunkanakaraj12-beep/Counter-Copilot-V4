@@ -1,0 +1,206 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "658bd3d5-83a1-5503-883a-073fafb98489",
+          "source": "body_text",
+          "start": 0,
+          "end": 59,
+          "quote": "Drop off 50 five-quarter by six sixteen foot cedar decking.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "decking",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "658bd3d5-83a1-5503-883a-073fafb98489",
+            "source": "body_text",
+            "start": 51,
+            "end": 58,
+            "quote": "decking",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "50",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "658bd3d5-83a1-5503-883a-073fafb98489",
+            "source": "body_text",
+            "start": 9,
+            "end": 11,
+            "quote": "50",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": "unsupported_by_source",
+        "evidence": [
+          {
+            "communication_id": "658bd3d5-83a1-5503-883a-073fafb98489",
+            "source": "body_text",
+            "start": 12,
+            "end": 44,
+            "quote": "five-quarter by six sixteen foot",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "not_in_evidence"
+          ]
+        }
+      },
+      "species": {
+        "state": "extracted",
+        "value": "cedar",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "658bd3d5-83a1-5503-883a-073fafb98489",
+            "source": "body_text",
+            "start": 45,
+            "end": 50,
+            "quote": "cedar",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "7ac12165-f19a-5deb-a88c-fb3109dc9b03",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

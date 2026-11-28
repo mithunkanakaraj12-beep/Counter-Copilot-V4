@@ -1,0 +1,133 @@
+{
+  "schema_version": "0.1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "source": "body_text",
+          "quote": "Can you send twenty (10) 4x4x10 treated posts?",
+          "occurrence": 0,
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "quantity": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [
+          "20",
+          "10"
+        ],
+        "ambiguity_reason": "conflicting_statements",
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "twenty",
+            "occurrence": 0,
+            "role": "supports"
+          },
+          {
+            "source": "body_text",
+            "quote": "10",
+            "occurrence": 0,
+            "role": "conflicts"
+          }
+        ]
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": "4x4x10",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "4x4x10",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": []
+      },
+      "treatment": {
+        "state": "extracted",
+        "value": "treated",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "source": "body_text",
+            "quote": "treated",
+            "occurrence": 0,
+            "role": "supports"
+          }
+        ]
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": []
+    }
+  },
+  "multiple_jobs_evidence": []
+}

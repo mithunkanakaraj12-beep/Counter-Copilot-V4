@@ -1,0 +1,195 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "42588e68-2983-5b12-8d6f-85f24c04f578",
+          "source": "body_text",
+          "start": 0,
+          "end": 35,
+          "quote": "Send over 40 bags of 80lb Quikrete.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "extracted",
+        "value": "Quikrete",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "42588e68-2983-5b12-8d6f-85f24c04f578",
+            "source": "body_text",
+            "start": 26,
+            "end": 34,
+            "quote": "Quikrete",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "40",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "42588e68-2983-5b12-8d6f-85f24c04f578",
+            "source": "body_text",
+            "start": 10,
+            "end": 12,
+            "quote": "40",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "bag",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "42588e68-2983-5b12-8d6f-85f24c04f578",
+            "source": "body_text",
+            "start": 13,
+            "end": 17,
+            "quote": "bags",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "5ff32721-e05d-527b-800e-6e768138e6bf",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}

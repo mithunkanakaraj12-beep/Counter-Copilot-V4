@@ -1,0 +1,71 @@
+{
+  "record": {
+    "parser_version": "email-derive-1",
+    "parse_status": "parsed",
+    "sender": {
+      "name": "Synthetic Contractor",
+      "address": "contractor@example.test"
+    },
+    "recipients": [
+      {
+        "name": null,
+        "address": "orders@example-yard.test"
+      }
+    ],
+    "subject": "Material request",
+    "body_text": "Please quote 40 pieces of 2x6x12 SYP #2 and 20 sheets of 7/16 OSB.\nActually make the OSB 24 sheets.\n",
+    "body_source": "text_plain",
+    "thread": {
+      "rfc_message_id": "<synthetic-0001@example.test>",
+      "in_reply_to": [],
+      "references": []
+    },
+    "attachments": [],
+    "quoted_spans": [],
+    "communication_id": "f52d7f11-d069-54b5-b27b-22232a49cf61",
+    "yard_id": "3c6a60ea-7f9f-5bd0-a3e6-2fd795dfacd5",
+    "integration_id": "0891bb03-6e2d-5d69-a8a0-1e7a5276182b",
+    "channel": "email",
+    "direction": "inbound",
+    "external_message_id": "synthetic-mailbox-0001",
+    "provider_thread_id": "synthetic-thread-0001",
+    "content_fingerprint": "362c4b6d87526a5789edcebeee356e4506c5646d7f4f586d7456ae9bae3ef163",
+    "received_at": "2026-11-25T15:00:00Z",
+    "ingested_at": "2026-11-25T15:00:05Z",
+    "envelope_recipients": [
+      "orders@example-yard.test"
+    ],
+    "provider_metadata": {
+      "source": "synthetic"
+    },
+    "original": {
+      "media_type": "message/rfc822",
+      "size_bytes": 338,
+      "sha256": "d2c3c660c319eb2787399012ad6f03a9af5e6a09f6654e8b3b1b3f89aae68c75",
+      "stored_at": "2026-11-25T15:00:05Z"
+    }
+  },
+  "status": {
+    "processing_state": "completed",
+    "classification": "material_request",
+    "failure_code": null,
+    "employee_message": null,
+    "attempt_count": 1,
+    "processing_started_at": "2026-11-25T15:00:10Z",
+    "next_retry_at": null,
+    "possible_duplicate_of": [],
+    "related_messages": [],
+    "has_conflicting_redelivery": false,
+    "origin_request_id": "7aeaa989-4c2b-52c4-9284-db020677bdcb",
+    "handling": {
+      "status": "open",
+      "version": 0,
+      "mark_handled_allowed": false,
+      "reason": null,
+      "note": null,
+      "changed_by": null,
+      "changed_at": null
+    }
+  },
+  "handling_history": []
+}

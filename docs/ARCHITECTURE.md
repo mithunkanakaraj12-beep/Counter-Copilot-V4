@@ -53,7 +53,7 @@ These are proposed choices, not provisioned services or tested integrations.
 Normalize external provider/customer-system payloads into the internal event contract. Verify webhook signatures where supported, preserve source identifiers, and implement idempotency/retry behavior. Never put provider-specific payload logic into core request processing.
 
 ### Ingestion API
-Use FastAPI or equivalent. Authenticate the source, resolve the yard through trusted integration configuration, generate/validate an idempotency key, preserve source metadata/content, enqueue durable work, and return quickly.
+Use FastAPI or equivalent. Authenticate the source, resolve the yard through trusted integration configuration, derive message identity, preserve the original bytes, enqueue durable work, and return quickly.
 
 ### Processing workers
 Parse attachments, transcribe audio, classify/extract requests, reconcile mailbox events, retry failures, send notifications, and export approved drafts. Preserve source material if any downstream step fails.
@@ -80,8 +80,8 @@ A minimal responsive review queue and request card are first-class pilot feature
 - Production webhooks require an always-on HTTPS endpoint; Codespaces/local development is not production hosting.
 - The yard's ordinary phone route must keep working if Counter Copilot fails. Secure PBX/SIP deployment requires a competent operator and fraud controls.
 
-## Suggested processing states
-received → source_preserved → queued → processing → draft_ready / needs_review / failed_retry. Preserve the original source and history through all retries; a repeated provider event must not create duplicate quote drafts or sends.
+## Processing states
+In the proposed v0.1 contract a communication moves `queued → processing → completed | failed_retryable | failed_terminal`; a stored record means the source is preserved, and review states (`draft_ready`, `internally_approved`, `declined`) belong to the request. See [DATA_CONTRACT.md](DATA_CONTRACT.md) sections 3 and 11. Preserve the original source and history through all retries; a repeated provider event must not create duplicate drafts or sends.
 
 ## Explicit action boundaries
 Internal draft approval does not equal sending a customer quote, exporting to an ERP, booking an order, or reserving stock. Each later action requires a separate explicit permission, confirmation, and audit record.

@@ -1,0 +1,25 @@
+{
+  "expected_version": 1,
+  "operations": [
+    {
+      "op": "choose_candidate",
+      "target": {
+        "scope": "line",
+        "line_id": "4bb2b50c-1daf-5e85-a019-e6c077af0c2a",
+        "field": "quantity"
+      },
+      "candidate_index": 1
+    },
+    {
+      "op": "select_sku",
+      "line_id": "cec8bda7-beae-556f-b161-5b323be36d3e",
+      "sku_id": "77f612a1-8d7d-524f-8060-c72c09c83dd2"
+    },
+    {
+      "op": "select_sku",
+      "line_id": "4bb2b50c-1daf-5e85-a019-e6c077af0c2a",
+      "sku_id": "b52cb3a9-82ad-5604-86ec-f1168dcfcd4e"
+    }
+  ],
+  "note": "Contractor's second sentence changes the OSB count."
+}

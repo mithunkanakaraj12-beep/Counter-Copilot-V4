@@ -1,0 +1,241 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "b8ce25dc-7ee1-5876-aaff-d68c765e5a88",
+          "source": "body_text",
+          "start": 0,
+          "end": 50,
+          "quote": "I need 50 of the 2x4x8s, wait actually make it 60.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "ambiguous",
+        "value": null,
+        "candidates": [
+          "50",
+          "60"
+        ],
+        "ambiguity_reason": "conflicting_statements",
+        "evidence": [
+          {
+            "communication_id": "b8ce25dc-7ee1-5876-aaff-d68c765e5a88",
+            "source": "body_text",
+            "start": 47,
+            "end": 49,
+            "quote": "60",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+        "grounding": {
+          "outcome": "downgraded",
+          "rule_codes": [
+            "correction_language"
+          ]
+        }
+      },
+      "unit": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "2x4x8",
+          "components": [
+            {
+              "raw": "2",
+              "magnitude": "2",
+              "unit": null
+            },
+            {
+              "raw": "4",
+              "magnitude": "4",
+              "unit": null
+            },
+            {
+              "raw": "8",
+              "magnitude": "8",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "b8ce25dc-7ee1-5876-aaff-d68c765e5a88",
+            "source": "body_text",
+            "start": 17,
+            "end": 23,
+            "quote": "2x4x8s",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "b52c432c-df96-5374-bdfb-679702be9c14",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": [
+    {
+      "code": "possible_correction_language",
+      "line_index": 0,
+      "evidence": [
+        {
+          "communication_id": "b8ce25dc-7ee1-5876-aaff-d68c765e5a88",
+          "source": "body_text",
+          "start": 25,
+          "end": 29,
+          "quote": "wait",
+          "role": "supports"
+        },
+        {
+          "communication_id": "b8ce25dc-7ee1-5876-aaff-d68c765e5a88",
+          "source": "body_text",
+          "start": 30,
+          "end": 38,
+          "quote": "actually",
+          "role": "supports"
+        },
+        {
+          "communication_id": "b8ce25dc-7ee1-5876-aaff-d68c765e5a88",
+          "source": "body_text",
+          "start": 39,
+          "end": 46,
+          "quote": "make it",
+          "role": "supports"
+        }
+      ]
+    }
+  ]
+}

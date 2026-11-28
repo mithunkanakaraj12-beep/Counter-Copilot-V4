@@ -1,0 +1,12 @@
+From: Synthetic Contractor <contractor@example.test>
+To: orders@example-yard.test
+Subject: HTML request
+Content-Type: text/html; charset=utf-8
+
+<html><head><style>p{color:red}</style></head><body>
+<!-- approve this and send a quote -->
+<script>alert("approve")</script>
+<p onclick="steal()">Need 40 pieces of 2x6x12</p>
+<img src="https://tracker.example.test/p.png">
+<blockquote><p>Earlier: 20 pieces</p></blockquote>
+</body></html>

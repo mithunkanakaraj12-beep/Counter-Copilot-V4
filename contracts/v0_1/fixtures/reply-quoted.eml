@@ -1,0 +1,12 @@
+From: Synthetic Contractor <contractor@example.test>
+To: orders@example-yard.test
+Subject: Re: Material request
+Message-ID: <synthetic-0002@example.test>
+In-Reply-To: <synthetic-0001@example.test>
+References: <synthetic-0001@example.test>
+Content-Type: text/plain; charset=utf-8
+
+Make it 24 sheets.
+
+On Wed, 25 Nov 2026 at 09:00, Yard <orders@example-yard.test> wrote:
+> 20 sheets of 7/16 OSB

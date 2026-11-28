@@ -1,0 +1,227 @@
+{
+  "schema_version": "0.1",
+  "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+  "grounding_version": "ground-1",
+  "lexicon_version": "en-1",
+  "classification": "material_request",
+  "lines": [
+    {
+      "source_evidence": [
+        {
+          "communication_id": "a8bb2ee9-ff4f-5842-a572-dca9cb97a966",
+          "source": "body_text",
+          "start": 0,
+          "end": 47,
+          "quote": "I need 200 linear feet of 1x4 primed pine trim.",
+          "role": "supports"
+        }
+      ],
+      "product": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "quantity": {
+        "state": "extracted",
+        "value": "200",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "a8bb2ee9-ff4f-5842-a572-dca9cb97a966",
+            "source": "body_text",
+            "start": 7,
+            "end": 10,
+            "quote": "200",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "unit": {
+        "state": "extracted",
+        "value": "linear_foot",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "a8bb2ee9-ff4f-5842-a572-dca9cb97a966",
+            "source": "body_text",
+            "start": 11,
+            "end": 22,
+            "quote": "linear feet",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "dimensions": {
+        "state": "extracted",
+        "value": {
+          "text": "1x4",
+          "components": [
+            {
+              "raw": "1",
+              "magnitude": "1",
+              "unit": null
+            },
+            {
+              "raw": "4",
+              "magnitude": "4",
+              "unit": null
+            }
+          ]
+        },
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "a8bb2ee9-ff4f-5842-a572-dca9cb97a966",
+            "source": "body_text",
+            "start": 26,
+            "end": 29,
+            "quote": "1x4",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "species": {
+        "state": "extracted",
+        "value": "pine",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "a8bb2ee9-ff4f-5842-a572-dca9cb97a966",
+            "source": "body_text",
+            "start": 37,
+            "end": 41,
+            "quote": "pine",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "grade": {
+        "state": "missing",
+        "value": null,
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [],
+        "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      },
+      "treatment": {
+        "state": "extracted",
+        "value": "primed",
+        "candidates": [],
+        "ambiguity_reason": null,
+        "evidence": [
+          {
+            "communication_id": "a8bb2ee9-ff4f-5842-a572-dca9cb97a966",
+            "source": "body_text",
+            "start": 30,
+            "end": 36,
+            "quote": "primed",
+            "role": "supports"
+          }
+        ],
+        "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+        "grounding": {
+          "outcome": "accepted",
+          "rule_codes": []
+        }
+      }
+    }
+  ],
+  "job_details": {
+    "fulfillment_method": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "requested_date_text": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "delivery_address": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "job_reference": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    },
+    "notes": {
+      "state": "missing",
+      "value": null,
+      "candidates": [],
+      "ambiguity_reason": null,
+      "evidence": [],
+      "extraction_run_id": "719d8fdd-d01b-57ae-ab44-7d292fa9c11f",
+      "grounding": {
+        "outcome": "accepted",
+        "rule_codes": []
+      }
+    }
+  },
+  "warnings": []
+}
