@@ -300,7 +300,7 @@
         "match": {
           "status": "single_candidate",
           "catalog_version": "synthetic-1",
-          "matcher_version": "synthetic-fixture",
+          "matcher_version": "compare-1",
           "candidates": [
             {
               "rank": 1,
@@ -765,7 +765,7 @@
         "match": {
           "status": "single_candidate",
           "catalog_version": "synthetic-1",
-          "matcher_version": "synthetic-fixture",
+          "matcher_version": "compare-1",
           "candidates": [
             {
               "rank": 1,
@@ -1030,7 +1030,126 @@
     "approval_id": "fe906af6-ba8c-5151-b913-cf24a51bb143",
     "request_id": "7aeaa989-4c2b-52c4-9284-db020677bdcb",
     "approved_version": 2,
-    "content_sha256": "72189005e7d24b8290394a8e7551e1ee72f323d3211555d45f9a75c75dd43606",
+    "content_sha256": "2dd618d1055e19fedde0869c498b0b2ab1baa6050eae3b1a6572959afeef2f85",
+    "catalog_check": {
+      "catalog_version": "synthetic-1",
+      "matcher_version": "compare-1",
+      "lines": [
+        {
+          "line_id": "cec8bda7-beae-556f-b161-5b323be36d3e",
+          "sku": {
+            "sku_id": "77f612a1-8d7d-524f-8060-c72c09c83dd2",
+            "code": "SYP-2X6-12-N2",
+            "description": "2x6x12 SYP #2, untreated",
+            "product": null,
+            "dimension_designation": {
+              "text": "2x6x12",
+              "components": [
+                {
+                  "raw": "2",
+                  "magnitude": "2",
+                  "unit": null
+                },
+                {
+                  "raw": "6",
+                  "magnitude": "6",
+                  "unit": null
+                },
+                {
+                  "raw": "12",
+                  "magnitude": "12",
+                  "unit": null
+                }
+              ]
+            },
+            "species": "SYP",
+            "grade": "#2",
+            "treatment": "untreated",
+            "sell_unit": "piece",
+            "active": true
+          },
+          "attribute_evidence": [
+            {
+              "attribute": "dimensions",
+              "request_value": "2x6x12",
+              "sku_value": "2x6x12",
+              "outcome": "unit_unconfirmed_equal",
+              "synonym_rule_id": null
+            },
+            {
+              "attribute": "species",
+              "request_value": "SYP",
+              "sku_value": "SYP",
+              "outcome": "exact_match",
+              "synonym_rule_id": null
+            },
+            {
+              "attribute": "grade",
+              "request_value": "#2",
+              "sku_value": "#2",
+              "outcome": "exact_match",
+              "synonym_rule_id": null
+            },
+            {
+              "attribute": "treatment",
+              "request_value": null,
+              "sku_value": "untreated",
+              "outcome": "not_stated_in_request",
+              "synonym_rule_id": null
+            }
+          ],
+          "unit_check": {
+            "status": "same_unit"
+          },
+          "sku_changed_since_selection": false
+        },
+        {
+          "line_id": "4bb2b50c-1daf-5e85-a019-e6c077af0c2a",
+          "sku": {
+            "sku_id": "b52cb3a9-82ad-5604-86ec-f1168dcfcd4e",
+            "code": "OSB-716",
+            "description": "7/16 inch OSB sheathing",
+            "product": "OSB",
+            "dimension_designation": {
+              "text": "7/16 inch",
+              "components": [
+                {
+                  "raw": "7/16 inch",
+                  "magnitude": "0.4375",
+                  "unit": "in"
+                }
+              ]
+            },
+            "species": null,
+            "grade": null,
+            "treatment": null,
+            "sell_unit": "sheet",
+            "active": true
+          },
+          "attribute_evidence": [
+            {
+              "attribute": "product",
+              "request_value": "OSB",
+              "sku_value": "OSB",
+              "outcome": "exact_match",
+              "synonym_rule_id": null
+            },
+            {
+              "attribute": "dimensions",
+              "request_value": "7/16",
+              "sku_value": "7/16 inch",
+              "outcome": "unit_unconfirmed_equal",
+              "synonym_rule_id": null
+            }
+          ],
+          "unit_check": {
+            "status": "same_unit"
+          },
+          "sku_changed_since_selection": false
+        }
+      ]
+    },
+    "catalog_check_sha256": "e0d5c8a1eca9de5300b7f9a1267e3dd3af50e7612e7e3b4a0ec04224e87b556d",
     "approved_by": {
       "user_id": "1149c472-9a20-53a4-8678-dc3c67df307d",
       "display_name": "Sam Ortiz (Synthetic)",

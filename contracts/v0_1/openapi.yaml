@@ -9,7 +9,8 @@ info:
   x-limits:
     raw_email_bytes: 25000000
     body_chars: 200000
-    lines: 500
+    email_body_lines: 500
+    material_lines: 500
     attachments: 100
     mime_parts: 200
     mime_depth: 20
@@ -1667,6 +1668,35 @@ components:
       - warning_id
       title: ApprovalBlocker
       type: object
+    ApprovalCatalogCheck:
+      additionalProperties: false
+      description: The immutable record of what approval was checked against. Never recomputed.
+      properties:
+        catalog_version:
+          description: Catalog version read at approval.
+          maxLength: 500
+          minLength: 1
+          title: Catalog Version
+          type: string
+        matcher_version:
+          description: Version of the comparison rules used.
+          maxLength: 500
+          minLength: 1
+          title: Matcher Version
+          type: string
+        lines:
+          items:
+            $ref: '#/components/schemas/ApprovedLineCheck'
+          maxItems: 500
+          minItems: 1
+          title: Lines
+          type: array
+      required:
+      - catalog_version
+      - matcher_version
+      - lines
+      title: ApprovalCatalogCheck
+      type: object
     ApprovalRecord:
       additionalProperties: false
       description: Internal approval of one reviewed version. It authorizes nothing external.
@@ -1687,6 +1717,13 @@ components:
         content_sha256:
           pattern: ^[0-9a-f]{64}$
           title: Content Sha256
+          type: string
+        catalog_check:
+          $ref: '#/components/schemas/ApprovalCatalogCheck'
+        catalog_check_sha256:
+          description: Digest of catalog_check.
+          pattern: ^[0-9a-f]{64}$
+          title: Catalog Check Sha256
           type: string
         approved_by:
           $ref: '#/components/schemas/PersonRef'
@@ -1727,6 +1764,8 @@ components:
       - request_id
       - approved_version
       - content_sha256
+      - catalog_check
+      - catalog_check_sha256
       - approved_by
       - approved_at
       - acknowledged_warnings
@@ -1777,6 +1816,45 @@ components:
       - expected_version
       - acknowledged_warning_ids
       title: ApproveInternal
+      type: object
+    ApprovedLineCheck:
+      additionalProperties: false
+      allOf:
+      - properties:
+          sku:
+            properties:
+              active:
+                const: true
+          unit_check:
+            properties:
+              status:
+                const: same_unit
+      description: Catalog facts read for one line at the moment of approval.
+      properties:
+        line_id:
+          format: uuid
+          title: Line Id
+          type: string
+        sku:
+          $ref: '#/components/schemas/SkuSnapshot'
+          description: Catalog values read at approval, not at selection.
+        attribute_evidence:
+          items:
+            $ref: '#/components/schemas/AttributeEvidence'
+          title: Attribute Evidence
+          type: array
+        unit_check:
+          $ref: '#/components/schemas/UnitCheck'
+        sku_changed_since_selection:
+          title: Sku Changed Since Selection
+          type: boolean
+      required:
+      - line_id
+      - sku
+      - attribute_evidence
+      - unit_check
+      - sku_changed_since_selection
+      title: ApprovedLineCheck
       type: object
     AttachmentMetadata:
       additionalProperties: false
@@ -2170,6 +2248,8 @@ components:
         body_text:
           anyOf:
           - maxLength: 200000
+            not:
+              pattern: ^(?:[^\n]*\n){500}[\s\S]
             type: string
           - type: 'null'
           description: Decoded text with CRLF changed to LF and nothing else. Untrusted.

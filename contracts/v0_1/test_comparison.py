@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+import json
 import uuid
 
 import pytest
 
 import models as m
+from conftest import HERE
 from reference import comparison
 
 D = m.dimensions_from_text
@@ -104,3 +106,32 @@ def test_comparison_offers_no_selection_or_ranking():
     public = {n for n in dir(comparison) if not n.startswith("_")}
     assert not any("select" in n.lower() and n != "acknowledgment_attributes" for n in public)
     assert not any("rank" in n.lower() for n in public)
+
+
+def selected_line() -> m.MaterialLine:
+    data = json.loads((HERE / "examples" / "request-detail.approved.json").read_text("utf-8"))
+    return m.MaterialLine.model_validate_json(json.dumps(data["content"]["lines"][0]))
+
+
+def test_approval_check_reads_the_catalog_as_it_is_at_approval():
+    line = selected_line()
+    selected = line.match.selection.sku
+    unchanged = comparison.approval_line_check(line, selected)
+    assert unchanged.sku == selected and not unchanged.sku_changed_since_selection
+    changed = selected.model_copy(update={"species": "Douglas fir"})
+    check = comparison.approval_line_check(line, changed)
+    assert check.sku == changed and check.sku_changed_since_selection
+    outcomes = {e.attribute: e.outcome for e in check.attribute_evidence}
+    assert outcomes["species"] == "mismatch"
+    assert line.match.selection.sku == selected  # the selection snapshot is untouched
+
+
+@pytest.mark.parametrize(
+    "change",
+    [{"active": False}, {"sell_unit": "box"}, {"sku_id": uuid.UUID(int=77)}],
+    ids=["inactive", "unit", "other-sku"],
+)
+def test_approval_check_refuses_what_cannot_be_approved(change):
+    line = selected_line()
+    with pytest.raises(ValueError):
+        comparison.approval_line_check(line, line.match.selection.sku.model_copy(update=change))

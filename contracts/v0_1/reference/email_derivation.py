@@ -24,6 +24,7 @@ from email.utils import getaddresses
 from html.parser import HTMLParser
 
 import models as m
+from reference import values
 
 PARSER_VERSION = "email-derive-1"
 
@@ -391,20 +392,21 @@ def _content(message: Message, leaves: list[tuple[str, Message]]) -> m.ParsedCon
             if chosen and chosen[0].startswith(f"{part_id}."):
                 alternatives.update(inside)
 
-    body, body_source, quoted = "", "none", []
+    body, body_source, blockquotes = "", "none", []
     body_id = None
     if plain:
         body_id, body, body_source = plain[0], _decoded_text(plain[1]), "text_plain"
-        if len(body) <= m.Limits.BODY_CHARS:
-            quoted = find_quoted_spans(body)
     elif html:
-        source = _decoded_text(html[1])
-        body, blockquotes = html_to_text(source)
+        body, blockquotes = html_to_text(_decoded_text(html[1]))
         body_id, body_source = html[0], "text_html_derived"
-        if len(body) <= m.Limits.BODY_CHARS:
-            quoted = _merge(blockquotes + find_quoted_spans(body))
     if len(body) > m.Limits.BODY_CHARS:
         raise LimitExceeded("body_chars")
+    if values.count_lines(body) > m.Limits.EMAIL_BODY_LINES:
+        raise LimitExceeded("body_lines")
+    # Only after both limits: quoted-history detection grows with the square of the lines.
+    quoted = find_quoted_spans(body)
+    if body_source == "text_html_derived":
+        quoted = _merge(blockquotes + quoted)
 
     attachments = []
     for part_id, part in leaves:

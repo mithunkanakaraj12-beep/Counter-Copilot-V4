@@ -296,7 +296,7 @@
         "match": {
           "status": "single_candidate",
           "catalog_version": "synthetic-1",
-          "matcher_version": "synthetic-fixture",
+          "matcher_version": "compare-1",
           "candidates": [
             {
               "rank": 1,
@@ -644,7 +644,7 @@
         "match": {
           "status": "single_candidate",
           "catalog_version": "synthetic-1",
-          "matcher_version": "synthetic-fixture",
+          "matcher_version": "compare-1",
           "candidates": [
             {
               "rank": 1,

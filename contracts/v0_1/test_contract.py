@@ -16,6 +16,7 @@ import build_examples
 import generate_openapi
 import models as m
 from conftest import HERE
+from reference import comparison
 
 SPEC = yaml.safe_load((HERE / "openapi.yaml").read_text(encoding="utf-8"))
 SCHEMAS = SPEC["components"]["schemas"]
@@ -158,7 +159,8 @@ def test_approved_limits_are_published_exactly():
     assert SPEC["info"]["x-limits"] == {
         "raw_email_bytes": 25_000_000,
         "body_chars": 200_000,
-        "lines": 500,
+        "email_body_lines": 500,
+        "material_lines": 500,
         "attachments": 100,
         "mime_parts": 200,
         "mime_depth": 20,
@@ -571,6 +573,134 @@ def test_later_inactive_sku_stays_visible_on_an_approved_request():
 def test_approved_state_requires_approval_record():
     data = {**example("request-detail.draft.json"), "review_state": "internally_approved"}
     assert not model_valid("RequestDetail", data)
+
+
+# --- The approval record proves which catalog facts were checked -----------------
+
+
+def _rehash(data: dict) -> None:
+    """Recompute the digest so a test reaches the rule behind it."""
+    check = data["approval"]["catalog_check"]
+    data["approval"]["catalog_check_sha256"] = m.canonical_sha256(
+        m.ApprovalCatalogCheck.model_validate_json(json.dumps(check))
+    )
+
+
+def _checked(path: list, value, rehash=True):
+    def mutate(data):
+        _set(["approval", "catalog_check", *path], value)(data)
+        if rehash:
+            _rehash(data)
+
+    return mutate
+
+
+def test_approval_records_the_catalog_version_and_each_line_check():
+    data = example("request-detail.approved.json")
+    check = data["approval"]["catalog_check"]
+    assert check["catalog_version"] and check["matcher_version"] == comparison.MATCHER_VERSION
+    assert [c["line_id"] for c in check["lines"]] == [
+        line["line_id"] for line in data["content"]["lines"] if line["status"] == "active"
+    ]
+    for item, line in zip(check["lines"], data["content"]["lines"]):
+        assert item["sku"] == line["match"]["selection"]["sku"]
+        assert item["attribute_evidence"] and item["unit_check"] == {"status": "same_unit"}
+
+
+@pytest.mark.parametrize("field", ["approval.catalog_check", "approval.catalog_check_sha256"])
+def test_approval_without_its_catalog_check_is_rejected(field):
+    data = example("request-detail.approved.json")
+    del data["approval"][field.split(".")[1]]
+    assert not model_valid("RequestDetail", data)
+    assert not schema_valid("RequestDetail", data)
+
+
+@pytest.mark.parametrize(
+    "path,value",
+    [
+        (["lines", 0, "sku", "active"], False),
+        (["lines", 0, "unit_check", "status"], "different_unit"),
+    ],
+    ids=["inactive-sku", "incompatible-unit"],
+)
+def test_unapprovable_checks_fail_both_validators(path, value):
+    data = approved(_checked(path, value, rehash=False))
+    assert not model_valid("RequestDetail", data)
+    assert not schema_valid("RequestDetail", data)
+
+
+def test_a_changed_catalog_check_no_longer_matches_its_digest():
+    data = approved(_checked(["catalog_version"], "another-version", rehash=False))
+    assert not model_valid("RequestDetail", data)
+    _rehash(data)
+    assert model_valid("RequestDetail", data)
+
+
+def _drop_check(data):
+    data["approval"]["catalog_check"]["lines"].pop()
+    _rehash(data)
+
+
+def _catalog_disagrees_with_evidence(data):
+    """Both snapshots say one species while the recorded evidence still says another."""
+    data["content"]["lines"][0]["match"]["selection"]["sku"]["species"] = "Douglas fir"
+    _checked(["lines", 0, "sku", "species"], "Douglas fir")(data)
+
+
+def _flags_a_change_that_did_not_happen(data):
+    line_id = data["content"]["lines"][0]["line_id"]
+    acknowledged = data["approval"]["acknowledged_warnings"]
+    own = next(w for w in acknowledged if w["target"]["line_id"] == line_id)
+    acknowledged.append({**own, "warning_id": "changed", "code": "selected_sku_changed"})
+    _checked(["lines", 0, "sku_changed_since_selection"], True)(data)
+
+
+@pytest.mark.parametrize(
+    "mutate,reason",
+    [
+        (_drop_check, "covers exactly the active lines"),
+        (_checked(["lines", 1, "line_id"], UUID_A), "covers exactly the active lines"),
+        (_checked(["lines", 0, "sku", "sku_id"], UUID_A), "is the selected SKU"),
+        (_checked(["lines", 0, "sku", "sell_unit"], "box"), "is the approved unit"),
+        (
+            _checked(["lines", 0, "sku", "description"], "changed since selection"),
+            "does not match the two snapshots",
+        ),
+        (_flags_a_change_that_did_not_happen, "does not match the two snapshots"),
+        (_catalog_disagrees_with_evidence, "must state the line and catalog values"),
+        (_checked(["lines", 0, "attribute_evidence"], []), "must state the line and catalog"),
+        (_checked(["lines", 0, "sku_changed_since_selection"], True), "was not acknowledged"),
+    ],
+    ids=[
+        "line-not-checked", "other-line", "other-sku", "other-unit", "unflagged-change",
+        "false-change-flag", "evidence-not-matching-catalog", "evidence-missing",
+        "unacknowledged-change",
+    ],
+)
+def test_catalog_check_must_describe_what_was_approved(mutate, reason):
+    with pytest.raises(ValidationError, match=reason):
+        m.RequestDetail.model_validate_json(json.dumps(approved(mutate)))
+
+
+def test_a_checked_difference_needs_its_acknowledgment():
+    def drop_acknowledgments(data):
+        data["approval"]["acknowledged_warnings"] = [
+            w
+            for w in data["approval"]["acknowledged_warnings"]
+            if not w["code"].startswith("selected_sku")
+        ]
+
+    assert not model_valid("RequestDetail", approved(drop_acknowledgments))
+
+
+def test_later_catalog_changes_do_not_rewrite_the_check():
+    def later(data):
+        current = data["content"]["lines"][0]["match"]["selection"]["current"]
+        current.update(sku_active=False, sku_changed=True, catalog_stale=True)
+
+    data = approved(later)
+    assert model_valid("RequestDetail", data)
+    assert data["approval"] == example("request-detail.approved.json")["approval"]
 
 
 def test_only_heuristic_warnings_can_be_false_positives():

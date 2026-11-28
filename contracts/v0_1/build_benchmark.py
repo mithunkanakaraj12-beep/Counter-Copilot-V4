@@ -233,6 +233,9 @@ def markdown(report: dict) -> str:
         "  (unit codes, canonical numbers). Proposed: score normalized values, require exact evidence.",
         "- Raw model output and the grounded draft should be scored separately, with zero unsupported",
         "  values in the draft. The rubric's percentages remain proposed targets.",
+        "- **Line recall is an open acceptance gate (QA test LIN-001).** Nothing here measures",
+        "  whether a model finds every requested line: the proposals are built from the labels.",
+        "  The uncited-quantity warning is a safeguard, not a passing extraction result.",
         "",
         "## Cases",
     ]

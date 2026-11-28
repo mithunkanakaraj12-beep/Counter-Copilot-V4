@@ -13,6 +13,9 @@ from uuid import UUID
 import models as m
 
 
+MATCHER_VERSION = "compare-1"
+
+
 @dataclass(frozen=True)
 class SynonymRule:
     """An approved, yard-specific equivalence. None exist unless a yard approves one."""
@@ -129,6 +132,27 @@ def preview(
     return m.MatchPreview(
         attribute_evidence=attribute_evidence(values, sku, synonyms),
         unit_check=unit_check(resolved_value(line.unit), sku.sell_unit),
+    )
+
+
+def approval_line_check(
+    line: m.MaterialLine,
+    current_sku: m.SkuSnapshot,
+    synonyms: tuple[SynonymRule, ...] = (),
+) -> m.ApprovedLineCheck:
+    """Evaluate a selected line against the catalog values read at approval.
+
+    Raises ValueError when the line cannot be approved against them."""
+    selection = line.match.selection
+    if selection is None or current_sku.sku_id != selection.sku.sku_id:
+        raise ValueError("approval checks the SKU the employee selected")
+    evaluated = preview(line, current_sku, synonyms)
+    return m.ApprovedLineCheck(
+        line_id=line.line_id,
+        sku=current_sku,
+        attribute_evidence=evaluated.attribute_evidence,
+        unit_check=evaluated.unit_check,
+        sku_changed_since_selection=current_sku != selection.sku,
     )
 
 

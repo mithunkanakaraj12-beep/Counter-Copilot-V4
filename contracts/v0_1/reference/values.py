@@ -49,6 +49,13 @@ def parse_number(text: str) -> Fraction:
         raise UnreadableValue(text) from error
 
 
+def count_lines(text: str) -> int:
+    """Lines separated by LF. A final LF ends the last line without starting another."""
+    if not text:
+        return 0
+    return text.count("\n") + (0 if text.endswith("\n") else 1)
+
+
 def canonical_decimal(value: Fraction) -> str:
     """Shortest decimal string: no separators, exponent or trailing zeros."""
     if value <= 0:

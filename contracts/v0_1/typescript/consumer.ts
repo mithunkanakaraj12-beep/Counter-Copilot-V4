@@ -167,6 +167,19 @@ export function failure(s: S["CommunicationStatus"]) {
   return [s.failure_code, s.employee_message, s.attempt_count, s.next_retry_at] as const;
 }
 
+// The approval record shows which catalog facts were checked.
+export function approvalProof(a: S["ApprovalRecord"]) {
+  const version: string = a.catalog_check.catalog_version;
+  const digest: string = a.catalog_check_sha256;
+  const lines = a.catalog_check.lines.map((c) => {
+    const unit: "same_unit" = c.unit_check.status;
+    const active: true = c.sku.active;
+    return [c.line_id, c.sku.code, unit, active, c.sku_changed_since_selection] as const;
+  });
+  return [version, digest, a.catalog_check.matcher_version, lines] as const;
+}
+export type BodyText = Expect<Same<S["CommunicationRecord"]["body_text"], string | null>>;
+
 // Routes.
 type RequestPath = paths["/api/v1/yards/{yard_id}/requests/{request_id}"];
 export type RequestBody = Expect<

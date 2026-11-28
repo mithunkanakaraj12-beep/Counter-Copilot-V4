@@ -36,13 +36,13 @@ TypeScript, with Node 22 (needs the npm registry):
 
 ```
 cd contracts/v0_1/typescript
-npm install --ignore-scripts
+npm ci --ignore-scripts
 npm run generate
 npm run check
 ```
 
-The generator and compiler versions are pinned; their own dependencies are not, because no
-lockfile is committed yet.
+`package-lock.json` pins every npm dependency with its integrity hash. After changing
+`package.json`, regenerate it with `npm install --package-lock-only` and commit both files.
 
 CI (`.github/workflows/contract.yml`) runs all of the above and a second validator,
 `openapi-spec-validator`. A workflow does not protect a branch by itself: the repository

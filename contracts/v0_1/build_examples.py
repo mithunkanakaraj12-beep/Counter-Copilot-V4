@@ -193,7 +193,7 @@ def build() -> dict[str, object]:
         line["match"] = {
             "status": "single_candidate",
             "catalog_version": YARD["catalog_version"],
-            "matcher_version": "synthetic-fixture",
+            "matcher_version": comparison.MATCHER_VERSION,
             "candidates": [{"rank": 1, "sku": dump(chosen[index]), **dump(preview)}],
             "selection": None,
             "last_cleared_selection": None,
@@ -322,6 +322,14 @@ def build() -> dict[str, object]:
             approved["content"], sort_keys=True, separators=(",", ":"), ensure_ascii=False
         ).encode("utf-8")
     ).hexdigest()
+    catalog_check = m.ApprovalCatalogCheck(
+        catalog_version=YARD["catalog_version"],
+        matcher_version=comparison.MATCHER_VERSION,
+        lines=[
+            comparison.approval_line_check(m.MaterialLine.model_validate(line), chosen[index])
+            for index, line in enumerate(approved["content"]["lines"])
+        ],
+    )
     approved.update(
         version=3,
         review_state="internally_approved",
@@ -334,6 +342,8 @@ def build() -> dict[str, object]:
             "request_id": str(REQUEST),
             "approved_version": 2,
             "content_sha256": content_hash,
+            "catalog_check": dump(catalog_check),
+            "catalog_check_sha256": m.canonical_sha256(catalog_check),
             "approved_by": dump(EMPLOYEE),
             "approved_at": APPROVED,
             "acknowledged_warnings": [

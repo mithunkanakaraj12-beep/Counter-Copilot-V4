@@ -80,7 +80,7 @@ Success is returned only after the original and the job are durable. The adapter
 - Every other leaf part is an attachment, including inline images and small files. The HTML twin of the chosen body inside `multipart/alternative` is not. An attached message is one attachment; its inner parts are not read as body or attachments, but count toward MIME limits.
 - Quoted and forwarded history is recognised heuristically (`>` lines, reply attributions, original or forwarded blocks, HTML blockquotes) and returned as `quoted_spans`.
 - **Unreadable mail** (`parse_failed`, all parsed fields null): undecodable headers, encoded words, charset or transfer encoding; damaged base64; a NUL character; missing multipart boundaries; no usable sender address; any other parser error. There is never a partial result and no draft from a failed parse.
-- Limits are enforced while parsing (section 15). The 30-second parse limit is checked between steps; a service must also run the parser where it can be stopped.
+- Limits are enforced while parsing (section 15). Body limits are checked before quoted-history detection, whose cost grows with the square of the line count. The 30-second parse limit is checked between steps; a service must also run the parser where it can be stopped.
 - Some oversized header-derived values are cut or skipped rather than rejected; see section 16.
 
 ### Attachments
@@ -180,7 +180,9 @@ Candidates survive only if every one is found in the evidence; otherwise they ar
 **Text fields** must appear verbatim, as whole words, with the same letter case.
 
 ### Limits of grounding
-Passing these checks proves the wording exists, not that it was understood, and nothing proves every line was found. An employee reviews against the original. Extraction accuracy needs labeled testing with a real model, which has not happened.
+Passing these checks proves the wording exists, not that it was understood. An employee reviews against the original. Extraction accuracy needs labeled testing with a real model, which has not happened.
+
+**Line recall is an open model-quality acceptance gate** (QA test LIN-001: "Every requested line is represented or explicitly flagged for employee review; no silent omission."). The contract cannot guarantee completeness. `uncited_quantity_text` flags some omissions, none where the missed line has no readable amount outside cited text. That is a safeguard, not a pass. The gate stays open until a real model is measured against labeled data; the threshold is undecided (**U-22**).
 
 ## 7. Quantity and unit
 - Separate tracked fields. A quantity is a positive decimal string with up to 9 integer and 6 fraction digits.
@@ -268,8 +270,13 @@ Anything else is `409 invalid_state` with the current state.
 ## 12. Internal approval is not sending
 - Approval locks the request, recomputes blockers and warnings against current facts and the current catalog, and fails with `422 approval_blocked` if anything is unmet. A warning that appeared since the employee looked therefore stops a stale approval.
 - It records the **reviewed** version: `approved_version` equals `expected_version`, and the request advances to `approved_version + 1`.
-- `content_sha256` covers the `content` of the reviewed version, serialized as in section 1 (sorted keys, no insignificant whitespace, unescaped non-ASCII), with every `match.selection.current` removed because that block is computed on read.
+- `content_sha256` covers the `content` of the reviewed version, serialized as in section 1 (sorted keys, no insignificant whitespace, unescaped non-ASCII), with every `match.selection.current` removed because that block is computed on read. What was evaluated at approval is recorded separately, in the catalog check below.
 - The approval keeps each acknowledged warning as the approver saw it.
+- The approval keeps an **immutable catalog check** (`catalog_check`): the catalog version and comparison-rules version (`matcher_version`) used, and for every active line the SKU values read **at approval**, the attribute evidence, the unit check and whether the SKU had changed since selection. `reference/comparison.approval_line_check` builds each line.
+  - The backend reads the catalog once under the approval lock and uses that same read for blockers, warnings and the snapshot.
+  - `catalog_check_sha256` is the SHA-256 of the stored `catalog_check`, serialized as in section 1.
+  - Neither is ever recomputed or edited. Later catalog changes show in the live evaluation; revocation changes only the revocation fields.
+  - The models reject an approval whose check omits a line, names another SKU or unit, states values other than the line's and the checked SKU's, or contains a difference without its acknowledgment. They check that the recorded values are consistent, not that comparison outcomes are correct or that the values match the real catalog; those depend on the backend.
 - Reopening revokes the approval and keeps the record. A warning that arises after approval is shown but does not revoke it.
 - Approval creates no message, quote, export, order or reservation. v0.1 has no send endpoint, send permission or outbound adapter.
 - A future send needs its own endpoint, permission, explicit confirmation, idempotency key and audit record, and must reference an active approval.
@@ -342,7 +349,8 @@ Exact parameters, bodies and status codes are in `openapi.yaml`. `Y` is `/api/v1
 |---|---|
 | Raw email | 25,000,000 bytes |
 | Body text | 200,000 characters |
-| Lines per proposal or request | 500 |
+| **Email body lines** | 500; more is `413` |
+| **Material lines** per proposal or request | 500 |
 | Attachments | 100 |
 | MIME parts | 200 |
 | MIME nesting depth (root is 1) | 20 |
@@ -354,13 +362,19 @@ Exact parameters, bodies and status codes are in `openapi.yaml`. `Y` is `/api/v1
 | Edit operations per call | 200 |
 | Employee idempotency keys | 24 hours |
 
+**The two line limits are different things, and which one the owner approved is open (D-015).** U-16 approved "Lines: 500" among the parser limits without naming the unit. Until the owner answers, both are enforced at 500.
+
+- *Email body lines* are counted in the decoded `body_text` (plain or HTML-derived), separated by LF; a final LF does not start another line. Blank and quoted lines count. A lone CR is not a line break. Over the limit the message is treated like any over-limit mail: `413`, nothing stored, source kept by the adapter, operator alerted.
+- *Material lines* are the entries of a proposal, grounded result or request. A model proposal with more is rejected as `invalid_schema`.
+
+A body-line limit of 500 can refuse ordinary mail with a long reply chain, or HTML mail whose derived text has many blank lines. This has not been measured on real mail.
+
 The values are published in `openapi.yaml` (`info.x-limits`). The JSON limit applies to HTTP JSON bodies, including intake metadata. No limit on model output size has been approved.
 
 ## 16. Interpretations and known limitations
 
 **Interpretations made while implementing. Reviewers should confirm or change them.**
 - 1 MB and 256 KB are read as decimal, matching 25 MB = 25,000,000 bytes.
-- "500 lines" means material lines in a proposal or request, not lines of email text.
 - "Selected in the same edit" (N-4) is implemented as a `select_sku` that follows the change in the operation list; one listed before the change is cleared by it.
 - `possible_duplicate` and `conflicting_redelivery` require acknowledgment (from the reviewed plan's table; the owner list does not name them).
 - `html_derived_text` is informational.
@@ -384,6 +398,7 @@ The values are published in `openapi.yaml` (`info.x-limits`). The JSON limit app
 - The parser cuts display names and filenames to 500 characters, content IDs to 998 and media types to 200; keeps at most 1,000 header recipients (which also affects the fingerprint), the first 100 `In-Reply-To` and the last 100 `References`; and ignores message IDs over 998 and addresses over 320 characters. The original is unaffected.
 - A message with no usable sender address is `parse_failed`.
 - Quoted-history detection and HTML conversion are heuristics.
+- The API returns only the latest approval record. Earlier, revoked records and their catalog checks are retained in storage, with no v0.1 read route.
 - English only.
 
 ## 17. Open decisions
@@ -395,6 +410,7 @@ The values are published in `openapi.yaml` (`info.x-limits`). The JSON limit app
 | U-02 | Adapter authentication | Bearer token over TLS | Intake build |
 | U-03 | Stable message ID from the pilot mail path | Mailbox-provider ID | Live intake |
 | U-04 | Retention (including message identity), deletion, encryption, write lock, quarantine access | Synthetic data only until decided; quarantine operator-only | Live data |
+| U-16 / D-015 | Does the approved "Lines: 500" limit email body lines, material lines or both, and what is the other value? | Both at 500 | Freeze |
 | U-05 | Roles and self-approval | Explicit permissions; self-approval for synthetic data only | Authorization setup |
 | U-13 | Drafts for `uncertain` mail | Yes, flagged (the schema supports it) | Processing |
 | U-15 | Keep `reopen`, and who holds it | Keep, separate permission | Approval build |

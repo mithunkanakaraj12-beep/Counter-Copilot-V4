@@ -95,7 +95,7 @@ def test_malformed_json_rejects_the_run():
 
 def test_line_limit():
     body = "40 studs"
-    data = proposal([line(body)] * (m.Limits.LINES + 1))
+    data = proposal([line(body)] * (m.Limits.MATERIAL_LINES + 1))
     assert failures(body, data) == {"invalid_schema"}
 
 

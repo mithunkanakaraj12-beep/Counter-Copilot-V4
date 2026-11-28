@@ -8,6 +8,8 @@ backend.
 
 from __future__ import annotations
 
+import hashlib
+import json
 from datetime import datetime, timedelta
 from decimal import Decimal
 from enum import StrEnum
@@ -38,7 +40,10 @@ class Limits:
 
     RAW_EMAIL_BYTES = 25_000_000
     BODY_CHARS = 200_000
-    LINES = 500
+    # Two different things. U-16 approved "Lines: 500"; which of these it governs is
+    # waiting for the owner (D-015), so both are enforced at 500.
+    EMAIL_BODY_LINES = 500  # lines of decoded body text
+    MATERIAL_LINES = 500  # material lines in a proposal or request
     ATTACHMENTS = 100
     MIME_PARTS = 200
     MIME_DEPTH = 20
@@ -515,7 +520,21 @@ class ParsedContent(ContractModel):
         description="To and Cc header addresses."
     )
     subject: Annotated[str, Field(max_length=Limits.HEADER_BYTES)] | None
-    body_text: Annotated[str, Field(max_length=Limits.BODY_CHARS)] | None = Field(
+    body_text: (
+        Annotated[
+            str,
+            Field(
+                max_length=Limits.BODY_CHARS,
+                # More than EMAIL_BODY_LINES lines: that many LFs followed by anything.
+                json_schema_extra={
+                    "not": {
+                        "pattern": rf"^(?:[^\n]*\n){{{Limits.EMAIL_BODY_LINES}}}[\s\S]"
+                    }
+                },
+            ),
+        ]
+        | None
+    ) = Field(
         description="Decoded text with CRLF changed to LF and nothing else. Untrusted."
     )
     body_source: Literal["text_plain", "text_html_derived", "none"] | None
@@ -534,6 +553,11 @@ class ParsedContent(ContractModel):
                 raise ValueError("a failed parse carries no parsed fields")
         elif any(getattr(self, name) is None for name in _PARSED_FIELDS if name != "subject"):
             raise ValueError("a parsed message needs every parsed field except subject")
+        if (
+            self.body_text is not None
+            and values.count_lines(self.body_text) > Limits.EMAIL_BODY_LINES
+        ):
+            raise ValueError("body_text exceeds the email body line limit")
         if self.quoted_spans and self.body_text is not None:
             if any(span.end > len(self.body_text) for span in self.quoted_spans):
                 raise ValueError("quoted span lies outside body_text")
@@ -1328,7 +1352,7 @@ class JobDetails(ContractModel):
 
 
 class RequestContent(ContractModel):
-    lines: Annotated[list[MaterialLine], Field(max_length=Limits.LINES)]
+    lines: Annotated[list[MaterialLine], Field(max_length=Limits.MATERIAL_LINES)]
     job_details: JobDetails
 
     @model_validator(mode="after")
@@ -1519,6 +1543,61 @@ class AcknowledgedWarning(ContractModel):
         return self
 
 
+class ApprovedLineCheck(ContractModel):
+    """Catalog facts read for one line at the moment of approval."""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "allOf": [
+                {
+                    "properties": {
+                        "sku": {"properties": {"active": {"const": True}}},
+                        "unit_check": {"properties": {"status": {"const": "same_unit"}}},
+                    }
+                }
+            ]
+        }
+    )
+
+    line_id: UUID
+    sku: SkuSnapshot = Field(description="Catalog values read at approval, not at selection.")
+    attribute_evidence: list[AttributeEvidence]
+    unit_check: UnitCheck
+    sku_changed_since_selection: bool
+
+    @model_validator(mode="after")
+    def _approvable(self) -> ApprovedLineCheck:
+        if not self.sku.active:
+            raise ValueError("an inactive SKU cannot be approved")
+        if self.unit_check.status != "same_unit":
+            raise ValueError("approval needs a compatible unit")
+        return self
+
+
+class ApprovalCatalogCheck(ContractModel):
+    """The immutable record of what approval was checked against. Never recomputed."""
+
+    catalog_version: ShortText = Field(description="Catalog version read at approval.")
+    matcher_version: ShortText = Field(description="Version of the comparison rules used.")
+    lines: Annotated[
+        list[ApprovedLineCheck], Field(min_length=1, max_length=Limits.MATERIAL_LINES)
+    ]
+
+    @model_validator(mode="after")
+    def _one_per_line(self) -> ApprovalCatalogCheck:
+        if len({c.line_id for c in self.lines}) != len(self.lines):
+            raise ValueError("each approved line is checked once")
+        return self
+
+
+def canonical_sha256(value: BaseModel) -> str:
+    """SHA-256 of UTF-8 JSON: sorted keys, no extra whitespace, unescaped non-ASCII."""
+    encoded = json.dumps(
+        value.model_dump(mode="json"), sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    )
+    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
 class ApprovalRecord(ContractModel):
     """Internal approval of one reviewed version. It authorizes nothing external."""
 
@@ -1528,6 +1607,8 @@ class ApprovalRecord(ContractModel):
         description="The version that was reviewed. Approval creates approved_version + 1."
     )
     content_sha256: Sha256
+    catalog_check: ApprovalCatalogCheck
+    catalog_check_sha256: Sha256 = Field(description="Digest of catalog_check.")
     approved_by: PersonRef
     approved_at: UtcDatetime
     acknowledged_warnings: list[AcknowledgedWarning]
@@ -1535,6 +1616,24 @@ class ApprovalRecord(ContractModel):
     revoked_by: PersonRef | None
     revoked_at: UtcDatetime | None
     revocation_reason: ShortText | None
+
+    @model_validator(mode="after")
+    def _checks_are_intact_and_acknowledged(self) -> ApprovalRecord:
+        if self.catalog_check_sha256 != canonical_sha256(self.catalog_check):
+            raise ValueError("catalog_check_sha256 does not match catalog_check")
+        acknowledged = {(w.code, w.target.line_id) for w in self.acknowledged_warnings}
+        for check in self.catalog_check.lines:
+            outcomes = {item.outcome for item in check.attribute_evidence}
+            needed = []
+            if outcomes & set(MISMATCH_OUTCOMES):
+                needed.append(WarningCode.SELECTED_SKU_ATTRIBUTE_MISMATCH)
+            if outcomes & set(UNVERIFIED_OUTCOMES):
+                needed.append(WarningCode.SELECTED_SKU_ATTRIBUTE_UNVERIFIED)
+            if check.sku_changed_since_selection:
+                needed.append(WarningCode.SELECTED_SKU_CHANGED)
+            if any((code, check.line_id) not in acknowledged for code in needed):
+                raise ValueError("a checked SKU difference was not acknowledged")
+        return self
 
     @model_validator(mode="after")
     def _revocation_is_complete(self) -> ApprovalRecord:
@@ -1555,6 +1654,36 @@ class DecisionRecord(ContractModel):
     reason: ShortText | None
     note: NoteText | None
     false_positive_warning_ids: list[str]
+
+
+def _check_describes_content(check: ApprovalCatalogCheck, live: list[MaterialLine]) -> None:
+    """An active approval's snapshot covers exactly the approved lines and their SKUs."""
+    checked = {item.line_id: item for item in check.lines}
+    if set(checked) != {line.line_id for line in live}:
+        raise ValueError("the catalog check covers exactly the active lines")
+    for line in live:
+        item, selection = checked[line.line_id], line.match.selection
+        if item.sku.sku_id != selection.sku.sku_id:
+            raise ValueError("the checked SKU is the selected SKU")
+        if item.sku.sell_unit != line.unit.value:
+            raise ValueError("the checked sell unit is the approved unit")
+        if item.sku_changed_since_selection != (item.sku != selection.sku):
+            raise ValueError("sku_changed_since_selection does not match the two snapshots")
+        expected = {}
+        for name in MATCH_ATTRIBUTES:
+            field = getattr(line, name)
+            requested = field.value if field.state in RESOLVED_STATES else None
+            defined = item.sku.dimension_designation if name == "dimensions" else getattr(
+                item.sku, name
+            )
+            if name == "dimensions":
+                requested = requested.text if requested else None
+                defined = defined.text if defined else None
+            if requested is not None or defined is not None:
+                expected[name] = (requested, defined)
+        recorded = {e.attribute: (e.request_value, e.sku_value) for e in item.attribute_evidence}
+        if len(recorded) != len(item.attribute_evidence) or recorded != expected:
+            raise ValueError("checked attributes must state the line and catalog values")
 
 
 _ONE_ATTACHMENT_WARNING = {
@@ -1644,6 +1773,7 @@ class RequestDetail(ContractModel):
                     raise ValueError("approved requests hold no ambiguity")
             if any(f.state == "ambiguous" for f in job):
                 raise ValueError("approved requests hold no ambiguity")
+            _check_describes_content(self.approval.catalog_check, live)
         return self
 
 
@@ -2135,7 +2265,7 @@ class ExtractionProposal(ContractModel):
 
     schema_version: Literal["0.1"]
     classification: Classification
-    lines: Annotated[list[ProposedLine], Field(max_length=Limits.LINES)]
+    lines: Annotated[list[ProposedLine], Field(max_length=Limits.MATERIAL_LINES)]
     job_details: ProposedJobDetails
     multiple_jobs_evidence: ProposedEvidenceList = Field(
         description="Quotes showing that the message covers more than one job. Empty if not."
@@ -2184,7 +2314,7 @@ class GroundedProposal(ContractModel):
     grounding_version: ShortText
     lexicon_version: ShortText
     classification: Classification
-    lines: Annotated[list[GroundedLine], Field(max_length=Limits.LINES)]
+    lines: Annotated[list[GroundedLine], Field(max_length=Limits.MATERIAL_LINES)]
     job_details: GroundedJobDetails
     warnings: list[GroundingWarning]
 

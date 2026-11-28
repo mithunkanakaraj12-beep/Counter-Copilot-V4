@@ -3,9 +3,12 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from pathlib import Path
 
 import pytest
+from jsonschema import Draft202012Validator
+from pydantic import ValidationError
 
 import models as m
 from reference import email_derivation as parser
@@ -22,6 +25,17 @@ def mail(body: bytes = b"40 studs", headers: bytes = b"") -> bytes:
 
 def fixture(name: str) -> m.ParsedContent:
     return parser.derive_email((FIXTURES / name).read_bytes())
+
+
+BODY_TEXT_SCHEMA = m.ParsedContent.model_json_schema()["properties"]["body_text"]
+
+
+def model_valid(name: str, data: dict) -> bool:
+    try:
+        getattr(m, name).model_validate_json(json.dumps(data))
+    except ValidationError:
+        return False
+    return True
 
 
 def over(raw: bytes, **kwargs) -> str:
@@ -218,6 +232,59 @@ def test_body_limit_counts_code_points_not_bytes():
     body = ("é" * m.Limits.BODY_CHARS).encode()
     parsed = parser.derive_email(mail(body, b"Content-Type: text/plain; charset=utf-8\r\n"))
     assert len(parsed.body_text) == m.Limits.BODY_CHARS
+
+
+@pytest.mark.parametrize("ending", [b"", b"\r\n"], ids=["no-final-newline", "final-newline"])
+def test_u16_body_line_limit_is_exact(ending):
+    limit = m.Limits.EMAIL_BODY_LINES
+
+    def body(lines: int) -> bytes:
+        return b"\r\n".join([b"x"] * lines) + ending
+
+    parsed = parser.derive_email(mail(body(limit)))
+    assert parsed.parse_status == "parsed" and parsed.body_text.count("x") == limit
+    assert over(mail(body(limit + 1))) == "body_lines"
+
+
+def test_u16_blank_and_quoted_lines_count():
+    limit = m.Limits.EMAIL_BODY_LINES
+    assert over(mail(b"\r\n" * limit + b"x")) == "body_lines"
+    assert over(mail(b"> old\r\n" * limit + b"x")) == "body_lines"
+
+
+def test_u16_html_derived_text_obeys_the_line_limit():
+    def html(rows: int) -> bytes:
+        return mail(b"<p>x</p>" * rows, b"Content-Type: text/html\r\n")
+
+    limit = m.Limits.EMAIL_BODY_LINES
+    assert parser.derive_email(html(limit)).parse_status == "parsed"
+    assert over(html(limit + 1)) == "body_lines"
+
+
+def test_u16_oversized_line_counts_are_refused_before_history_detection(monkeypatch):
+    def unreachable(body):
+        raise AssertionError("quoted history was searched in an over-limit body")
+
+    monkeypatch.setattr(parser, "find_quoted_spans", unreachable)
+    assert over(mail(b"\r\n" * 40_000 + b"x")) == "body_lines"
+
+
+def test_u16_parsed_content_cannot_hold_more_lines():
+    limit = m.Limits.EMAIL_BODY_LINES
+    data = parser.derive_email(mail(b"x")).model_dump(mode="json")
+    for text, valid in (
+        ("x\n" * limit, True),
+        ("x\n" * limit + "x", False),
+        ("\n" * (limit + 1), False),
+    ):
+        payload = {**data, "body_text": text}
+        assert model_valid("ParsedContent", payload) is valid
+        assert Draft202012Validator(BODY_TEXT_SCHEMA).is_valid(text) is valid
+
+
+def test_material_lines_and_email_lines_are_separate_limits():
+    assert (m.Limits.EMAIL_BODY_LINES, m.Limits.MATERIAL_LINES) == (500, 500)
+    assert not hasattr(m.Limits, "LINES")
 
 
 def test_header_limit():

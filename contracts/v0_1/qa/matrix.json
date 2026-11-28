@@ -269,13 +269,20 @@
       "pilot_blocker": "Yes",
       "finding": "Extraction quality gate",
       "workbook_expected": "Every requested line is represented or explicitly flagged for employee review; no silent omission.",
-      "contract_coverage": "reference_function",
-      "contract_tests": [
+      "contract_coverage": "open_acceptance_gate",
+      "contract_tests": [],
+      "not_covered": "Line recall is not guaranteed and has not been measured. The uncited-quantity warning is a partial safeguard that misses omissions without an unread amount; it does not satisfy this test.",
+      "pass_condition_change": null,
+      "pass_condition_agreed_by_reviewer": null,
+      "safeguard_tests": [
         "test_grounding.py::test_lin001_uncited_quantity_warns"
       ],
-      "not_covered": "Completeness is not guaranteed. Line recall needs model runs against labeled data.",
-      "pass_condition_change": "Uncited quantity text warns; completeness is not guaranteed.",
-      "pass_condition_agreed_by_reviewer": false
+      "acceptance_gate": {
+        "name": "Model line recall",
+        "status": "open",
+        "pass_condition": "Every requested line is represented or explicitly flagged for employee review; no silent omission.",
+        "evidence_needed": "Runs of a real model against labeled synthetic data. The threshold is undecided (U-22)."
+      }
     },
     {
       "id": "LIN-002",
